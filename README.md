@@ -22,7 +22,7 @@ public interface Function {
 }
 ```
 
-Implementation of the simple function, f(x) = 2x is provided below using both methods.
+Implementation of the simple function, f(x) = 2x, is provided below using both methods.
 
 ```java
 public class TwoX implements Function {
