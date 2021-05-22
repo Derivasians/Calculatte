@@ -2,6 +2,7 @@ package com.derivasians.calculatte;
 
 public class Calculatte {
     private static final int N = 10000000;
+    private static final double H = 0.0000000000001;
 
     /**
      * Integrates the function, f, from a to b using Simpson's rule.
@@ -28,6 +29,10 @@ public class Calculatte {
         }
 
         return sum * h;
+    }
+
+    public static double derivate(double x, Function function) {
+        return (function.f(x + H) - function.f(x)) / ((x + H) - x);
     }
 
     /**
