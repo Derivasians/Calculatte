@@ -13,6 +13,13 @@ class CalculatteTest {
     }
 
     @Test
+    void derivativeOfXSquaredAtXEquals2() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double slope = Calculatte.derivate(2, XSquared);
+        assertEquals(slope, 4);
+    }
+
+    @Test
     void revolveXSquaredFrom0To2() {
         Function XSquared = x -> Math.pow(x, 2);
         Function X = x -> 0;
