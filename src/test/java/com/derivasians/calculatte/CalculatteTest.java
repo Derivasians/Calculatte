@@ -16,7 +16,7 @@ class CalculatteTest {
     void derivativeOfXSquaredAtXEquals2() {
         Function XSquared = x -> Math.pow(x, 2);
         double slope = Calculatte.derivate(2, XSquared);
-        assertEquals(slope, 4);
+        assertEquals(4, slope);
     }
 
     @Test
