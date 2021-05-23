@@ -55,7 +55,7 @@ public class Calculatte {
      * @param axis The y/x value of the axis of rotation where 0 is about the x/y-axis.
      * @return The volume of revolution.
      */
-    public static double revolution(double a, double b, double axis, Function functionTop, Function functionBottom) {
+    public static double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {
         // The top function with the axis offset squared.
         Function squaredFunctionTop = new Squared() {
             @Override

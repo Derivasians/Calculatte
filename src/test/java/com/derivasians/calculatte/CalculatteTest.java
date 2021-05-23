@@ -23,7 +23,7 @@ class CalculatteTest {
     void revolveXSquaredFrom0To2() {
         Function XSquared = x -> Math.pow(x, 2);
         Function X = x -> 0;
-        double volume = Calculatte.revolution(0, 2, 0, XSquared, X);
+        double volume = Calculatte.revolve(0, 2, 0, XSquared, X);
         assertEquals(20.10618963194089, volume);
     }
 }
