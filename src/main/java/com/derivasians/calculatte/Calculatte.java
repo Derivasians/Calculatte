@@ -1,8 +1,11 @@
 package com.derivasians.calculatte;
 
 public class Calculatte {
-    private static final int N = 10000000;
-    private static final double H = 0.0000000000001;
+    private static int N = 10000000;
+    private static double H = 0.0000000000001;
+
+    public static void setH(double h) { H = h; }
+    public static void setN(int n) { N = n; }
 
     /**
      * Integrates the function, f, from a to b using Simpson's rule.
