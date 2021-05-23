@@ -8,7 +8,7 @@ public class Calculatte {
     public static void setN(int n) { N = n; }
 
     /**
-     * Integrates the function, f, from a to b using Simpson's rule.
+     * Integrates the function from a to b using Simpson's rule.
      *
      * @param a        The lower limit of integration in degrees.
      * @param b        The upper limit of integration in degrees.
@@ -34,6 +34,13 @@ public class Calculatte {
         return sum * h;
     }
 
+    /**
+     * Finds the derivate of the function at point, x.
+     *
+     * @param x The point on the function to find the derivative.
+     * @param function The function to find the derivative of.
+     * @return The derivative of the function at point, x.
+     */
     public static double derivate(double x, Function function) {
         return (function.f(x + H) - function.f(x)) / ((x + H) - x);
     }
