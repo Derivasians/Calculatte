@@ -40,4 +40,11 @@ class CalculatteTest {
         double volume = Calculatte.revolve(0, 2, 0, XSquared, X);
         assertEquals(20.10618963194089, volume);
     }
+
+    @Test
+    void roundingNear0() {
+        Function SinX = x -> Math.sin(Math.toRadians(x));
+        double area = Calculatte.integrate(0, 360, SinX);
+        assertEquals(0, Calculatte.round(area));
+    }
 }
