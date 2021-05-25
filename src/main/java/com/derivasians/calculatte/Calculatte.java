@@ -1,18 +1,20 @@
 package com.derivasians.calculatte;
 
 public class Calculatte {
-    private static double H = 0.0000000000001;
+    private static double H = 0.000000001;
     private static int N = 10000000;
 
     /**
      * Set the accuracy value for derivation calculations.
      * @param h The new offset value for B. The smaller the more accurate.
+     * @see #derivate(double, Function) 
      */
     public static void setH(double h) { H = h; }
 
     /**
      * Set the accuracy value for integration calculations.
-     * @param n The new N value in Simpson's rule. The smaller the more accurate.
+     * @param n The new N value in Simpson's rule. The larger the more accurate.
+     * @see #integrate(double, double, Function) 
      */
     public static void setN(int n) { N = n; }
 
