@@ -95,25 +95,4 @@ public class Calculatte {
         // Split the volume of revolution formula into two separate integrals.
         return Math.PI * (integrate(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
     }
-
-    /**
-     * Main method for debugging.
-     */
-    public static void main(String[] args) {
-        Function TwoX = x -> 2 * x;
-
-        double a = Calculatte.integrate(0, 2, TwoX);
-        System.out.println(a);
-        // OUT: 3.9999997333333286
-        // EXPECTED: 4
-
-        Function XSquared = x -> Math.pow(x, 2);
-        Function X = x -> 0;
-        double v = Calculatte.revolution(0, 2, 0, XSquared, X);
-        System.out.println(v);
-        // OUT: 20.10618963194089
-        // EXPECTED: 20.10618963194089
-
-        // TODO: Make an in-house rounding system to correct errors in Simpson's rule.
-    }
 }
