@@ -7,6 +7,12 @@ public class Calculatte {
     public static void setH(double h) { H = h; }
     public static void setN(int n) { N = n; }
 
+    public static Function tangentLine(double x, Function function) {
+        double m = derivate(x, function);
+        double b = function.f(x) - (m * x); // b = y - mx
+        return x1 -> (m * x1) + b;
+    }
+
     /**
      * Integrates the function from a to b using Simpson's rule.
      *
