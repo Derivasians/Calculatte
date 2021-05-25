@@ -1,22 +1,49 @@
 package com.derivasians.calculatte;
 
 public class Calculatte {
+    private static double ROUND_FLOOR = 0.000000001;
     private static double H = 0.000000001;
     private static int N = 10000000;
 
     /**
-     * Set the accuracy value for derivation calculations.
+     * Sets the new round floor value. Any value smaller than this
+     * value will be rounded down to zero by round.
+     *
+     * @param roundFloor The new round floor value.
+     * @see #round(double)
+     */
+    public static void setRoundFloor(double roundFloor) { ROUND_FLOOR = roundFloor; }
+
+    /**
+     * Sets the accuracy value for derivation calculations.
      * @param h The new offset value for B. The smaller the more accurate.
      * @see #derivate(double, Function) 
      */
     public static void setH(double h) { H = h; }
 
     /**
-     * Set the accuracy value for integration calculations.
+     * Sets the accuracy value for integration calculations.
      * @param n The new N value in Simpson's rule. The larger the more accurate.
      * @see #integrate(double, double, Function) 
      */
     public static void setN(int n) { N = n; }
+
+    /**
+     * Rounds near zero values to zero. It is typical that Calculatte returns near
+     * zero values that should be zero, but are not due to accuracy issues. Any value
+     * smaller than <code>ROUND_FLOOR</code> will be rounded down to zero.
+     *
+     * @param x The value to be rounded.
+     * @return The rounded value.
+     * @see #ROUND_FLOOR
+     */
+    public static double round(double x) {
+        if (x < ROUND_FLOOR) {
+            return 0;
+        }
+
+        return x;
+    }
 
     /**
      * Finds the tangent line of a function at point x.
