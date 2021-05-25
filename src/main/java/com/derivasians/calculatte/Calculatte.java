@@ -7,6 +7,13 @@ public class Calculatte {
     public static void setH(double h) { H = h; }
     public static void setN(int n) { N = n; }
 
+    /**
+     * Finds the tangent line of a function at point x.
+     *
+     * @param x        The x-value at which to find the tangent line of.
+     * @param function The function to find the tangent line of.
+     * @return The tangent line.
+     */
     public static Function tangentLine(double x, Function function) {
         double m = derivate(x, function);
         double b = function.f(x) - (m * x); // b = y - mx
@@ -43,7 +50,7 @@ public class Calculatte {
     /**
      * Finds the derivate of the function at point, x.
      *
-     * @param x The point on the function to find the derivative.
+     * @param x        The point on the function to find the derivative.
      * @param function The function to find the derivative of.
      * @return The derivative of the function at point, x.
      */
