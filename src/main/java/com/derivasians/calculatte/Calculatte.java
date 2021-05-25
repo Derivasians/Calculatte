@@ -46,19 +46,6 @@ public class Calculatte {
     }
 
     /**
-     * Finds the tangent line of a function at point x.
-     *
-     * @param x        The x-value at which to find the tangent line of.
-     * @param function The function to find the tangent line of.
-     * @return The tangent line.
-     */
-    public static Function tangentLine(double x, Function function) {
-        double m = derivate(x, function);
-        double b = function.f(x) - (m * x); // b = y - mx
-        return x1 -> (m * x1) + b; // y = mx + b
-    }
-
-    /**
      * Integrates the function from a to b using Simpson's rule.
      *
      * @param a        The lower limit of integration in degrees.
@@ -94,6 +81,19 @@ public class Calculatte {
      */
     public static double derivate(double x, Function function) {
         return (function.f(x + H) - function.f(x)) / ((x + H) - x);
+    }
+
+    /**
+     * Finds the tangent line of a function at point x.
+     *
+     * @param x        The x-value at which to find the tangent line of.
+     * @param function The function to find the tangent line of.
+     * @return The tangent line.
+     */
+    public static Function tangentLine(double x, Function function) {
+        double m = derivate(x, function);
+        double b = function.f(x) - (m * x); // b = y - mx
+        return x1 -> (m * x1) + b; // y = mx + b
     }
 
     /**
