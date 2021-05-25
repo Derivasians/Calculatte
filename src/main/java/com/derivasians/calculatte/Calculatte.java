@@ -3,73 +3,9 @@ package com.derivasians.calculatte;
 public class Calculatte {
     private static double H = 0.0000000000001;
     private static int N = 10000000;
-    private static double LIMIT_ACCURACY = 0.000001;
 
     public static void setH(double h) { H = h; }
     public static void setN(int n) { N = n; }
-
-    /**
-     * Solves the limit of a removable discontinuity using L'Hospital's rule.
-     *
-     * @param a The value x approaches.
-     * @param functionTop The numerator of the function.
-     * @param functionBottom The denominator of the function.
-     * @return The limit of the function.
-     */
-    public static double limit(double a, Function functionTop, Function functionBottom) {
-        double top = derivate(a, functionTop);
-        double bottom = derivate(a, functionBottom);
-
-        return top / bottom;
-    }
-
-    public static double limit(double a, Function function) {
-        double left = leftLimit(a, function);
-        double right = rightLimit(a, function);
-
-        if (left == right) {
-            return left;
-        }
-
-        return Double.NaN;
-    }
-
-    public static double leftLimit(double a, Function function) {
-        if (function.f(a) == Double.POSITIVE_INFINITY) {
-            return Double.POSITIVE_INFINITY;
-        }
-
-        if (function.f(a) == Double.NEGATIVE_INFINITY) {
-            return Double.NEGATIVE_INFINITY;
-        }
-
-        if (Double.isNaN(function.f(a))) {
-            return Double.NaN;
-        }
-    }
-
-    public static double rightLimit(double a, Function function) {
-        for (double i = a + LIMIT_ACCURACY; i <= a; i = a / 10) {
-            double y = function.f(i);
-
-            if (y == Double.POSITIVE_INFINITY) {
-                return Double.POSITIVE_INFINITY;
-            } else if (y == Double.NEGATIVE_INFINITY) {
-                return Double.NEGATIVE_INFINITY;
-            } else if (Double.isNaN(y)) {
-                // Values are too small; step back one order of magnitude.
-                return function.f(a * 10);
-            } else {
-                if (i == a) {
-                    return y;
-                } else if (a - i < 0.00000000001) {
-                    i = a;
-                }
-            }
-        }
-
-        return Double.NaN;
-    }
 
     /**
      * Integrates the function from a to b using Simpson's rule.
