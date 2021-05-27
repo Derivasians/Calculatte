@@ -96,6 +96,16 @@ public class Calculatte {
         return x1 -> (m * x1) + b; // y = mx + b
     }
 
+    public static double crossSection(double a, double b, Function functionTop, Function functionBottom, Function cross) {
+        Function areaX = new CrossSection() {
+            public double f(double x, Function shape, Function height) {
+                return shape.f(height.f(x));
+            }
+        };
+
+        return integrate(a, b, areaX);
+    }
+
     /**
      * Calculates the volume of revolution for the top function and bottom function
      * of this instance of RevolutionSoup from a to b about the x-axis.
