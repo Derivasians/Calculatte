@@ -5,7 +5,7 @@ A simple Java calculus library
 ```java
 // Integrate f(x) = 2x from 0 to 2.
 
-import com.derivasians.calculatte.*;
+import io.github.derivasians.calculatte.*;
 
 Function TwoX = x -> 2 * x;
 
