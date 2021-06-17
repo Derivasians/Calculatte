@@ -1,4 +1,4 @@
-package com.derivasians.calculatte;
+package io.github.derivasians.calculatte;
 
 public class Calculatte {
     private static double ROUND_FLOOR = 0.000000001;
@@ -97,13 +97,7 @@ public class Calculatte {
     }
 
     public static double crossSection(double a, double b, Function functionTop, Function functionBottom, Function cross) {
-        Function areaX = new CrossSection() {
-            public double f(double x, Function shape, Function height) {
-                return shape.f(height.f(x));
-            }
-        };
 
-        return integrate(a, b, areaX);
     }
 
     /**

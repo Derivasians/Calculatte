@@ -1,4 +1,4 @@
-package com.derivasians.calculatte;
+package io.github.derivasians.calculatte;
 
 /**
  * The Function interface for all other functions to be based off of.

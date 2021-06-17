@@ -1,4 +1,4 @@
-package com.derivasians.calculatte;
+package io.github.derivasians.calculatte;
 
 abstract class Squared implements Function {
     public double f(double x, Function function) {

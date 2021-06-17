@@ -1,4 +1,4 @@
-package com.derivasians.calculatte;
+package io.github.derivasians.calculatte;
 
 import org.junit.jupiter.api.Test;
 
