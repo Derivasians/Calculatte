@@ -7,9 +7,10 @@ public class Calculatte {
 
     /**
      * Sets the new round floor value. Any value smaller than this
-     * value will be rounded down to zero by round.
+     * value will be rounded down to zero.
      *
-     * @param roundFloor The new round floor value.
+     * @param roundFloor The new ROUND_FLOOR value.
+     * @see #ROUND_FLOOR
      * @see #round(double)
      */
     public static void setRoundFloor(double roundFloor) { ROUND_FLOOR = roundFloor; }
@@ -17,13 +18,15 @@ public class Calculatte {
     /**
      * Sets the accuracy value for derivation calculations.
      * @param h The new offset value for B. The smaller the more accurate.
+     * @see #H
      * @see #derivate(double, Function) 
      */
     public static void setH(double h) { H = h; }
 
     /**
      * Sets the accuracy value for integration calculations.
-     * @param n The new N value in Simpson's rule. The larger the more accurate.
+     * @param n The new <code>N</code> value in Simpson's rule. The larger the more accurate.
+     * @see #N
      * @see #integrate(double, double, Function) 
      */
     public static void setN(int n) { N = n; }
@@ -84,7 +87,7 @@ public class Calculatte {
     }
 
     /**
-     * Finds the tangent line of a function at point x.
+     * Finds the tangent line of function at point, x.
      *
      * @param x        The x-value at which to find the tangent line of.
      * @param function The function to find the tangent line of.
@@ -101,13 +104,12 @@ public class Calculatte {
     }
 
     /**
-     * Calculates the volume of revolution for the top function and bottom function
-     * of this instance of RevolutionSoup from a to b about the x-axis.
-     * of this instance of AreaSoup from a to b about the x-axis.
+     * Calculates the volume of revolution for the top function and bottom function,
+     * functionTop and functionBottom respectively, from a to b about the axis, y = axis.
      *
      * @param a    The lower limit of integration.
      * @param b    The upper limit of integration.
-     * @param axis The y/x value of the axis of rotation where 0 is about the x/y-axis.
+     * @param axis The y/x value of the axis of rotation, where 0 is about the x/y-axis.
      * @return The volume of revolution.
      */
     public static double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {
