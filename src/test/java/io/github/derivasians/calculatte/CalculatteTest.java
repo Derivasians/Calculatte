@@ -8,15 +8,15 @@ class CalculatteTest {
     @Test
     void tangentLineOfXSquaredXIntercept() {
         Function XSquared = x -> Math.pow(x, 2);
-        Function tangent = Calculatte.tangentLine(2, XSquared);
-        assertEquals(0, tangent.f(1));
+        Function TangentLine = Calculatte.tangentLine(2, XSquared);
+        assertEquals(0, TangentLine.f(1));
     }
 
     @Test
     void tangentLineOfXSquaredSlope() {
         Function XSquared = x -> Math.pow(x, 2);
-        Function tangent = Calculatte.tangentLine(2, XSquared);
-        assertEquals(4, Calculatte.derivate(2, tangent));
+        Function TangentLine = Calculatte.tangentLine(2, XSquared);
+        assertEquals(4, Calculatte.derivate(2, TangentLine));
     }
 
     @Test
