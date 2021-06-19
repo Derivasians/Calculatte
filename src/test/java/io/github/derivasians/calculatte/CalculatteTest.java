@@ -43,8 +43,6 @@ class CalculatteTest {
 
     @Test
     void roundingNear0() {
-        Function SinX = x -> Math.sin(Math.toRadians(x));
-        double area = Calculatte.integrate(0, 360, SinX);
-        assertEquals(0, Calculatte.round(area));
+        assertEquals(0, Calculatte.round(0.0000000001));
     }
 }
