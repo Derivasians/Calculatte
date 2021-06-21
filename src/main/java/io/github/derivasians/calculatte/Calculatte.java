@@ -6,10 +6,10 @@ public class Calculatte {
     private static int N = 10000000;
 
     /**
-     * Sets the new round floor value. Any value smaller than this
+     * Sets the new <code>ROUND_FLOOR</code> value. Any value smaller than this
      * value will be rounded down to zero.
      *
-     * @param roundFloor The new ROUND_FLOOR value.
+     * @param roundFloor The new <code>ROUND_FLOOR</code> value.
      * @see #ROUND_FLOOR
      * @see #round(double)
      */
