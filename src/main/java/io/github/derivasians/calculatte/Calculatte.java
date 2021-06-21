@@ -32,6 +32,34 @@ public class Calculatte {
     public static void setN(int n) { N = n; }
 
     /**
+     * Gets the <code>ROUND_FLOOR</code> value. Any value smaller than this
+     * value will be rounded down to zero.
+     * 
+     * @return The <code>ROUND_FLOOR</code> value.
+     * @see #ROUND_FLOOR
+     * @see #round(double) 
+     */
+    public static double getRoundFloor() { return ROUND_FLOOR; }
+
+    /**
+     * Gets the accuracy value for derivation calculations.
+     *
+     * @return The offset value for B. The smaller the more accurate.
+     * @see #H
+     * @see #derivate(double, Function)
+     */
+    public static double getH() { return H; }
+
+    /**
+     * Gets the accuracy value for integration calculations.
+     *
+     * @return The N value in Simpson's rule. The larger the more accurate.
+     * @see #N
+     * @see #integrate(double, double, Function)
+     */
+    public static int getN() { return N; }
+
+    /**
      * Rounds near zero values to zero. It is typical that Calculatte returns near
      * zero values that should be zero, but are not due to accuracy issues. Any value
      * smaller than <code>ROUND_FLOOR</code> will be rounded down to zero.
