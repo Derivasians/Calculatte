@@ -1,11 +1,13 @@
 package io.github.derivasians.calculatte;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatteTest {
     @Test
+    @DisplayName("Tangent line of x^2 Intercept")
     public void tangentLineOfXSquaredXIntercept() {
         Function XSquared = x -> Math.pow(x, 2);
         Function TangentLine = Calculatte.tangentLine(2, XSquared);
@@ -13,6 +15,7 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Tangent Line of x^2 Slope")
     public void tangentLineOfXSquaredSlope() {
         Function XSquared = x -> Math.pow(x, 2);
         Function TangentLine = Calculatte.tangentLine(2, XSquared);
@@ -20,6 +23,7 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Integrate 2x from 0 to 2")
     public void integrateTwoXFrom0To2() {
         Function TwoX = x -> 2 * x;
         double area = Calculatte.integrate(0, 2, TwoX);
@@ -27,6 +31,7 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Derivative of x^2 at x = 2")
     public void derivativeOfXSquaredAtXEquals2() {
         Function XSquared = x -> Math.pow(x, 2);
         double slope = Calculatte.derivate(2, XSquared);
@@ -34,6 +39,7 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Revolve x^2 from 0 to 2")
     public void revolveXSquaredFrom0To2() {
         Function XSquared = x -> Math.pow(x, 2);
         Function X = x -> 0;
@@ -42,6 +48,7 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Rounding near 0")
     public void roundingNear0() {
         assertEquals(0, Calculatte.round(0.0000000001));
     }
