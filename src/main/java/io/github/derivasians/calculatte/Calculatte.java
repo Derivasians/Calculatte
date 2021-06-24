@@ -134,6 +134,67 @@ public class Calculatte {
         return x1 -> (m * x1) + b; // y = mx + b
     }
 
+    /**
+     * Returns the approximate area under the curve using the left Riemann sum rule with
+     * <code>n</code> rectangles.
+     *
+     * @param a        The lower limit of integration.
+     * @param b        The upper limit of integration.
+     * @param function The function being used to calculate the left Riemann sum.
+     * @param n        The number of rectangles being used to estimate the area under the curve.
+     * @return The approximate area under the curve by the left Riemann sum rule.
+     */
+    public static double leftRiemannSum(double a, double b, Function function, int n) {
+        double sum = 0;
+        for (double x = a; x < b; x += ((b - a) / n)) {
+            sum += function.f(x);
+        }
+
+        return ((b - a) / n) * sum;
+    }
+
+    /**
+     * Returns the approximate area under the curve using the right Riemann sum rule with
+     * <code>n</code> rectangles.
+     *
+     * @param a        The lower limit of integration.
+     * @param b        The upper limit of integration.
+     * @param function The function being used to calculate the right Riemann sum.
+     * @param n        The number of rectangles being used to estimate the area under the curve.
+     * @return The approximate area under the curve by the right Riemann sum rule.
+     */
+    public static double rightRiemannSum( double a, double b, Function function, int n ) {
+        double sum = 0;
+        for (double x = (a + ((b - a) / n)); x <= b + 0.00001; x += ((b - a) / n)) {
+            sum += function.f(x);
+        }
+
+        return ((b - a) / n) * sum;
+    }
+
+    /**
+     * Returns the approximate area under the curve using the trapezoidal sum rule with
+     * <code>n</code> trapezoids.
+     *
+     * @param a        The lower limit of integration.
+     * @param b        The upper limit of integration.
+     * @param function The function being used to calculate the trapezoidal sum.
+     * @param n        The number of trapezoids being used to estimate the area under the curve.
+     * @return The approximate area under the curve by the trapezoidal sum rule.
+     */
+    public static double trapezoidalSum( double a, double b, Function function, int n ) {
+        double sum = 0;
+        for (double x = a; x <= b + 0.00001; x += ((b - a) / n)) {
+            if( x == a || x >= b ) {
+                sum += function.f(x);
+            } else {
+                sum += 2 * function.f(x);
+            }
+        }
+
+        return ((b - a) / (2 * n)) * sum;
+    }
+
     public static double crossSection(double a, double b, Function functionTop, Function functionBottom, Function cross) {
         // TODO: Remove temporary return statement.
         return 0;
