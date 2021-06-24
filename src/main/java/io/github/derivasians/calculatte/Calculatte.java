@@ -1,5 +1,12 @@
 package io.github.derivasians.calculatte;
 
+/**
+ * Holds all methods and properties to perform basic calculus operations.
+ *
+ * @version 1.0 Snapshot
+ * @author Matthew Okashita
+ * @author Joseph Benigno
+ */
 public class Calculatte {
     private static double ROUND_FLOOR = 0.000000001;
     private static double H = 0.000000001;
@@ -133,12 +140,17 @@ public class Calculatte {
     }
 
     /**
-     * Calculates the volume of revolution for the top function and bottom function,
-     * functionTop and functionBottom respectively, from a to b about the axis, y = axis.
+     * Calculates the volume of revolution for the region bounded by <code>functionTop</code>,
+     * <code>functionBottom</code>, x = <code>a</code>, and x = <code>b</code>, about y =
+     * <code>axis</code>.
+     *
+     * <p>Note: Vertical revolutions can also be made with this function. Input your data as if
+     * the data was rotated 90 degrees and to be rotated horizontally. There should be no
+     * mathematical difference between the two problems.</p>
      *
      * @param a    The lower limit of integration.
      * @param b    The upper limit of integration.
-     * @param axis The y/x value of the axis of rotation, where 0 is about the x/y-axis.
+     * @param axis The y value of the axis of rotation, where 0 is about the x-axis.
      * @return The volume of revolution.
      */
     public static double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {
