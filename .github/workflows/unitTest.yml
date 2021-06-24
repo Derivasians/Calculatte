@@ -1,4 +1,4 @@
-name: JUnit test
+name: JUnit Tests
 
 on: push
 jobs:
