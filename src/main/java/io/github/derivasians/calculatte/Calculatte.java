@@ -149,6 +149,7 @@ public class Calculatte {
                 return Math.pow(axis - functionTop.f(x), 2);
             }
         };
+
         // The bottom function with the axis offset squared.
         Function squaredFunctionBottom = new Squared() {
             @Override
@@ -156,6 +157,7 @@ public class Calculatte {
                 return Math.pow(axis - functionBottom.f(x), 2);
             }
         };
+
         // Split the volume of revolution formula into two separate integrals.
         return Math.PI * (integrate(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
     }
