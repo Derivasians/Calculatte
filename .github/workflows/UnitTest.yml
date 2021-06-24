@@ -2,7 +2,7 @@ name: JUnit Tests
 
 on: push
 jobs:
-  run_tests:
+  runTests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
