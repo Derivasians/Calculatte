@@ -128,7 +128,8 @@ public class Calculatte {
     }
 
     public static double crossSection(double a, double b, Function functionTop, Function functionBottom, Function cross) {
-
+        // TODO: Remove temporary return statement.
+        return 0;
     }
 
     /**
