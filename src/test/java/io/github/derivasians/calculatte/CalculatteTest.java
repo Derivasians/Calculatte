@@ -54,16 +54,16 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Left Riemann sum of x^2 from 0 to 16")
-    public void leftRiemannSumOfXSquaredFrom0To2() {
+    @DisplayName("Left Riemann sum of x^2 from 0 to 16 with n = 4")
+    public void leftRiemannSumOfXSquaredFrom0To2WithNOf4() {
         Function XSquared = x -> Math.pow(x, 2);
         double approxArea = Calculatte.leftRiemannSum(0, 16, XSquared, 4);
         assertEquals(896, approxArea);
     }
 
     @Test
-    @DisplayName("Right Riemann sum of x^2 from 0 to 16")
-    public void rightRiemannSumOfXSquaredFrom0To2() {
+    @DisplayName("Right Riemann sum of x^2 from 0 to 16 with n = 4")
+    public void rightRiemannSumOfXSquaredFrom0To2WithNOf4() {
         Function XSquared = x -> Math.pow(x, 2);
         double approxArea = Calculatte.rightRiemannSum(0, 16, XSquared, 4);
         assertEquals(1920, approxArea);
@@ -71,8 +71,8 @@ public class CalculatteTest {
 
 
     @Test
-    @DisplayName("Trapezoidal sum of x^2 from 0 to 16")
-    public void trapezoidalSumOfXSquaredFrom0To2() {
+    @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
+    public void trapezoidalSumOfXSquaredFrom0To2WithNOf4() {
         Function XSquared = x -> Math.pow(x, 2);
         double approxArea = Calculatte.trapezoidalSum(0, 16, XSquared, 4);
         assertEquals(1408, approxArea);
