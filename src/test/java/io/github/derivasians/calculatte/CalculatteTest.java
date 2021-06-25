@@ -52,4 +52,29 @@ public class CalculatteTest {
     public void roundingNear0() {
         assertEquals(0, Calculatte.round(0.0000000001));
     }
+
+    @Test
+    @DisplayName("Left Riemann sum of x^2 from 0 to 16")
+    public void leftRiemannSumOfXSquaredFrom0To2() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.leftRiemannSum(0, 16, XSquared, 4);
+        assertEquals(896, approxArea);
+    }
+
+    @Test
+    @DisplayName("Right Riemann sum of x^2 from 0 to 16")
+    public void rightRiemannSumOfXSquaredFrom0To2() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.rightRiemannSum(0, 16, XSquared, 4);
+        assertEquals(1920, approxArea);
+    }
+
+
+    @Test
+    @DisplayName("Trapezoidal sum of x^2 from 0 to 16")
+    public void trapezoidalSumOfXSquaredFrom0To2() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.trapezoidalSum(0, 16, XSquared, 4);
+        assertEquals(1408, approxArea);
+    }
 }
