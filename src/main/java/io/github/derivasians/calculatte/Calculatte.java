@@ -215,21 +215,11 @@ public class Calculatte {
      * @return The volume of revolution.
      */
     public static double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {
-        // The top function with the axis offset squared.
-        Function squaredFunctionTop = new Squared() {
-            @Override
-            public double f(double x) {
-                return Math.pow(axis - functionTop.f(x), 2);
-            }
-        };
+        // The top function with the axis offset, squared.
+        Function squaredFunctionTop = x -> Math.pow(axis - functionTop.f(x), 2);
 
-        // The bottom function with the axis offset squared.
-        Function squaredFunctionBottom = new Squared() {
-            @Override
-            public double f(double x) {
-                return Math.pow(axis - functionBottom.f(x), 2);
-            }
-        };
+        // The bottom function with the axis offset, squared.
+        Function squaredFunctionBottom = x -> Math.pow(axis - functionBottom.f(x), 2);
 
         // Split the volume of revolution formula into two separate integrals.
         return Math.PI * (integrate(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
