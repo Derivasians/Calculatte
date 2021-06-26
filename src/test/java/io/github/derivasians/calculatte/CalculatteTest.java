@@ -69,7 +69,6 @@ public class CalculatteTest {
         assertEquals(1920, approxArea);
     }
 
-
     @Test
     @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
     public void trapezoidalSumOfXSquaredFrom0To2WithNOf4() {
