@@ -14,27 +14,15 @@ System.out.println(a);
 ```
 
 ### How to make new functions
-To create a new function, either create a class that implements the `Function` interface or define your new function in
-your code. The `Function` interface is defined under [Function.java][function] as
+To create a new function, either define a new `Function` object or define a new class that `implements Function`. The 
+`Function` interface is defined under [Function.java][function] as
 ```java
 public interface Function {
     double f(double x);
 }
 ```
 
-Implementation of the simple function, f(x) = 2x, is provided below using both methods.
-
-```java
-public class TwoX implements Function {
-    @Override
-    public double f(double x) {
-        return 2 * x;
-    }
-}
-```
-
-or
-
+Implementation of the function, f(x) = 2x, is provided below using both methods.
 ```java
 // With lambdas
 Function TwoX = x -> 2 * x;
@@ -46,6 +34,17 @@ Function TwoX = new Function() {
         return 2 * x;
     }
 };
+```
+
+or
+
+```java
+public class TwoX implements Function {
+    @Override
+    public double f(double x) {
+        return 2 * x;
+    }
+}
 ```
 
 ### Attribution
