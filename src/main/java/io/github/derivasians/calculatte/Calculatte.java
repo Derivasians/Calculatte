@@ -76,11 +76,7 @@ public class Calculatte {
      * @see #ROUND_FLOOR
      */
     public static double round(double x) {
-        if (x < ROUND_FLOOR) {
-            return 0;
-        }
-
-        return x;
+        return (x < ROUND_FLOOR) ? 0 : x;
     }
 
     /**
