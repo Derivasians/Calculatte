@@ -11,6 +11,10 @@ public class Calculatte {
     private static double ROUND_FLOOR = 0.000000001;
     private static double H = 0.000000001;
     private static int N = 10000000;
+    private static double LIMIT_TOLERANCE = 0.000000001;
+//    private static final double EPSILON = Double.longBitsToDouble(971L << 52);
+    private static final double EPSILON = 0.000000001;
+
 
     /**
      * Sets the new <code>ROUND_FLOOR</code> value. Any value smaller than this
@@ -39,6 +43,18 @@ public class Calculatte {
     public static void setN(int n) { N = n; }
 
     /**
+     * Sets the largest distance between the left and right limit before the limit does not
+     * exist.
+     *
+     * @param limitTolerance The new <code>LIMIT_TOLERANCE</code> value.
+     * @see #LIMIT_TOLERANCE
+     * @see #limit(double, Function) 
+     * @see #leftLimit(double, Function)
+     * @see #rightLimit(double, Function) 
+     */
+    public static void setLimitTolerance(double limitTolerance) { LIMIT_TOLERANCE = limitTolerance; }
+
+    /**
      * Gets the <code>ROUND_FLOOR</code> value. Any value smaller than this
      * value will be rounded down to zero.
      * 
@@ -65,6 +81,18 @@ public class Calculatte {
      * @see #integrate(double, double, Function)
      */
     public static int getN() { return N; }
+
+    /**
+     * Gets the largest distance between the left and right limit before the limit does not
+     * exist.
+     *
+     * @return The <code>LIMIT_TOLERANCE</code> value.
+     * @see #LIMIT_TOLERANCE
+     * @see #limit(double, Function)
+     * @see #leftLimit(double, Function)
+     * @see #rightLimit(double, Function)
+     */
+    public static double getLimitTolerance() { return LIMIT_TOLERANCE; }
 
     /**
      * Rounds near zero values to zero. It is typical that Calculatte returns near
