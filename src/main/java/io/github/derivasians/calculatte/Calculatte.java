@@ -191,9 +191,28 @@ public class Calculatte {
         return ((b - a) / (2 * n)) * sum;
     }
 
-    public static double crossSection(double a, double b, Function functionTop, Function functionBottom, Function cross) {
-        // TODO: Remove temporary return statement.
-        return 0;
+    /**
+     * Finds the limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
+     * if the limit does not exist.
+     *
+     * @param x The x-value to find the limit at.
+     * @param function The function to find the limit of.
+     * @return The value of the limit
+     */
+    public static double limit(double x, Function function) {
+        if ((leftLimit(x, function) > rightLimit(x, function) + LIMIT_TOLERANCE) || (leftLimit(x, function) < rightLimit(x, function) - LIMIT_TOLERANCE)) {
+            return Double.NaN;
+        }
+
+        return function.f(x + EPSILON);
+    }
+
+    public static double leftLimit(double x, Function function) {
+        return function.f(x - EPSILON);
+    }
+
+    public static double rightLimit(double x, Function function) {
+        return function.f(x + EPSILON);
     }
 
     /**
