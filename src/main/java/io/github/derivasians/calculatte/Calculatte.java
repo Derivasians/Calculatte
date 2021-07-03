@@ -192,30 +192,6 @@ public class Calculatte {
     }
 
     /**
-     * Finds the limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
-     * if the limit does not exist.
-     *
-     * @param x The x-value to find the limit at.
-     * @param function The function to find the limit of.
-     * @return The value of the limit
-     */
-    public static double limit(double x, Function function) {
-        if ((leftLimit(x, function) > rightLimit(x, function) + LIMIT_TOLERANCE) || (leftLimit(x, function) < rightLimit(x, function) - LIMIT_TOLERANCE)) {
-            return Double.NaN;
-        }
-
-        return function.f(x + EPSILON);
-    }
-
-    public static double leftLimit(double x, Function function) {
-        return function.f(x - EPSILON);
-    }
-
-    public static double rightLimit(double x, Function function) {
-        return function.f(x + EPSILON);
-    }
-
-    /**
      * Calculates the volume of revolution for the region bounded by <code>functionTop</code>,
      * <code>functionBottom</code>, x = <code>a</code>, and x = <code>b</code>, about y =
      * <code>axis</code>.
