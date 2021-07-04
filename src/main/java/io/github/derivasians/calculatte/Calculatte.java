@@ -1,5 +1,8 @@
 package io.github.derivasians.calculatte;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Holds all methods and properties to perform basic calculus operations.
  *
@@ -22,7 +25,7 @@ public class Calculatte {
      *
      * @param roundFloor The new <code>ROUND_FLOOR</code> value.
      * @see #ROUND_FLOOR
-     * @see #round(double)
+     * @see #roundFloor(double)
      */
     public static void setRoundFloor(double roundFloor) { ROUND_FLOOR = roundFloor; }
 
@@ -60,7 +63,7 @@ public class Calculatte {
      * 
      * @return The <code>ROUND_FLOOR</code> value.
      * @see #ROUND_FLOOR
-     * @see #round(double) 
+     * @see #roundFloor(double)
      */
     public static double getRoundFloor() { return ROUND_FLOOR; }
 
@@ -94,6 +97,14 @@ public class Calculatte {
      */
     public static double getLimitTolerance() { return LIMIT_TOLERANCE; }
 
+    public static double round(double x, int decimalPlaces) {
+        if (decimalPlaces < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(Double.toString(x));
+        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
     /**
      * Rounds near zero values to zero. It is typical that Calculatte returns near
      * zero values that should be zero, but are not due to accuracy issues. Any value
@@ -103,7 +114,7 @@ public class Calculatte {
      * @return The rounded value.
      * @see #ROUND_FLOOR
      */
-    public static double round(double x) {
+    public static double roundFloor(double x) {
         return (x < ROUND_FLOOR) ? 0 : x;
     }
 
@@ -225,7 +236,7 @@ public class Calculatte {
      *
      * @param x The x-value to find the limit at.
      * @param function The function to find the limit of.
-     * @return The value of the limit
+     * @return The value of the limit.
      */
     public static double limit(double x, Function function) {
         if ((leftLimit(x, function) > rightLimit(x, function) + LIMIT_TOLERANCE) || (leftLimit(x, function) < rightLimit(x, function) - LIMIT_TOLERANCE)) {
