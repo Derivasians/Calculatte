@@ -27,7 +27,7 @@ public class CalculatteTest {
     public void integrateTwoXFrom0To2() {
         Function TwoX = x -> 2 * x;
         double area = Calculatte.integrate(0, 2, TwoX);
-        assertEquals(3.9999997333333286, area);
+        assertEquals(3.99999973, area);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class CalculatteTest {
         Function XSquared = x -> Math.pow(x, 2);
         Function X = x -> 0;
         double volume = Calculatte.revolve(0, 2, 0, XSquared, X);
-        assertEquals(20.10618963194089, volume);
+        assertEquals(20.10618962, volume);
     }
 
     @Test
