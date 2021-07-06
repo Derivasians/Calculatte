@@ -1,5 +1,8 @@
 package io.github.derivasians.calculatte;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Holds all methods and properties to perform basic calculus operations.
  *
@@ -11,14 +14,17 @@ public class Calculatte {
     private static double ROUND_FLOOR = 0.000000001;
     private static double H = 0.000000001;
     private static int N = 10000000;
-
+    private static double LIMIT_TOLERANCE = 0.000000001;
+    private static final double LIMIT_OFFSET = 0.000000001;
+	private static final int LIMIT_ROUNDING_DECIMAL_PLACES = 8;
+    
     /**
      * Sets the new <code>ROUND_FLOOR</code> value. Any value smaller than this
      * value will be rounded down to zero.
      *
      * @param roundFloor The new <code>ROUND_FLOOR</code> value.
      * @see #ROUND_FLOOR
-     * @see #round(double)
+     * @see #roundFloor(double)
      */
     public static void setRoundFloor(double roundFloor) { ROUND_FLOOR = roundFloor; }
 
@@ -39,12 +45,24 @@ public class Calculatte {
     public static void setN(int n) { N = n; }
 
     /**
+     * Sets the largest distance between the left and right limit before the limit does not
+     * exist.
+     *
+     * @param limitTolerance The new <code>LIMIT_TOLERANCE</code> value.
+     * @see #LIMIT_TOLERANCE
+     * @see #limit(double, Function) 
+     * @see #leftLimit(double, Function)
+     * @see #rightLimit(double, Function) 
+     */
+    public static void setLimitTolerance(double limitTolerance) { LIMIT_TOLERANCE = limitTolerance; }
+
+    /**
      * Gets the <code>ROUND_FLOOR</code> value. Any value smaller than this
      * value will be rounded down to zero.
      * 
      * @return The <code>ROUND_FLOOR</code> value.
      * @see #ROUND_FLOOR
-     * @see #round(double) 
+     * @see #roundFloor(double)
      */
     public static double getRoundFloor() { return ROUND_FLOOR; }
 
@@ -67,6 +85,26 @@ public class Calculatte {
     public static int getN() { return N; }
 
     /**
+     * Gets the largest distance between the left and right limit before the limit does not
+     * exist.
+     *
+     * @return The <code>LIMIT_TOLERANCE</code> value.
+     * @see #LIMIT_TOLERANCE
+     * @see #limit(double, Function)
+     * @see #leftLimit(double, Function)
+     * @see #rightLimit(double, Function)
+     */
+    public static double getLimitTolerance() { return LIMIT_TOLERANCE; }
+
+    public static double round(double x, int decimalPlaces) {
+        if (decimalPlaces < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(Double.toString(x));
+        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
+    /**
      * Rounds near zero values to zero. It is typical that Calculatte returns near
      * zero values that should be zero, but are not due to accuracy issues. Any value
      * smaller than <code>ROUND_FLOOR</code> will be rounded down to zero.
@@ -75,7 +113,7 @@ public class Calculatte {
      * @return The rounded value.
      * @see #ROUND_FLOOR
      */
-    public static double round(double x) {
+    public static double roundFloor(double x) {
         return (x < ROUND_FLOOR) ? 0 : x;
     }
 
@@ -189,6 +227,30 @@ public class Calculatte {
         }
 
         return ((b - a) / (2 * n)) * sum;
+    }
+
+    /**
+     * Finds the limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
+     * if the limit does not exist.
+     *
+     * @param x The x-value to find the limit at.
+     * @param function The function to find the limit of.
+     * @return The value of the limit.
+     */
+    public static double limit(double x, Function function) {
+        if ((leftLimit(x, function) > rightLimit(x, function) + LIMIT_TOLERANCE) || (leftLimit(x, function) < rightLimit(x, function) - LIMIT_TOLERANCE)) {
+            return Double.NaN;
+        }
+
+        return round(function.f(x + LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
+    }
+
+    public static double leftLimit(double x, Function function) {
+        return round(function.f(x - LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
+    }
+
+    public static double rightLimit(double x, Function function) {
+        return round(function.f(x + LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
