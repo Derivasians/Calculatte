@@ -1,5 +1,5 @@
 # Calculatte
-A simple Java calculus library
+A simple to use Java calculus library.
 
 ### Example Usage
 ```java
