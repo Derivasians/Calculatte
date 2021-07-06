@@ -16,7 +16,7 @@ public class Calculatte {
     private static int N = 10000000;
     private static double LIMIT_TOLERANCE = 0.000000001;
     private static final double LIMIT_OFFSET = 0.000000001;
-    private static final int DEC = 8;
+	private static final int LIMIT_ROUNDING_DECIMAL_PLACES = 8;
     
     /**
      * Sets the new <code>ROUND_FLOOR</code> value. Any value smaller than this
@@ -242,15 +242,15 @@ public class Calculatte {
             return Double.NaN;
         }
 
-        return round(function.f(x + LIMIT_OFFSET), DEC);
+        return round(function.f(x + LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
     public static double leftLimit(double x, Function function) {
-        return round(function.f(x - LIMIT_OFFSET), DEC);
+        return round(function.f(x - LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
     public static double rightLimit(double x, Function function) {
-        return round(function.f(x + LIMIT_OFFSET), DEC);
+        return round(function.f(x + LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
