@@ -238,7 +238,8 @@ public class Calculatte {
      * @return The value of the limit.
      */
     public static double limit(double x, Function function) {
-        if ((leftLimit(x, function) > rightLimit(x, function) + LIMIT_TOLERANCE) || (leftLimit(x, function) < rightLimit(x, function) - LIMIT_TOLERANCE)) {
+        if ((leftLimit(x, function) > rightLimit(x, function) + LIMIT_TOLERANCE) ||
+                (leftLimit(x, function) < rightLimit(x, function) - LIMIT_TOLERANCE)) {
             return Double.NaN;
         }
 
