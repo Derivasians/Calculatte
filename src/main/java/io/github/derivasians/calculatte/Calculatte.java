@@ -15,11 +15,9 @@ public class Calculatte {
     private static double H = 0.000000001;
     private static int N = 10000000;
     private static double LIMIT_TOLERANCE = 0.000000001;
-//    private static final double EPSILON = Double.longBitsToDouble(971L << 52);
-    private static final double EPSILON = 0.000000001;
+    private static final double LIMIT_OFFSET = 0.000000001;
     private static final int DEC = 8;
-
-
+    
     /**
      * Sets the new <code>ROUND_FLOOR</code> value. Any value smaller than this
      * value will be rounded down to zero.
@@ -244,15 +242,15 @@ public class Calculatte {
             return Double.NaN;
         }
 
-        return round(function.f(x + EPSILON), DEC);
+        return round(function.f(x + LIMIT_OFFSET), DEC);
     }
 
     public static double leftLimit(double x, Function function) {
-        return round(function.f(x - EPSILON), DEC);
+        return round(function.f(x - LIMIT_OFFSET), DEC);
     }
 
     public static double rightLimit(double x, Function function) {
-        return round(function.f(x + EPSILON), DEC);
+        return round(function.f(x + LIMIT_OFFSET), DEC);
     }
 
     /**
