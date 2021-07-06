@@ -11,70 +11,6 @@ import java.math.RoundingMode;
  * @author Joseph Benigno
  */
 public class Calculatte {
-    private static double H = 0.000000001;
-    private static int N = 10000000;
-    private static double LIMIT_TOLERANCE = 0.000000001;
-    private static final double LIMIT_OFFSET = 0.000000001;
-	private static final int LIMIT_ROUNDING_DECIMAL_PLACES = 8;
-
-    /**
-     * Sets the accuracy value for derivation calculations.
-     * @param h The new offset value for B. The smaller the more accurate.
-     * @see #H
-     * @see #derivate(double, Function) 
-     */
-    public static void setH(double h) { H = h; }
-
-    /**
-     * Sets the accuracy value for integration calculations.
-     * @param n The new <code>N</code> value in Simpson's rule. The larger the more accurate.
-     * @see #N
-     * @see #integrate(double, double, Function) 
-     */
-    public static void setN(int n) { N = n; }
-
-    /**
-     * Sets the largest distance between the left and right limit before the limit does not
-     * exist.
-     *
-     * @param limitTolerance The new <code>LIMIT_TOLERANCE</code> value.
-     * @see #LIMIT_TOLERANCE
-     * @see #limit(double, Function) 
-     * @see #leftLimit(double, Function)
-     * @see #rightLimit(double, Function) 
-     */
-    public static void setLimitTolerance(double limitTolerance) { LIMIT_TOLERANCE = limitTolerance; }
-
-    /**
-     * Gets the accuracy value for derivation calculations.
-     *
-     * @return The offset value for B. The smaller the more accurate.
-     * @see #H
-     * @see #derivate(double, Function)
-     */
-    public static double getH() { return H; }
-
-    /**
-     * Gets the accuracy value for integration calculations.
-     *
-     * @return The N value in Simpson's rule. The larger the more accurate.
-     * @see #N
-     * @see #integrate(double, double, Function)
-     */
-    public static int getN() { return N; }
-
-    /**
-     * Gets the largest distance between the left and right limit before the limit does not
-     * exist.
-     *
-     * @return The <code>LIMIT_TOLERANCE</code> value.
-     * @see #LIMIT_TOLERANCE
-     * @see #limit(double, Function)
-     * @see #leftLimit(double, Function)
-     * @see #rightLimit(double, Function)
-     */
-    public static double getLimitTolerance() { return LIMIT_TOLERANCE; }
-
     public static double round(double x, int decimalPlaces) {
         if (decimalPlaces < 0) throw new IllegalArgumentException();
 
@@ -92,18 +28,18 @@ public class Calculatte {
      * @return The area under the curve from a to b.
      */
     public static double integrate(double a, double b, Function function) {
-        double h = (b - a) / (N - 1); // Step size.
+        double h = (b - a) / (CalculatteEnvironment.N - 1); // Step size.
 
         // 1/3 terms.
         double sum = 1.0 / 3.0 * (function.f(a) + function.f(b));
 
         // 4/3 terms.
-        for (int i = 1; i < N - 1; i += 2) {
+        for (int i = 1; i < CalculatteEnvironment.N - 1; i += 2) {
             sum += 4.0 / 3.0 * function.f(a + h * i);
         }
 
         // 2/3 terms.
-        for (int i = 2; i < N - 1; i += 2) {
+        for (int i = 2; i < CalculatteEnvironment.N - 1; i += 2) {
             sum += 2.0 / 3.0 * function.f(a + h * i);
         }
 
@@ -118,7 +54,7 @@ public class Calculatte {
      * @return The derivative of the function at point, x.
      */
     public static double derivate(double x, Function function) {
-        return (function.f(x + H) - function.f(x)) / ((x + H) - x);
+        return (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
     }
 
     /**
@@ -204,12 +140,13 @@ public class Calculatte {
      * @return The value of the limit.
      */
     public static double limit(double x, Function function) {
-        if ((leftLimit(x, function) > rightLimit(x, function) + LIMIT_TOLERANCE) ||
-                (leftLimit(x, function) < rightLimit(x, function) - LIMIT_TOLERANCE)) {
+        if ((leftLimit(x, function) > rightLimit(x, function) + CalculatteEnvironment.LIMIT_TOLERANCE) ||
+                (leftLimit(x, function) < rightLimit(x, function) - CalculatteEnvironment.LIMIT_TOLERANCE)) {
             return Double.NaN;
         }
 
-        return round(function.f(x + LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
+        return round(function.f(x + CalculatteEnvironment.LIMIT_OFFSET),
+                CalculatteEnvironment.LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -221,7 +158,8 @@ public class Calculatte {
      * @return The value of the limit.
      */
     public static double leftLimit(double x, Function function) {
-        return round(function.f(x - LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
+        return round(function.f(x - CalculatteEnvironment.LIMIT_OFFSET),
+                CalculatteEnvironment.LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -233,7 +171,8 @@ public class Calculatte {
      * @return The value of the limit.
      */
     public static double rightLimit(double x, Function function) {
-        return round(function.f(x + LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
+        return round(function.f(x + CalculatteEnvironment.LIMIT_OFFSET),
+                CalculatteEnvironment.LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
