@@ -2,6 +2,18 @@ package io.github.derivasians.calculatte;
 
 public class CalculatteEnvironment {
     /**
+     * All values greater than or equal to <code>POSITIVE_INFINITY</code> will be rounded up to
+     * <code>Double.POSITIVE_INFINITY</code> by <code>Calculatte.round()</code>.
+     */
+    public static double POSITIVE_INFINITY = 9.0E17;
+
+    /**
+     * All values less than or equal to <code>NEGATIVE_INFINITY</code> will be rounded down to
+     * <code>Double.NEGATIVE_INFINITY</code> by <code>Calculatte.round()</code>.
+     */
+    public static double NEGATIVE_INFINITY = -9.0E17;
+
+    /**
      * Accuracy value for derivation calculations. The smaller the more accurate.
      */
     public static double H = 0.000000001;

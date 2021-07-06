@@ -11,8 +11,26 @@ import java.math.RoundingMode;
  * @author Joseph Benigno
  */
 public class Calculatte {
+    /**
+     * Rounds doubles using <code>BigDecimal</code>s. If <code>decimalPlaces</code> is set to
+     * <code>-1</code>, <code>x</code> will not be rounded.
+     *
+     * @param x The value to be rounded.
+     * @param decimalPlaces The number of decimal places to round to.
+     * @return The rounded value.
+     */
     public static double round(double x, int decimalPlaces) {
-        if (decimalPlaces < 0) throw new IllegalArgumentException();
+        if (decimalPlaces < 0) {
+            return x;
+        }
+
+        if (x >= CalculatteEnvironment.POSITIVE_INFINITY) {
+            return Double.POSITIVE_INFINITY;
+        }
+
+        if (x <= CalculatteEnvironment.NEGATIVE_INFINITY) {
+            return Double.NEGATIVE_INFINITY;
+        }
 
         BigDecimal bd = new BigDecimal(Double.toString(x));
         bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP);
