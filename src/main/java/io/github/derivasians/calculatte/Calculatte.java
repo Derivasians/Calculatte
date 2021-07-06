@@ -245,10 +245,26 @@ public class Calculatte {
         return round(function.f(x + LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
+    /**
+     * Finds the left limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
+     * if the limit does not exist.
+     *
+     * @param x The x-value to find the limit at.
+     * @param function The function to find the limit of.
+     * @return The value of the limit.
+     */
     public static double leftLimit(double x, Function function) {
         return round(function.f(x - LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
+    /**
+     * Finds the right limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
+     * if the limit does not exist.
+     *
+     * @param x The x-value to find the limit at.
+     * @param function The function to find the limit of.
+     * @return The value of the limit.
+     */
     public static double rightLimit(double x, Function function) {
         return round(function.f(x + LIMIT_OFFSET), LIMIT_ROUNDING_DECIMAL_PLACES);
     }
