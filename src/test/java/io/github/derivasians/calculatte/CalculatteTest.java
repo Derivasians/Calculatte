@@ -75,17 +75,13 @@ public class CalculatteTest {
     @DisplayName("Limit of 1 over x^2 at x = 0")
     public void limitOf1OverXSquaredAtXEquals0() {
         Function function = x -> 1 / Math.pow(x, 2);
-        System.out.println(Calculatte.limit(0, function));
+        assertEquals(Double.POSITIVE_INFINITY, Calculatte.limit(0, function));
     }
 
     @Test
     @DisplayName("Limit of x^2 at x = 2")
     public void limitOfXSquaredAtXEquals2() {
         Function function = x -> Math.pow(x, 2);
-
-        System.out.println(Calculatte.leftLimit(2, function)); // OUT: 3.9999999959999997
-        System.out.println(Calculatte.rightLimit(2, function)); // 4.000000004
-
         assertEquals(4, Calculatte.limit(2, function));
     }
 
@@ -93,8 +89,6 @@ public class CalculatteTest {
     @DisplayName("Limit with a removable discontinuity")
     public void limitWithARemovableDiscontinuity() {
         Function function = x -> (Math.pow(x, 2) - (2 * x) - 8) / (x - 4);
-        System.out.println(Calculatte.leftLimit(4, function));
-        System.out.println(Calculatte.rightLimit(4, function));
         assertEquals(6, Calculatte.limit(4, function));
     }
 }
