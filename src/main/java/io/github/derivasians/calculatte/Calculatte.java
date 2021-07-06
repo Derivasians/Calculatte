@@ -11,22 +11,11 @@ import java.math.RoundingMode;
  * @author Joseph Benigno
  */
 public class Calculatte {
-    private static double ROUND_FLOOR = 0.000000001;
     private static double H = 0.000000001;
     private static int N = 10000000;
     private static double LIMIT_TOLERANCE = 0.000000001;
     private static final double LIMIT_OFFSET = 0.000000001;
 	private static final int LIMIT_ROUNDING_DECIMAL_PLACES = 8;
-    
-    /**
-     * Sets the new <code>ROUND_FLOOR</code> value. Any value smaller than this
-     * value will be rounded down to zero.
-     *
-     * @param roundFloor The new <code>ROUND_FLOOR</code> value.
-     * @see #ROUND_FLOOR
-     * @see #roundFloor(double)
-     */
-    public static void setRoundFloor(double roundFloor) { ROUND_FLOOR = roundFloor; }
 
     /**
      * Sets the accuracy value for derivation calculations.
@@ -55,16 +44,6 @@ public class Calculatte {
      * @see #rightLimit(double, Function) 
      */
     public static void setLimitTolerance(double limitTolerance) { LIMIT_TOLERANCE = limitTolerance; }
-
-    /**
-     * Gets the <code>ROUND_FLOOR</code> value. Any value smaller than this
-     * value will be rounded down to zero.
-     * 
-     * @return The <code>ROUND_FLOOR</code> value.
-     * @see #ROUND_FLOOR
-     * @see #roundFloor(double)
-     */
-    public static double getRoundFloor() { return ROUND_FLOOR; }
 
     /**
      * Gets the accuracy value for derivation calculations.
@@ -102,19 +81,6 @@ public class Calculatte {
         BigDecimal bd = new BigDecimal(Double.toString(x));
         bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP);
         return bd.doubleValue();
-    }
-
-    /**
-     * Rounds near zero values to zero. It is typical that Calculatte returns near
-     * zero values that should be zero, but are not due to accuracy issues. Any value
-     * smaller than <code>ROUND_FLOOR</code> will be rounded down to zero.
-     *
-     * @param x The value to be rounded.
-     * @return The rounded value.
-     * @see #ROUND_FLOOR
-     */
-    public static double roundFloor(double x) {
-        return (x < ROUND_FLOOR) ? 0 : x;
     }
 
     /**

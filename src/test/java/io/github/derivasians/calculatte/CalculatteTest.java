@@ -48,12 +48,6 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Rounding near 0")
-    public void roundingNear0() {
-        assertEquals(0, Calculatte.roundFloor(0.0000000001));
-    }
-
-    @Test
     @DisplayName("Left Riemann sum of x^2 from 0 to 16 with n = 4")
     public void leftRiemannSumOfXSquaredFrom0To2WithNOf4() {
         Function XSquared = x -> Math.pow(x, 2);
