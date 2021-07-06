@@ -61,7 +61,7 @@ public class Calculatte {
             sum += 2.0 / 3.0 * function.f(a + h * i);
         }
 
-        return sum * h;
+        return round(sum * h, CalculatteEnvironment.INTEGRATION_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -72,7 +72,9 @@ public class Calculatte {
      * @return The derivative of the function at point, x.
      */
     public static double derivate(double x, Function function) {
-        return (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
+        double slope =
+                (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
+        return round(slope, CalculatteEnvironment.DERIVATION_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -104,7 +106,7 @@ public class Calculatte {
             sum += function.f(x);
         }
 
-        return ((b - a) / n) * sum;
+        return round(((b - a) / n) * sum, CalculatteEnvironment.LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -123,7 +125,7 @@ public class Calculatte {
             sum += function.f(x);
         }
 
-        return ((b - a) / n) * sum;
+        return round(((b - a) / n) * sum, CalculatteEnvironment.RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -146,7 +148,33 @@ public class Calculatte {
             }
         }
 
-        return ((b - a) / (2 * n)) * sum;
+        return round(((b - a) / (2 * n)) * sum, CalculatteEnvironment.TRAPEZOIDAL_SUM_ROUNDING_DECIMAL_PLACES);
+    }
+
+    /**
+     * Calculates the volume of revolution for the region bounded by <code>functionTop</code>,
+     * <code>functionBottom</code>, x = <code>a</code>, and x = <code>b</code>, about y =
+     * <code>axis</code>.
+     *
+     * <p>Note: Vertical revolutions can also be made with this function. Input your data as if
+     * the data was rotated 90 degrees and to be rotated horizontally. There should be no
+     * mathematical difference between the two problems.</p>
+     *
+     * @param a    The lower limit of integration.
+     * @param b    The upper limit of integration.
+     * @param axis The y value of the axis of rotation, where 0 is about the x-axis.
+     * @return The volume of revolution.
+     */
+    public static double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {
+        // The top function with the axis offset, squared.
+        Function squaredFunctionTop = x -> Math.pow(axis - functionTop.f(x), 2);
+
+        // The bottom function with the axis offset, squared.
+        Function squaredFunctionBottom = x -> Math.pow(axis - functionBottom.f(x), 2);
+
+        // Split the volume of revolution formula into two separate integrals.
+        double volume = Math.PI * (integrate(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
+        return round(volume, CalculatteEnvironment.REVOLUTION_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -191,30 +219,5 @@ public class Calculatte {
     public static double rightLimit(double x, Function function) {
         return round(function.f(x + CalculatteEnvironment.LIMIT_OFFSET),
                 CalculatteEnvironment.LIMIT_ROUNDING_DECIMAL_PLACES);
-    }
-
-    /**
-     * Calculates the volume of revolution for the region bounded by <code>functionTop</code>,
-     * <code>functionBottom</code>, x = <code>a</code>, and x = <code>b</code>, about y =
-     * <code>axis</code>.
-     *
-     * <p>Note: Vertical revolutions can also be made with this function. Input your data as if
-     * the data was rotated 90 degrees and to be rotated horizontally. There should be no
-     * mathematical difference between the two problems.</p>
-     *
-     * @param a    The lower limit of integration.
-     * @param b    The upper limit of integration.
-     * @param axis The y value of the axis of rotation, where 0 is about the x-axis.
-     * @return The volume of revolution.
-     */
-    public static double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {
-        // The top function with the axis offset, squared.
-        Function squaredFunctionTop = x -> Math.pow(axis - functionTop.f(x), 2);
-
-        // The bottom function with the axis offset, squared.
-        Function squaredFunctionBottom = x -> Math.pow(axis - functionBottom.f(x), 2);
-
-        // Split the volume of revolution formula into two separate integrals.
-        return Math.PI * (integrate(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
     }
 }
