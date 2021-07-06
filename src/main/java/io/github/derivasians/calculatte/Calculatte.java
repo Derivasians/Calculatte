@@ -78,7 +78,7 @@ public class Calculatte {
     }
 
     /**
-     * Finds the tangent line of function at point, x.
+     * Finds the tangent line of <code>function</code> at point, <code>x</code>.
      *
      * @param x        The x-value at which to find the tangent line of.
      * @param function The function to find the tangent line of.
