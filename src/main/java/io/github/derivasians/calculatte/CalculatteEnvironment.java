@@ -115,4 +115,15 @@ public class CalculatteEnvironment {
      * @see io.github.derivasians.calculatte.Calculatte#rightLimit(double, Function) 
      */
     public static double LIMIT_OFFSET = 0.000000001;
+
+    /**
+     * These static constants define what known cross section
+     * is being used to calculate a volume of cross section.
+     */
+    public static final int
+    SQUARE = 0,
+    EQUILATERAL_TRIANGLE = 1,
+    ISOSCELES_TRIANGLE = 2,
+    RIGHT_TRIANGLE = 3,
+    SEMICRICLE = 4;
 }

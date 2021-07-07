@@ -179,18 +179,25 @@ public class Calculatte {
         return round(volume, CalculatteEnvironment.REVOLUTION_ROUNDING_DECIMAL_PLACES);
     }
 
-    public static double crossSection(double a, double b, Function functionTop, Function functionBottom,
-                                      int type) {
-        Function cross = x -> functionTop.f(x) - functionBottom.f(x);
-        switch (type) {
-            case 0: // Square
-                cross = x -> Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
-                break;
-            case 1: // Eq. Triangle
-                cross = x -> (Math.sqrt(3) / 4) * Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
-                break;
-        }
+    public static double crossSection(double a, double b, Function functionTop, Function functionBottom, int type) {
+        Function cross = switch (type) {
+            case 0 -> // Square
+                    x -> Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
+            case 1 -> // Equilateral triangle
+                    x -> (Math.sqrt(3) / 4) * Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
+            case 2 -> // Isosceles triangle
+                    x -> 0.75 * Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
+            case 3 -> // Right triangle
+                    x -> 0.5 * Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
+            case 4 -> // Semicircle
+                    x -> (Math.PI / 8) * Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
+            default -> x -> functionTop.f(x) - functionBottom.f(x);
+        };
 
+        return round(integrate(a, b, cross), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
+    }
+
+    public static double crossSection(double a, double b, Function cross) {
         return round(integrate(a, b, cross), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
     }
 
