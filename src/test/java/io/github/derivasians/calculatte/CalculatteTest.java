@@ -86,9 +86,23 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Limit with a removable discontinuity")
-    public void limitWithARemovableDiscontinuity() {
+    @DisplayName("Limit at a removable discontinuity")
+    public void limitAtARemovableDiscontinuity() {
         Function function = x -> (Math.pow(x, 2) - (2 * x) - 8) / (x - 4);
         assertEquals(6, Calculatte.limit(4, function));
+    }
+
+    @Test
+    @DisplayName("Limit at a violent oscillation")
+    public void limitAtAViolentOscillation() {
+        Function function = x -> Math.sin(1 / x);
+        assertEquals(Double.NaN, Calculatte.limit(0, function));
+    }
+
+    @Test
+    @DisplayName("Limit at an asymptote")
+    public void limitAtAnAsymptote() {
+        Function function = x -> (x + 2) / x;
+        assertEquals(Double.NaN, Calculatte.limit(0, function));
     }
 }
