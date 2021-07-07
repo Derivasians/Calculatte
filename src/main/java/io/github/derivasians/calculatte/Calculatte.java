@@ -24,11 +24,11 @@ public class Calculatte {
             return x;
         }
 
-        if (x >= CalculatteEnvironment.POSITIVE_INFINITY) {
+        if (x > CalculatteEnvironment.POSITIVE_INFINITY) {
             return Double.POSITIVE_INFINITY;
         }
 
-        if (x <= CalculatteEnvironment.NEGATIVE_INFINITY) {
+        if (x < CalculatteEnvironment.NEGATIVE_INFINITY) {
             return Double.NEGATIVE_INFINITY;
         }
 

@@ -11,8 +11,8 @@ public class CalculatteEnvironment {
     // Only the final calculation is rounded, intermediate values are
     // never rounded.
     //
-    // Setting any of these values to -1 will prevent that group of
-    // calculations from being rounded. This can be useful if you
+    // Note: Setting any of these values to -1 will prevent that group
+    // of calculations from being rounded. This can be useful if you
     // would prefer to use your own rounding method or none at all.
     
     /**
@@ -53,16 +53,26 @@ public class CalculatteEnvironment {
     public static int LIMIT_ROUNDING_DECIMAL_PLACES = 8;
 
     /**
-     * All values greater than or equal to <code>POSITIVE_INFINITY</code> will be rounded up to
-     * <code>Double.POSITIVE_INFINITY</code> by <code>Calculatte.round()</code>.
+     * All values greater than <code>CalculatteEnvironment.POSITIVE_INFINITY</code>
+     * will be rounded up to <code>Double.POSITIVE_INFINITY</code> by
+     * <code>Calculatte.round()</code>.
+     *
+     * <p>Note: Setting <code>CalculatteEnvironment.POSITIVE_INFINITY</code> to
+     * <code>Double.MAX_VALUE</code> will prevent rounding values up to
+     * <code>Double.POSITIVE_INFINITY</code>.</p>
      * 
      * @see io.github.derivasians.calculatte.Calculatte#round(double, int) 
      */
     public static double POSITIVE_INFINITY = 9.0E17;
 
     /**
-     * All values less than or equal to <code>NEGATIVE_INFINITY</code> will be rounded down to
-     * <code>Double.NEGATIVE_INFINITY</code> by <code>Calculatte.round()</code>.
+     * All values less than to <code>CalculatteEnvironment.NEGATIVE_INFINITY</code>
+     * will be rounded down to <code>Double.NEGATIVE_INFINITY</code> by
+     * <code>Calculatte.round()</code>.
+     *
+     * <p>Note: Setting <code>CalculatteEnvironment.NEGATIVE_INFINITY</code> to
+     * <code>Double.MIN_VALUE</code> will prevent rounding values down to
+     * <code>Double.NEGATIVE_INFINITY</code>.</p>
      * 
      * @see io.github.derivasians.calculatte.Calculatte#round(double, int)  
      */
