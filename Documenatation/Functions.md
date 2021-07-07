@@ -64,5 +64,5 @@ public static double revolve(double a, double b, double axis, Function functionT
 }
 ```
 
-[function]: https://github.com/Derivasians/Calculatte/blob/main/src/main/java/com/derivasians/calculatte/Function.java
+[function]: https://github.com/Derivasians/Calculatte/blob/main/src/main/java/io/github/derivasians/calculatte/Function.java
 [revolve]: https://github.com/Derivasians/Calculatte/blob/main/src/main/java/io/github/derivasians/calculatte/Calculatte.java#L170
