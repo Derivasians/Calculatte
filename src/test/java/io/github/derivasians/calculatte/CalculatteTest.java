@@ -31,6 +31,14 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Integrate x^3 from -2 to 2")
+    public void integrateXCubedFromNegativeTwoToTwo() {
+        Function XCubed = x -> Math.pow(x, 3);
+        double area = Calculatte.integrate(-2, 2, XCubed);
+        assertEquals(-2.0E-8, area);
+    }
+
+    @Test
     @DisplayName("Derivative of x^2 at x = 2")
     public void derivativeOfXSquaredAtXEquals2() {
         Function XSquared = x -> Math.pow(x, 2);
@@ -48,11 +56,12 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Cross Sections Test")
-    public void crossSectionTest() {
+    @DisplayName("Cross section of an equilateral triangle")
+    public void crossSectionOfAnEquilateralTriangle() {
         Function functionTop = x -> 1 - (x / 2);
         Function functionBottom = x -> -1 + (x / 2);
-        double volume = Calculatte.crossSection(0, 2, functionTop, functionBottom, 1);
+        double volume = Calculatte.crossSection(0, 2, functionTop, functionBottom,
+                CalculatteEnvironment.EQUILATERAL_TRIANGLE);
         assertEquals(1.15470054, volume);
     }
 
