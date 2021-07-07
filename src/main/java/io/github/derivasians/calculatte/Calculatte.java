@@ -179,6 +179,21 @@ public class Calculatte {
         return round(volume, CalculatteEnvironment.REVOLUTION_ROUNDING_DECIMAL_PLACES);
     }
 
+    public static double crossSection(double a, double b, Function functionTop, Function functionBottom,
+                                      int type) {
+        Function cross = x -> functionTop.f(x) - functionBottom.f(x);
+        switch (type) {
+            case 0: // Square
+                cross = x -> Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
+                break;
+            case 1: // Eq. Triangle
+                cross = x -> (Math.sqrt(3) / 4) * Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
+                break;
+        }
+
+        return round(integrate(a, b, cross), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
+    }
+
     /**
      * Finds the limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
      * if the limit does not exist.

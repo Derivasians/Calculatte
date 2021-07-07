@@ -49,6 +49,11 @@ public class CalculatteEnvironment {
     public static int REVOLUTION_ROUNDING_DECIMAL_PLACES = 8;
 
     /**
+     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
+     */
+    public static int CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES = 8;
+
+    /**
      * @see io.github.derivasians.calculatte.Calculatte#limit(double, Function) 
      * @see io.github.derivasians.calculatte.Calculatte#leftLimit(double, Function) 
      * @see io.github.derivasians.calculatte.Calculatte#rightLimit(double, Function) 

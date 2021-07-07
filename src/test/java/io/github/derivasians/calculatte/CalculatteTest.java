@@ -48,6 +48,15 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Cross Sections Test")
+    public void crossSectionTest() {
+        Function functionTop = x -> 1 - (x / 2);
+        Function functionBottom = x -> -1 + (x / 2);
+        double volume = Calculatte.crossSection(0, 2, functionTop, functionBottom, 1);
+        assertEquals(1.15470054, volume);
+    }
+
+    @Test
     @DisplayName("Left Riemann sum of x^2 from 0 to 16 with n = 4")
     public void leftRiemannSumOfXSquaredFrom0To2WithNOf4() {
         Function XSquared = x -> Math.pow(x, 2);
