@@ -119,7 +119,7 @@ public class Calculatte {
      * @param n        The number of rectangles being used to estimate the area under the curve.
      * @return The approximate area under the curve by the right Riemann sum rule.
      */
-    public static double rightRiemannSum( double a, double b, Function function, int n ) {
+    public static double rightRiemannSum(double a, double b, Function function, int n) {
         double sum = 0;
         for (double x = (a + ((b - a) / n)); x <= b + 0.00001; x += ((b - a) / n)) {
             sum += function.f(x);
@@ -138,10 +138,10 @@ public class Calculatte {
      * @param n        The number of trapezoids being used to estimate the area under the curve.
      * @return The approximate area under the curve by the trapezoidal sum rule.
      */
-    public static double trapezoidalSum( double a, double b, Function function, int n ) {
+    public static double trapezoidalSum(double a, double b, Function function, int n) {
         double sum = 0;
         for (double x = a; x <= b + 0.00001; x += ((b - a) / n)) {
-            if( x == a || x >= b ) {
+            if(x == a || x >= b) {
                 sum += function.f(x);
             } else {
                 sum += 2 * function.f(x);
