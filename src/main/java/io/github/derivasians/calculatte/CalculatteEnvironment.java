@@ -44,7 +44,7 @@ public class CalculatteEnvironment {
     public static int TRAPEZOIDAL_SUM_ROUNDING_DECIMAL_PLACES = 8;
 
     /**
-     * @see io.github.derivasians.calculatte.Calculatte#round(double, int) 
+     * @see io.github.derivasians.calculatte.Calculatte#revolve(double, double, double, Function, Function) 
      */
     public static int REVOLUTION_ROUNDING_DECIMAL_PLACES = 8;
 
