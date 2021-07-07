@@ -12,8 +12,10 @@ import java.math.RoundingMode;
  */
 public class Calculatte {
     /**
-     * Rounds doubles using <code>BigDecimal</code>s. If <code>decimalPlaces</code> is set to
-     * <code>-1</code>, <code>x</code> will not be rounded.
+     * Rounds doubles according to the IEEE 754 standard of rounding half to even.
+     *
+     * <p>Note: If <code>decimalPlaces</code> is set to <code>-1</code>, <code>x</code>
+     * will not be rounded.</p>
      *
      * @param x The value to be rounded.
      * @param decimalPlaces The number of decimal places to round to.
