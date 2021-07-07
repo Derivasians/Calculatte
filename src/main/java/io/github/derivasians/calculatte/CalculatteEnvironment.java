@@ -4,6 +4,9 @@ package io.github.derivasians.calculatte;
  * Contains all instance variables required for Calculatte to run.
  * These mainly consist of values used for rounding and other accuracy
  * controls within calculations.
+ *
+ * @version 1.0 Snapshot
+ * @author Matthew Okashita
  */
 public class CalculatteEnvironment {
     // Rounding values. These values represent how many decimal places

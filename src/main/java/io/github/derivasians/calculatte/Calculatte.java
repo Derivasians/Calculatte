@@ -181,7 +181,7 @@ public class Calculatte {
      * Finds the limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
      * if the limit does not exist.
      *
-     * @param x The x-value to find the limit at.
+     * @param x        The x-value to find the limit at.
      * @param function The function to find the limit of.
      * @return The value of the limit.
      */
@@ -196,12 +196,11 @@ public class Calculatte {
     }
 
     /**
-     * Finds the left limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
-     * if the limit does not exist.
+     * Finds the left limit of <code>function</code> at point <code>x</code>.
      *
-     * @param x The x-value to find the limit at.
+     * @param x        The x-value to find the limit at.
      * @param function The function to find the limit of.
-     * @return The value of the limit.
+     * @return The value of the left limit.
      */
     public static double leftLimit(double x, Function function) {
         return round(function.f(x - CalculatteEnvironment.LIMIT_OFFSET),
@@ -209,12 +208,11 @@ public class Calculatte {
     }
 
     /**
-     * Finds the right limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
-     * if the limit does not exist.
+     * Finds the right limit of <code>function</code> at point <code>x</code>.
      *
-     * @param x The x-value to find the limit at.
+     * @param x        The x-value to find the limit at.
      * @param function The function to find the limit of.
-     * @return The value of the limit.
+     * @return The value of the right limit.
      */
     public static double rightLimit(double x, Function function) {
         return round(function.f(x + CalculatteEnvironment.LIMIT_OFFSET),
