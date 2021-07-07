@@ -33,7 +33,7 @@ public class Calculatte {
         }
 
         BigDecimal bd = new BigDecimal(Double.toString(x));
-        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP);
+        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_EVEN);
         return bd.doubleValue();
     }
 
