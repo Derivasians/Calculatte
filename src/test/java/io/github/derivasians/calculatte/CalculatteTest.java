@@ -131,4 +131,23 @@ public class CalculatteTest {
         Function function = x -> (x + 2) / x;
         assertEquals(Double.NaN, Calculatte.limit(0, function));
     }
+
+    @Test
+    @DisplayName("1!")
+    public void factorialOf1() {
+        assertEquals(1, Calculatte.factorial(1));
+    }
+
+    @Test
+    @DisplayName("6!")
+    public void factorialOf6() {
+        assertEquals(720, Calculatte.factorial(6));
+    }
+
+    @Test
+    @DisplayName("100!")
+    public void factorialOf100() {
+        CalculatteEnvironment.POSITIVE_INFINITY = Double.MAX_VALUE;
+        assertEquals(9.332618331623781E157, Calculatte.factorial(100));
+    }
 }

@@ -17,7 +17,12 @@ public class CalculatteEnvironment {
     // Note: Setting any of these values to -1 will prevent that group
     // of calculations from being rounded. This can be useful if you
     // would prefer to use your own rounding method or none at all.
-    
+
+    /**
+     * @see io.github.derivasians.calculatte.Calculatte#factorial(double) 
+     */
+    public static int FACTORIAL_ROUNDING_DECIMAL_PLACES = 0;
+
     /**
      * @see io.github.derivasians.calculatte.Calculatte#integrate(double, double, Function) 
      */
