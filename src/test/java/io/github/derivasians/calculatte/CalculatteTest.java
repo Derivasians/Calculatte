@@ -39,6 +39,14 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Integrate x = 4 from 0 to 2")
+    public void integrateXEquals4From0To2() {
+        Function XEquals4 = x -> 4;
+        double area = Calculatte.integrate(0, 2, XEquals4);
+        assertEquals(8, area);
+    }
+
+    @Test
     @DisplayName("Derivative of x^2 at x = 2")
     public void derivativeOfXSquaredAtXEquals2() {
         Function XSquared = x -> Math.pow(x, 2);
