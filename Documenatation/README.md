@@ -3,3 +3,4 @@ All the `.md`s in this folder contain documentations and guides for using each o
 
 ### Table of Contents
 * [Functions](https://github.com/Derivasians/Calculatte/blob/main/Documenatation/Functions.md)
+* [Rounding and Accuracy](https://github.com/Derivasians/Calculatte/blob/main/Documenatation/RoundingAndAccuracy.md)
