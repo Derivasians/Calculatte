@@ -91,7 +91,7 @@ public class CalculatteEnvironment {
      * 
      * @see io.github.derivasians.calculatte.Calculatte#integrate(double, double, Function) 
      */
-    public static int N = 500000000;
+    public static int N = 64000;
 
     /**
      * Accuracy value for derivation calculations. The smaller the more accurate.
