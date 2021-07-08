@@ -7,7 +7,7 @@ rounding and accuracy.
 In the [`CalculatteEnvironment.java`][env] file, you will find every customizable "setting" and many other static 
 variables. Here, you will see many static variables ending in `_ROUNDING_DECIMAL_PLACES`. These "rounding variables" 
 define how many decimal places the final value of their respective calculations should be rounded too. By default, all 
-rounding is set to 8 decimal places.
+rounding is set to 3 decimal places.
 
 Setting any of these rounding variables to `-1` will cause that rounding for that operation to not occur. This can be
 useful if you would prefer to see the raw value or implement your own rounding method.

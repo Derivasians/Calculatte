@@ -21,44 +21,44 @@ public class CalculatteEnvironment {
     /**
      * @see io.github.derivasians.calculatte.Calculatte#integrate(double, double, Function) 
      */
-    public static int INTEGRATION_ROUNDING_DECIMAL_PLACES = 8;
+    public static int INTEGRATION_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * @see io.github.derivasians.calculatte.Calculatte#derivate(double, Function) 
      */
-    public static int DERIVATION_ROUNDING_DECIMAL_PLACES = 8;
+    public static int DERIVATION_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * @see io.github.derivasians.calculatte.Calculatte#leftRiemannSum(double, double, Function, int)  
      */
-    public static int LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 8;
+    public static int LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * @see io.github.derivasians.calculatte.Calculatte#rightRiemannSum(double, double, Function, int) 
      */
-    public static int RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 8;
+    public static int RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * @see io.github.derivasians.calculatte.Calculatte#trapezoidalSum(double, double, Function, int) 
      */
-    public static int TRAPEZOIDAL_SUM_ROUNDING_DECIMAL_PLACES = 8;
+    public static int TRAPEZOIDAL_SUM_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * @see io.github.derivasians.calculatte.Calculatte#revolve(double, double, double, Function, Function) 
      */
-    public static int REVOLUTION_ROUNDING_DECIMAL_PLACES = 8;
+    public static int REVOLUTION_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
      */
-    public static int CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES = 8;
+    public static int CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * @see io.github.derivasians.calculatte.Calculatte#limit(double, Function) 
      * @see io.github.derivasians.calculatte.Calculatte#leftLimit(double, Function) 
      * @see io.github.derivasians.calculatte.Calculatte#rightLimit(double, Function) 
      */
-    public static int LIMIT_ROUNDING_DECIMAL_PLACES = 8;
+    public static int LIMIT_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * All values greater than <code>CalculatteEnvironment.POSITIVE_INFINITY</code>
@@ -91,7 +91,7 @@ public class CalculatteEnvironment {
      * 
      * @see io.github.derivasians.calculatte.Calculatte#integrate(double, double, Function) 
      */
-    public static int N = 700000000;
+    public static int N = 500000000;
 
     /**
      * Accuracy value for derivation calculations. The smaller the more accurate.

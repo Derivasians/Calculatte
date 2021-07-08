@@ -35,7 +35,7 @@ public class CalculatteTest {
     public void integrateXCubedFromNegativeTwoToTwo() {
         Function XCubed = x -> Math.pow(x, 3);
         double area = Calculatte.integrate(-2, 2, XCubed);
-        assertEquals(-2.0E-8, area);
+        assertEquals(0, area);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class CalculatteTest {
         Function XSquared = x -> Math.pow(x, 2);
         Function X = x -> 0;
         double volume = Calculatte.revolve(0, 2, 0, XSquared, X);
-        assertEquals(20.10619292, volume);
+        assertEquals(20.106, volume);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class CalculatteTest {
         Function functionBottom = x -> -1 + (x / 2);
         double volume = Calculatte.crossSection(0, 2, functionTop, functionBottom,
                 CalculatteEnvironment.EQUILATERAL_TRIANGLE);
-        assertEquals(1.15470054, volume);
+        assertEquals(1.155, volume);
     }
 
     @Test
