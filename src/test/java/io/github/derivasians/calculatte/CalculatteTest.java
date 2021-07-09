@@ -145,9 +145,6 @@ public class CalculatteTest {
     }
 
     @Test
-
-
-    @Test
     @DisplayName("Invalid cross-section type")
     public void invalidCrossSectionType() {
         Function functionTop = x -> 1 - (x / 2);
