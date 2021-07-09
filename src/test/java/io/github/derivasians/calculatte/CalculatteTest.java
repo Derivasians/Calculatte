@@ -145,9 +145,21 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("100!")
-    public void factorialOf100() {
-        CalculatteEnvironment.POSITIVE_INFINITY = Double.MAX_VALUE;
-        assertEquals(9.332618331623781E157, Calculatte.factorial(100));
+
+
+    @Test
+    @DisplayName("Invalid cross-section type")
+    public void invalidCrossSectionType() {
+        Function functionTop = x -> 1 - (x / 2);
+        Function functionBottom = x -> -1 + (x / 2);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Calculatte.crossSection(0, 2, functionTop, functionBottom, 5);
+        });
+
+        String expectedMessage = "Please enter a valid cross-section type (0 - 4).";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 }
