@@ -76,7 +76,7 @@ public class CalculatteEnvironment {
      * 
      * @see io.github.derivasians.calculatte.Calculatte#round(double, int) 
      */
-    public static double POSITIVE_INFINITY = 1.0E9;
+    public static double POSITIVE_INFINITY = Double.MAX_VALUE;
 
     /**
      * All values less than to <code>CalculatteEnvironment.NEGATIVE_INFINITY</code>
@@ -89,7 +89,7 @@ public class CalculatteEnvironment {
      * 
      * @see io.github.derivasians.calculatte.Calculatte#round(double, int)  
      */
-    public static double NEGATIVE_INFINITY = -1.0E9;
+    public static double NEGATIVE_INFINITY = Double.MIN_VALUE;
 
     /**
      * Accuracy value for integration calculations. The larger the more accurate.
