@@ -101,7 +101,7 @@ public class CalculatteTest {
     @DisplayName("Limit of 1 over x^2 at x = 0")
     public void limitOf1OverXSquaredAtXEquals0() {
         Function function = x -> 1 / Math.pow(x, 2);
-        assertEquals(Double.POSITIVE_INFINITY, Calculatte.limit(0, function));
+        assertEquals(9.9999999999999987E17, Calculatte.limit(0, function));
     }
 
     @Test
