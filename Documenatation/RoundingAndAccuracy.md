@@ -23,7 +23,7 @@ value is greater than `CalculatteEnvironment.POSITIVE_INFINITY`, it will be roun
 `Double.NEGATIVE_INFINITY` by `round()`.
 
 As a result of this behaviour, setting `CalculatteEnvironment.POSITIVE_INFINITY` to `Double.MAX_VALUE` or 
-`CalculatteEnvironment.NEGATIVE_INFINITY` to `Double.MIN_VALUE` will disable rounding up to positive or negative 
+`CalculatteEnvironment.NEGATIVE_INFINITY` to `-Double.MAX_VALUE` will disable rounding up to positive or negative 
 infinity, respectively. It should be noted that rounding to infinities are off by default.
 
 
