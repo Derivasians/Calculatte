@@ -42,7 +42,12 @@ public class CalculatteEnvironment {
      * @see io.github.derivasians.calculatte.Calculatte#rightRiemannSum(double, double, Function, int) 
      */
     public static int RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 3;
-
+    
+    /**
+     * @see io.github.derivasians.calculatte.Calculatte#midpointRule(double, double, Function, int) 
+     */
+    public static int MIDPOINT_RULE_ROUNDING_DECIMAL_PLACES = 3;
+    
     /**
      * @see io.github.derivasians.calculatte.Calculatte#trapezoidalSum(double, double, Function, int) 
      */

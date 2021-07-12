@@ -90,6 +90,14 @@ public class CalculatteTest {
     }
 
     @Test
+    @DisplayName("Midpoint rule of x^2 from 0 to 16 with n = 4")
+    public void midpointRuleOfXSquaredFrom0To2WithNOf4() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.midpointRule(0, 16, XSquared, 4);
+        assertEquals(1344, approxArea);
+    }
+
+    @Test
     @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
     public void trapezoidalSumOfXSquaredFrom0To2WithNOf4() {
         Function XSquared = x -> Math.pow(x, 2);

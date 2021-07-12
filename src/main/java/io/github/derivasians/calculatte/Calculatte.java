@@ -143,6 +143,26 @@ public class Calculatte {
     }
 
     /**
+     * Returns the approximate area under the curve using the midpoint rule with
+     * <code>n</code> rectangles.
+     *
+     * @param a        The lower limit of integration.
+     * @param b        The upper limit of integration.
+     * @param function The function being used to calculate the midpoint rule.
+     * @param n        The number of rectangles being used to estimate the area under the curve.
+     * @return The approximate area under the curve by the midpoint rule.
+     */
+    public static double midpointRule(double a, double b, Function function, int n) {
+        double sum = 0;
+        double deltaX = (b - a) / n;
+        for (double x = a; x < b; x += deltaX) {
+            sum += function.f((x + (x + deltaX)) / 2);
+        }
+
+        return round(deltaX * sum, CalculatteEnvironment.MIDPOINT_RULE_ROUNDING_DECIMAL_PLACES);
+    }
+
+    /**
      * Returns the approximate area under the curve using the trapezoidal sum rule with
      * <code>n</code> trapezoids.
      *
