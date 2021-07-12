@@ -93,6 +93,8 @@ public class CalculatteEnvironment {
     /**
      * These static constants define what known cross section
      * is being used to calculate a volume of cross section.
+     * 
+     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int)
      */
     public static final int
     SQUARE = 0,
