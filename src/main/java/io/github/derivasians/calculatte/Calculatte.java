@@ -212,6 +212,27 @@ public class Calculatte {
         return round(volume, CalculatteEnvironment.REVOLUTION_ROUNDING_DECIMAL_PLACES);
     }
 
+    /**
+     * Finds the volume of a known cross-section for any of the 5 common known
+     * cross-sections: square, equilateral triangle, isosceles triangle, right,
+     * triangle, and semicircle.
+     *
+     * <p>Note: Constants have been defined for your ease of use when defining
+     * what <code>type</code> of cross-section you are solving for. They are
+     * linked as five <code>@see</code> tags in this documentation.</p>
+     *
+     * @param a              The lower limit of integration.
+     * @param b              The upper limit of integration.
+     * @param functionTop    The top function defining the bounded region.
+     * @param functionBottom The bottom function defining the bounded region.
+     * @param type           The type of cross-section.
+     * @return The volume of the known cross-section.
+     * @see io.github.derivasians.calculatte.CalculatteEnvironment#SQUARE
+     * @see io.github.derivasians.calculatte.CalculatteEnvironment#EQUILATERAL_TRIANGLE
+     * @see io.github.derivasians.calculatte.CalculatteEnvironment#ISOSCELES_TRIANGLE
+     * @see io.github.derivasians.calculatte.CalculatteEnvironment#RIGHT_TRIANGLE
+     * @see io.github.derivasians.calculatte.CalculatteEnvironment#SEMICRICLE
+     */
     public static double crossSection(double a, double b, Function functionTop, Function functionBottom, int type) {
         Function cross = switch (type) {
             case 0 -> // Square
@@ -231,6 +252,17 @@ public class Calculatte {
         return round(integrate(a, b, cross), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
     }
 
+    /**
+     * Finds the volume of a known cross-section for a custom made cross-section
+     * formula.
+     *
+     * @param a     The lower limit of integration.
+     * @param b     The upper limit of integration.
+     * @param cross The integrand of the integral when taking the volume of a
+     *              known cross-section.
+     * @return The volume of the known cross-section.
+     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
+     */
     public static double crossSection(double a, double b, Function cross) {
         return round(integrate(a, b, cross), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
     }
