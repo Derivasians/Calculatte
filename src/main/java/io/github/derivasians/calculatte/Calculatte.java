@@ -193,9 +193,11 @@ public class Calculatte {
      * the data was rotated 90 degrees and to be rotated horizontally. There should be no
      * mathematical difference between the two problems.</p>
      *
-     * @param a    The lower limit of integration.
-     * @param b    The upper limit of integration.
-     * @param axis The y value of the axis of rotation, where 0 is about the x-axis.
+     * @param a              The lower limit of integration.
+     * @param b              The upper limit of integration.
+     * @param axis           The y value of the axis of rotation, where 0 is about the x-axis.
+     * @param functionTop    The top function defining the bounded region.
+     * @param functionBottom The bottom function defining the bounded region.
      * @return The volume of revolution.
      */
     public static double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {

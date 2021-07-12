@@ -9,66 +9,30 @@ package io.github.derivasians.calculatte;
  * @author Matthew Okashita
  */
 public class CalculatteEnvironment {
-    // Rounding values. These values represent how many decimal places
-    // each of their respective calculations should be rounded too.
-    // Only the final calculation is rounded, intermediate values are
-    // never rounded.
-    //
-    // Note: Setting any of these values to -1 will prevent that group
-    // of calculations from being rounded. This can be useful if you
-    // would prefer to use your own rounding method or none at all.
-
     /**
-     * @see io.github.derivasians.calculatte.Calculatte#factorial(double) 
+     * Rounding values. These values represent how many decimal places
+     * each of their respective calculations should be rounded too.
+     * Only values returned by a method are rounded. Intermediate values
+     * within a method are never rounded, unless by another method; e.g.,
+     * the <code>revolve()</code> method's calculations get rounded when the
+     * integral is taken with <code>integrate()</code> and once more when
+     * the final value is returned.
+     *
+     * <p>Note: Setting any of these values to -1 will prevent that group
+     * of calculations from being rounded. This can be useful if you
+     * would prefer to use your own rounding method or none at all.</p>
      */
-    public static int FACTORIAL_ROUNDING_DECIMAL_PLACES = 0;
-
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#integrate(double, double, Function) 
-     */
-    public static int INTEGRATION_ROUNDING_DECIMAL_PLACES = 3;
-
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#derivate(double, Function) 
-     */
-    public static int DERIVATION_ROUNDING_DECIMAL_PLACES = 3;
-
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#leftRiemannSum(double, double, Function, int)  
-     */
-    public static int LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 3;
-
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#rightRiemannSum(double, double, Function, int) 
-     */
-    public static int RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 3;
-    
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#midpointRule(double, double, Function, int) 
-     */
-    public static int MIDPOINT_RULE_ROUNDING_DECIMAL_PLACES = 3;
-    
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#trapezoidalSum(double, double, Function, int) 
-     */
-    public static int TRAPEZOIDAL_SUM_ROUNDING_DECIMAL_PLACES = 3;
-
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#revolve(double, double, double, Function, Function) 
-     */
-    public static int REVOLUTION_ROUNDING_DECIMAL_PLACES = 3;
-
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
-     */
-    public static int CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES = 3;
-
-    /**
-     * @see io.github.derivasians.calculatte.Calculatte#limit(double, Function) 
-     * @see io.github.derivasians.calculatte.Calculatte#leftLimit(double, Function) 
-     * @see io.github.derivasians.calculatte.Calculatte#rightLimit(double, Function) 
-     */
-    public static int LIMIT_ROUNDING_DECIMAL_PLACES = 3;
+    public static int
+    FACTORIAL_ROUNDING_DECIMAL_PLACES = 0,
+    INTEGRATION_ROUNDING_DECIMAL_PLACES = 3,
+    DERIVATION_ROUNDING_DECIMAL_PLACES = 3,
+    LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 3,
+    RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 3,
+    MIDPOINT_RULE_ROUNDING_DECIMAL_PLACES = 3,
+    TRAPEZOIDAL_SUM_ROUNDING_DECIMAL_PLACES = 3,
+    REVOLUTION_ROUNDING_DECIMAL_PLACES = 3,
+    CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES = 3,
+    LIMIT_ROUNDING_DECIMAL_PLACES = 3;
 
     /**
      * All values greater than <code>CalculatteEnvironment.POSITIVE_INFINITY</code>
