@@ -47,9 +47,8 @@ public class Calculatte {
      */
     public static double factorial(double n) {
         double stirling = Math.pow(n, n) * Math.pow(Math.E, -n) * Math.sqrt(2 * Math.PI * n) * (1 + (1 / (12 * n)));
-        return round(stirling, CalculatteEnvironment.FACTORIAL_ROUNDING_DECIMAL_PLACES); // Round to integer; factorials cannot create decimals.
+        return round(stirling, CalculatteEnvironment.FACTORIAL_ROUNDING_DECIMAL_PLACES);
     }
-
 
     /**
      * Integrates the function from a to b using Simpson's rule.
