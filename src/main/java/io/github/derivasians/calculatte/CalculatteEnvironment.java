@@ -10,13 +10,13 @@ package io.github.derivasians.calculatte;
  */
 public class CalculatteEnvironment {
     /**
-     * Rounding values. These values represent how many decimal places
-     * each of their respective calculations should be rounded too.
-     * Only values returned by a method are rounded. Intermediate values
-     * within a method are never rounded, unless by another method; e.g.,
-     * the <code>revolve()</code> method's calculations get rounded when the
-     * integral is taken with <code>integrate()</code> and once more when
-     * the final value is returned.
+     * Represents how many decimal places this variable's respective
+     * calculation(s) should be rounded too. Only values returned by a method
+     * are rounded. Intermediate values within a method are never rounded,
+     * unless by another method; e.g., the <code>revolve()</code> method's
+     * calculations get rounded when the integral is taken with
+     * <code>integrate()</code> and once more when the final value is
+     * returned.
      *
      * <p>Note: Setting any of these values to -1 will prevent that group
      * of calculations from being rounded. This can be useful if you
