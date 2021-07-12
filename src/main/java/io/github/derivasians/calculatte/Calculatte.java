@@ -231,7 +231,7 @@ public class Calculatte {
      * @see io.github.derivasians.calculatte.CalculatteEnvironment#EQUILATERAL_TRIANGLE
      * @see io.github.derivasians.calculatte.CalculatteEnvironment#ISOSCELES_TRIANGLE
      * @see io.github.derivasians.calculatte.CalculatteEnvironment#RIGHT_TRIANGLE
-     * @see io.github.derivasians.calculatte.CalculatteEnvironment#SEMICRICLE
+     * @see io.github.derivasians.calculatte.CalculatteEnvironment#SEMICIRCLE
      */
     public static double crossSection(double a, double b, Function functionTop, Function functionBottom, int type) {
         Function cross = switch (type) {

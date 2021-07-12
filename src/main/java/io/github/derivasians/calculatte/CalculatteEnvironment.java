@@ -101,5 +101,5 @@ public class CalculatteEnvironment {
     EQUILATERAL_TRIANGLE = 1,
     ISOSCELES_TRIANGLE = 2,
     RIGHT_TRIANGLE = 3,
-    SEMICRICLE = 4;
+    SEMICIRCLE = 4;
 }
