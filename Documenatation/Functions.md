@@ -1,9 +1,9 @@
 # Functions
-The backbones of calculus are algebraic functions. Almost every function in Calculatte requires the use of a function. 
+The backbone of calculus are algebraic functions. Almost every method in Calculatte requires the use of a function. 
 Whether you are integrating a function, taking a volume of revolution, or finding the volume of a known 
-cross-section—you are using algebraic functions.
+cross-section—you are using an algebraic function.
 
-In Calculatte, all functions are `implements` of the `Function` interface. The `Function` interface is defined under 
+In Calculatte, all functions `implements` the `Function` interface. The `Function` interface is defined under 
 [Function.java][function] as
 ```java
 /**
@@ -62,6 +62,11 @@ public static double revolve(double a, double b, double axis, Function functionT
     double volume = Math.PI * (integrate(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
     return round(volume, CalculatteEnvironment.REVOLUTION_ROUNDING_DECIMAL_PLACES);
 }
+```
+
+Make sure to actually return the y-value of the embedded function. 
+```java
+Function function = x -> embeddedFunction.f(x);
 ```
 
 [function]: https://github.com/Derivasians/Calculatte/blob/main/src/main/java/io/github/derivasians/calculatte/Function.java
