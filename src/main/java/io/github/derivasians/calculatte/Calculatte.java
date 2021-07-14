@@ -115,11 +115,12 @@ public class Calculatte {
      */
     public static double leftRiemannSum(double a, double b, Function function, int n) {
         double sum = 0;
-        for (double x = a; x < b; x += ((b - a) / n)) {
+        double deltaX = (b - a) / n;
+        for (double x = a; x < b; x += deltaX) {
             sum += function.f(x);
         }
 
-        return round(((b - a) / n) * sum, CalculatteEnvironment.LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES);
+        return round(deltaX * sum, CalculatteEnvironment.LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -134,11 +135,12 @@ public class Calculatte {
      */
     public static double rightRiemannSum(double a, double b, Function function, int n) {
         double sum = 0;
-        for (double x = (a + ((b - a) / n)); x <= b + 0.00001; x += ((b - a) / n)) {
+        double deltaX = (b - a) / n;
+        for (double x = (a + deltaX); x <= b + 0.00001; x += deltaX) {
             sum += function.f(x);
         }
 
-        return round(((b - a) / n) * sum, CalculatteEnvironment.RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES);
+        return round(deltaX * sum, CalculatteEnvironment.RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -173,7 +175,8 @@ public class Calculatte {
      */
     public static double trapezoidalSum(double a, double b, Function function, int n) {
         double sum = 0;
-        for (double x = a; x <= b + 0.00001; x += ((b - a) / n)) {
+        double deltaX = (b - a) / n;
+        for (double x = a; x <= b + 0.00001; x += deltaX) {
             if(x == a || x >= b) {
                 sum += function.f(x);
             } else {
