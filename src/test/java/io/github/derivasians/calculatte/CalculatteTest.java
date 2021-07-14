@@ -166,4 +166,22 @@ public class CalculatteTest {
 
         assertTrue(actualMessage.contains(expectedMessage));
     }
+
+    @Test
+    @DisplayName("Limits at positive infinity")
+    public void limitsAtPositiveInfinity() {
+        Function function = x -> 5 + (3 / Math.pow(x, 2));
+        assertEquals(5.0, Calculatte.leftLimit(Double.POSITIVE_INFINITY, function));
+        assertEquals(5.0, Calculatte.rightLimit(Double.POSITIVE_INFINITY, function));
+        assertEquals(5.0, Calculatte.limit(Double.POSITIVE_INFINITY, function));
+    }
+
+    @Test
+    @DisplayName("Limits at max value")
+    public void limitsAtMaxValue() {
+        Function function = x -> 5 + (3 / Math.pow(x, 2));
+        assertEquals(5.0, Calculatte.leftLimit(Double.MAX_VALUE, function));
+        assertEquals(5.0, Calculatte.rightLimit(Double.MAX_VALUE, function));
+        assertEquals(5.0, Calculatte.limit(Double.MAX_VALUE, function));
+    }
 }
