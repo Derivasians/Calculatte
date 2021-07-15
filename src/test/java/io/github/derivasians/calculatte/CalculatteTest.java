@@ -6,22 +6,20 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatteTest {
+    // factorial() Unit Tests
     @Test
-    @DisplayName("Tangent line of x^2 Intercept")
-    public void tangentLineOfXSquaredXIntercept() {
-        Function XSquared = x -> Math.pow(x, 2);
-        Function TangentLine = Calculatte.tangentLine(2, XSquared);
-        assertEquals(0, TangentLine.f(1));
+    @DisplayName("1!")
+    public void factorialOf1() {
+        assertEquals(1, Calculatte.factorial(1));
     }
 
     @Test
-    @DisplayName("Tangent Line of x^2 Slope")
-    public void tangentLineOfXSquaredSlope() {
-        Function XSquared = x -> Math.pow(x, 2);
-        Function TangentLine = Calculatte.tangentLine(2, XSquared);
-        assertEquals(4, Calculatte.derivate(2, TangentLine));
+    @DisplayName("6!")
+    public void factorialOf6() {
+        assertEquals(720, Calculatte.factorial(6));
     }
 
+    // integrate() Unit Tests
     @Test
     @DisplayName("Integrate 2x from 0 to 2")
     public void integrateTwoXFrom0To2() {
@@ -46,6 +44,7 @@ public class CalculatteTest {
         assertEquals(8, area);
     }
 
+    // derivate() Unit Test
     @Test
     @DisplayName("Derivative of x^2 at x = 2")
     public void derivativeOfXSquaredAtXEquals2() {
@@ -54,6 +53,60 @@ public class CalculatteTest {
         assertEquals(4, slope);
     }
 
+    // tangentLine() Unit Tests
+    @Test
+    @DisplayName("Tangent line of x^2 Intercept")
+    public void tangentLineOfXSquaredXIntercept() {
+        Function XSquared = x -> Math.pow(x, 2);
+        Function TangentLine = Calculatte.tangentLine(2, XSquared);
+        assertEquals(0, TangentLine.f(1));
+    }
+
+    @Test
+    @DisplayName("Tangent Line of x^2 Slope")
+    public void tangentLineOfXSquaredSlope() {
+        Function XSquared = x -> Math.pow(x, 2);
+        Function TangentLine = Calculatte.tangentLine(2, XSquared);
+        assertEquals(4, Calculatte.derivate(2, TangentLine));
+    }
+
+    // leftRiemannSum() Unit Test
+    @Test
+    @DisplayName("Left Riemann sum of x^2 from 0 to 16 with n = 4")
+    public void leftRiemannSumOfXSquaredFrom0To2WithNOf4() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.leftRiemannSum(0, 16, XSquared, 4);
+        assertEquals(896, approxArea);
+    }
+
+    // rightRiemannSum() Unit Test
+    @Test
+    @DisplayName("Right Riemann sum of x^2 from 0 to 16 with n = 4")
+    public void rightRiemannSumOfXSquaredFrom0To2WithNOf4() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.rightRiemannSum(0, 16, XSquared, 4);
+        assertEquals(1920, approxArea);
+    }
+
+    // midpointRule() Unit Test
+    @Test
+    @DisplayName("Midpoint rule of x^2 from 0 to 16 with n = 4")
+    public void midpointRuleOfXSquaredFrom0To2WithNOf4() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.midpointRule(0, 16, XSquared, 4);
+        assertEquals(1344, approxArea);
+    }
+
+    // trapezoidalSum() Unit Test
+    @Test
+    @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
+    public void trapezoidalSumOfXSquaredFrom0To2WithNOf4() {
+        Function XSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.trapezoidalSum(0, 16, XSquared, 4);
+        assertEquals(1408, approxArea);
+    }
+
+    // revolve() Unit Test
     @Test
     @DisplayName("Revolve x^2 from 0 to 2")
     public void revolveXSquaredFrom0To2() {
@@ -63,6 +116,7 @@ public class CalculatteTest {
         assertEquals(20.106, volume);
     }
 
+    // crossSection() Unit Tests
     @Test
     @DisplayName("Cross section of an equilateral triangle")
     public void crossSectionOfAnEquilateralTriangle() {
@@ -74,37 +128,21 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Left Riemann sum of x^2 from 0 to 16 with n = 4")
-    public void leftRiemannSumOfXSquaredFrom0To2WithNOf4() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double approxArea = Calculatte.leftRiemannSum(0, 16, XSquared, 4);
-        assertEquals(896, approxArea);
+    @DisplayName("Invalid cross-section type")
+    public void invalidCrossSectionType() {
+        Function functionTop = x -> 1 - (x / 2);
+        Function functionBottom = x -> -1 + (x / 2);
+
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> Calculatte.crossSection(0, 2, functionTop, functionBottom, 5));
+
+        String expectedMessage = "Please enter a valid cross-section type (0 - 4).";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    @Test
-    @DisplayName("Right Riemann sum of x^2 from 0 to 16 with n = 4")
-    public void rightRiemannSumOfXSquaredFrom0To2WithNOf4() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double approxArea = Calculatte.rightRiemannSum(0, 16, XSquared, 4);
-        assertEquals(1920, approxArea);
-    }
-
-    @Test
-    @DisplayName("Midpoint rule of x^2 from 0 to 16 with n = 4")
-    public void midpointRuleOfXSquaredFrom0To2WithNOf4() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double approxArea = Calculatte.midpointRule(0, 16, XSquared, 4);
-        assertEquals(1344, approxArea);
-    }
-
-    @Test
-    @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
-    public void trapezoidalSumOfXSquaredFrom0To2WithNOf4() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double approxArea = Calculatte.trapezoidalSum(0, 16, XSquared, 4);
-        assertEquals(1408, approxArea);
-    }
-
+    // limit() Unit Tests
     @Test
     @DisplayName("Limit of 1 over x^2 at x = 0")
     public void limitOf1OverXSquaredAtXEquals0() {
@@ -138,33 +176,6 @@ public class CalculatteTest {
     public void limitAtAnAsymptote() {
         Function function = x -> (x + 2) / x;
         assertEquals(Double.NaN, Calculatte.limit(0, function));
-    }
-
-    @Test
-    @DisplayName("1!")
-    public void factorialOf1() {
-        assertEquals(1, Calculatte.factorial(1));
-    }
-
-    @Test
-    @DisplayName("6!")
-    public void factorialOf6() {
-        assertEquals(720, Calculatte.factorial(6));
-    }
-
-    @Test
-    @DisplayName("Invalid cross-section type")
-    public void invalidCrossSectionType() {
-        Function functionTop = x -> 1 - (x / 2);
-        Function functionBottom = x -> -1 + (x / 2);
-
-        Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.crossSection(0, 2, functionTop, functionBottom, 5));
-
-        String expectedMessage = "Please enter a valid cross-section type (0 - 4).";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
