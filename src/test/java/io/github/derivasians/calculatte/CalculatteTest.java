@@ -8,15 +8,21 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CalculatteTest {
     // factorial() Unit Tests
     @Test
-    @DisplayName("1!")
-    public void factorialOf1() {
-        assertEquals(1, Calculatte.factorial(1));
-    }
-
-    @Test
     @DisplayName("6!")
     public void factorialOf6() {
         assertEquals(720, Calculatte.factorial(6));
+    }
+
+    @Test
+    @DisplayName("0!")
+    public void factorialOf0() {
+        assertEquals(1, Calculatte.factorial(0));
+    }
+
+    @Test
+    @DisplayName("-1!")
+    public void factorialOfNegative1() {
+        assertEquals(Double.NaN, Calculatte.factorial(-1));
     }
 
     // integrate() Unit Tests
