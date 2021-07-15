@@ -46,6 +46,14 @@ public class Calculatte {
      * @return The factorial of the value.
      */
     public static double factorial(double n) {
+        if (n < 0) {
+            return Double.NaN;
+        }
+
+        if (n == 0) {
+            return 1;
+        }
+
         double stirling = Math.pow(n, n) * Math.pow(Math.E, -n) * Math.sqrt(2 * Math.PI * n) * (1 + (1 / (12 * n)));
         return round(stirling, CalculatteEnvironment.FACTORIAL_ROUNDING_DECIMAL_PLACES);
     }
