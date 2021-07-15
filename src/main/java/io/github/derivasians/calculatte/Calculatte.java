@@ -220,9 +220,9 @@ public class Calculatte {
      * cross-sections: square, equilateral triangle, isosceles triangle, right,
      * triangle, and semicircle.
      *
-     * <p>Note: Constants have been defined for your ease of use when defining
-     * what <code>type</code> of cross-section you are solving for. They are
-     * linked as five <code>@see</code> tags in this documentation.</p>
+     * <p>Note: Constants have been defined in <code>CalculatteEnvironment</code>
+     * for your ease of use when defining what <code>type</code> of cross-section
+     * you are solving for.
      *
      * @param a              The lower limit of integration.
      * @param b              The upper limit of integration.
