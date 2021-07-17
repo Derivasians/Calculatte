@@ -69,7 +69,7 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Tangent Line of x^2 Slope")
+    @DisplayName("Tangent line of x^2 Slope")
     public void tangentLineOfXSquaredSlope() {
         Function XSquared = x -> Math.pow(x, 2);
         Function TangentLine = Calculatte.tangentLine(2, XSquared);
