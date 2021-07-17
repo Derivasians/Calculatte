@@ -162,7 +162,7 @@ public class CalculatteTest {
         Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> Calculatte.trapezoidalSum(0, 16, XSquared, 0));
 
-        String expectedMessage = "There must be at least one rectangle.";
+        String expectedMessage = "There must be at least one trapezoid.";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));

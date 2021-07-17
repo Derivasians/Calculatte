@@ -195,7 +195,7 @@ public class Calculatte {
      */
     public static double trapezoidalSum(double a, double b, Function function, int n) {
         if (n < 1) {
-            throw new IllegalArgumentException("There must be at least one rectangle.");
+            throw new IllegalArgumentException("There must be at least one trapezoid.");
         }
 
         double sum = 0;
