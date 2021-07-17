@@ -59,6 +59,27 @@ public class CalculatteTest {
         assertEquals(4, slope);
     }
 
+    @Test
+    @DisplayName("Derivative DNE of d/dx [|x|] at x = 0")
+    public void derivativeDoesNotExistOfAbsoluteValueOfXAtXEquals0() {
+        Function function = Math::abs;
+        assertEquals(Double.NaN, Calculatte.derivate(0, function));
+    }
+
+    @Test
+    @DisplayName("Left derivative of |x| at x = 0")
+    public void leftDerivativeOfAbsoluteValueOfXAtXEquals0() {
+        Function function = Math::abs;
+        assertEquals(-1, Calculatte.leftDerivative(0, function));
+    }
+
+    @Test
+    @DisplayName("Right derivative of |x| at x = 0")
+    public void rightDerivativeOfAbsoluteValueOfXAtXEquals0() {
+        Function function = Math::abs;
+        assertEquals(1, Calculatte.rightDerivative(0, function));
+    }
+
     // tangentLine() Unit Tests
     @Test
     @DisplayName("Tangent line of x^2 Intercept")

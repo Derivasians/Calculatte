@@ -90,12 +90,42 @@ public class Calculatte {
      *
      * @param x        The point on the function to find the derivative.
      * @param function The function to find the derivative of.
-     * @return The derivative of the function at point, x.
+     * @return The derivative of the function at point, x or <code>Double.Nan</code>
+     * if the derivative DNE.
      */
     public static double derivate(double x, Function function) {
+        if ((leftDerivative(x, function) > rightDerivative(x, function) + CalculatteEnvironment.DERIVATIVE_TOLERANCE) ||
+                (leftDerivative(x, function) < rightDerivative(x, function) - CalculatteEnvironment.DERIVATIVE_TOLERANCE)) {
+            return Double.NaN;
+        }
+
         double slope =
                 (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
         return round(slope, CalculatteEnvironment.DERIVATION_ROUNDING_DECIMAL_PLACES);
+    }
+
+    /**
+     * Finds the left derivate of the function at point, x.
+     *
+     * @param x        The point on the function to find the derivative.
+     * @param function The function to find the derivative of.
+     * @return The derivative of the function at point, x.
+     */
+    public static double leftDerivative(double x, Function function) {
+        x -= CalculatteEnvironment.DERIVATIVE_OFFSET;
+        return (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
+    }
+
+    /**
+     * Finds the right derivate of the function at point, x.
+     *
+     * @param x        The point on the function to find the derivative.
+     * @param function The function to find the derivative of.
+     * @return The derivative of the function at point, x.
+     */
+    public static double rightDerivative(double x, Function function) {
+        x += CalculatteEnvironment.DERIVATIVE_OFFSET;
+        return (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
     }
 
     /**
