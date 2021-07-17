@@ -122,6 +122,10 @@ public class Calculatte {
      * @return The approximate area under the curve by the left Riemann sum rule.
      */
     public static double leftRiemannSum(double a, double b, Function function, int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("There must be at least one rectangle.");
+        }
+
         double sum = 0;
         double deltaX = (b - a) / n;
         for (double x = a; x < b; x += deltaX) {
@@ -142,6 +146,10 @@ public class Calculatte {
      * @return The approximate area under the curve by the right Riemann sum rule.
      */
     public static double rightRiemannSum(double a, double b, Function function, int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("There must be at least one rectangle.");
+        }
+
         double sum = 0;
         double deltaX = (b - a) / n;
         for (double x = (a + deltaX); x <= b + 0.00001; x += deltaX) {
@@ -162,6 +170,10 @@ public class Calculatte {
      * @return The approximate area under the curve by the midpoint rule.
      */
     public static double midpointRule(double a, double b, Function function, int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("There must be at least one rectangle.");
+        }
+
         double sum = 0;
         double deltaX = (b - a) / n;
         for (double x = a; x < b; x += deltaX) {
@@ -182,6 +194,10 @@ public class Calculatte {
      * @return The approximate area under the curve by the trapezoidal sum rule.
      */
     public static double trapezoidalSum(double a, double b, Function function, int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException("There must be at least one rectangle.");
+        }
+
         double sum = 0;
         double deltaX = (b - a) / n;
         for (double x = a; x <= b + 0.00001; x += deltaX) {

@@ -85,6 +85,20 @@ public class CalculatteTest {
         assertEquals(896, approxArea);
     }
 
+    @Test
+    @DisplayName("Left Riemann sum with invalid number of rectangles")
+    public void leftRiemannSumWithInvalidNumberOfRectangles() {
+        Function XSquared = x -> x;
+
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> Calculatte.leftRiemannSum(0, 16, XSquared, 0));
+
+        String expectedMessage = "There must be at least one rectangle.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
     // rightRiemannSum() Unit Test
     @Test
     @DisplayName("Right Riemann sum of x^2 from 0 to 16 with n = 4")
@@ -92,6 +106,20 @@ public class CalculatteTest {
         Function XSquared = x -> Math.pow(x, 2);
         double approxArea = Calculatte.rightRiemannSum(0, 16, XSquared, 4);
         assertEquals(1920, approxArea);
+    }
+
+    @Test
+    @DisplayName("Right Riemann sum with invalid number of rectangles")
+    public void rightRiemannSumWithInvalidNumberOfRectangles() {
+        Function XSquared = x -> x;
+
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> Calculatte.rightRiemannSum(0, 16, XSquared, 0));
+
+        String expectedMessage = "There must be at least one rectangle.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     // midpointRule() Unit Test
@@ -103,6 +131,20 @@ public class CalculatteTest {
         assertEquals(1344, approxArea);
     }
 
+    @Test
+    @DisplayName("Midpoint rule with invalid number of rectangles")
+    public void midpointRuleWithInvalidNumberOfRectangles() {
+        Function XSquared = x -> x;
+
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> Calculatte.midpointRule(0, 16, XSquared, 0));
+
+        String expectedMessage = "There must be at least one rectangle.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
     // trapezoidalSum() Unit Test
     @Test
     @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
@@ -110,6 +152,20 @@ public class CalculatteTest {
         Function XSquared = x -> Math.pow(x, 2);
         double approxArea = Calculatte.trapezoidalSum(0, 16, XSquared, 4);
         assertEquals(1408, approxArea);
+    }
+
+    @Test
+    @DisplayName("Trapezoidal sum with invalid number of rectangles")
+    public void trapezoidalSumWithInvalidNumberOfRectangles() {
+        Function XSquared = x -> x;
+
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> Calculatte.trapezoidalSum(0, 16, XSquared, 0));
+
+        String expectedMessage = "There must be at least one rectangle.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     // revolve() Unit Test
