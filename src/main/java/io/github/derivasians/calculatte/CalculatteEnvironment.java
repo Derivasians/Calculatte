@@ -75,7 +75,7 @@ public class CalculatteEnvironment {
     public static double H = 0.000000001;
 
     /**
-     * Largest distance between the left and right derivative before the derivative 
+     * Largest difference between the left and right derivative before the derivative
      * does not exist.
      *
      * @see io.github.derivasians.calculatte.Calculatte#derivate(double, Function) 
@@ -92,7 +92,7 @@ public class CalculatteEnvironment {
     public static double DERIVATIVE_OFFSET = 0.000000001;
     
     /**
-     * Largest distance between the left and right limit before the limit does not
+     * Largest difference between the left and right limit before the limit does not
      * exist.
      * 
      * @see io.github.derivasians.calculatte.Calculatte#limit(double, Function) 
