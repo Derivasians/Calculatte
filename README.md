@@ -14,7 +14,8 @@ System.out.println(a);
 ```
 
 ### Documentation and Guides
-Guides on how to use Calculatte can be found in the [Documentation][documentation] folder.
+Documentation can be found on our website [here](https://derivasians.github.io/Calculatte/). Guides on how to use 
+Calculatte can be found in the [Documentation][documentation] folder.
 
 ### Attribution
 Calculatte was developed by [Matthew Okashita][soupyzinc] and [Joseph Benigno][jojongx] of [Derivasians][derivasians].
