@@ -194,8 +194,8 @@ public class CalculatteTest {
     @DisplayName("Revolve x^2 from 0 to 2")
     public void revolveXSquaredFrom0To2() {
         Function XSquared = x -> Math.pow(x, 2);
-        Function X = x -> 0;
-        double volume = Calculatte.revolve(0, 2, 0, XSquared, X);
+        Function XAxis = x -> 0;
+        double volume = Calculatte.revolve(0, 2, 0, XSquared, XAxis);
         assertEquals(20.106, volume);
     }
 
