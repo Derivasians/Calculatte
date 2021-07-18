@@ -5,7 +5,7 @@ package io.github.derivasians.calculatte;
  * These mainly consist of values used for rounding and other accuracy
  * controls within calculations.
  *
- * @version 1.0 Snapshot
+ * @version 0.1.0
  * @author Matthew Okashita
  */
 public class CalculatteEnvironment {

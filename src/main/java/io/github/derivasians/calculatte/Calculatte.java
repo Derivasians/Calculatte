@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 /**
  * Holds all methods and properties to perform basic calculus operations.
  *
- * @version 1.0 Snapshot
+ * @version 0.1.0
  * @author Matthew Okashita
  * @author Joseph Benigno
  */
