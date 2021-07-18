@@ -1,2 +1,5 @@
 # Target folder
 /target/
+
+# Build folder
+/out/
