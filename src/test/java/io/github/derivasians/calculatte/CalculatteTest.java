@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatteTest {
-    // factorial() Unit Tests
+    // Factorials
     @Test
     @DisplayName("6!")
     public void factorialOf6() {
@@ -25,7 +25,7 @@ public class CalculatteTest {
         assertEquals(Double.NaN, Calculatte.factorial(-1));
     }
 
-    // integrate() Unit Tests
+    // Integration
     @Test
     @DisplayName("Integrate 2x from 0 to 2")
     public void integrateTwoXFrom0To2() {
@@ -50,7 +50,7 @@ public class CalculatteTest {
         assertEquals(8, area);
     }
 
-    // derivate() Unit Test
+    // Derivatives
     @Test
     @DisplayName("Derivative of x^2 at x = 2")
     public void derivativeOfXSquaredAtXEquals2() {
@@ -80,7 +80,7 @@ public class CalculatteTest {
         assertEquals(1, Calculatte.rightDerivative(0, function));
     }
 
-    // tangentLine() Unit Tests
+    // Tangent Lines
     @Test
     @DisplayName("Tangent line of x^2 Intercept")
     public void tangentLineOfXSquaredXIntercept() {
@@ -97,7 +97,7 @@ public class CalculatteTest {
         assertEquals(4, Calculatte.derivate(2, TangentLine));
     }
 
-    // leftRiemannSum() Unit Test
+    // Left Riemann Sums
     @Test
     @DisplayName("Left Riemann sum of x^2 from 0 to 16 with n = 4")
     public void leftRiemannSumOfXSquaredFrom0To2WithNOf4() {
@@ -120,7 +120,7 @@ public class CalculatteTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    // rightRiemannSum() Unit Test
+    // Right Riemann Sums
     @Test
     @DisplayName("Right Riemann sum of x^2 from 0 to 16 with n = 4")
     public void rightRiemannSumOfXSquaredFrom0To2WithNOf4() {
@@ -143,7 +143,7 @@ public class CalculatteTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    // midpointRule() Unit Test
+    // Midpoint rule
     @Test
     @DisplayName("Midpoint rule of x^2 from 0 to 16 with n = 4")
     public void midpointRuleOfXSquaredFrom0To2WithNOf4() {
@@ -166,7 +166,7 @@ public class CalculatteTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    // trapezoidalSum() Unit Test
+    // Trapezoidal Sums
     @Test
     @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
     public void trapezoidalSumOfXSquaredFrom0To2WithNOf4() {
@@ -189,7 +189,7 @@ public class CalculatteTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    // revolve() Unit Test
+    // Volume of Revolutions
     @Test
     @DisplayName("Revolve x^2 from 0 to 2")
     public void revolveXSquaredFrom0To2() {
@@ -199,7 +199,7 @@ public class CalculatteTest {
         assertEquals(20.106, volume);
     }
 
-    // crossSection() Unit Tests
+    // Volume of Known Cross-Sections
     @Test
     @DisplayName("Cross section of an equilateral triangle")
     public void crossSectionOfAnEquilateralTriangle() {
@@ -225,7 +225,7 @@ public class CalculatteTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    // limit() Unit Tests
+    // Limits
     @Test
     @DisplayName("Limit of 1 over x^2 at x = 0")
     public void limitOf1OverXSquaredAtXEquals0() {
