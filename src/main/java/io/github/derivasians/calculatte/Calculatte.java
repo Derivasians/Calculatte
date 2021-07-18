@@ -330,7 +330,8 @@ public class Calculatte {
      *
      * @param x        The x-value to find the limit at.
      * @param function The function to find the limit of.
-     * @return The value of the limit.
+     * @return The value of the limit or <code>Double.Nan</code>
+     * if the limit DNE.
      */
     public static double limit(double x, Function function) {
         if ((leftLimit(x, function) > rightLimit(x, function) + CalculatteEnvironment.LIMIT_TOLERANCE) ||
