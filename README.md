@@ -1,6 +1,8 @@
 # Calculatte
 A simple to use Java calculus library.
 
+*Note that this project is still in pre-release v0.1.0.*
+
 ### Example Usage
 ```java
 // Integrate f(x) = 2x from 0 to 2.
