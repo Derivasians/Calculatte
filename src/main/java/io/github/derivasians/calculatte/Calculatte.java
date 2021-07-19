@@ -7,8 +7,8 @@ import java.math.RoundingMode;
  * Holds all methods and properties to perform basic calculus operations.
  *
  * @version 0.1.0
- * @author Matthew Okashita
- * @author Joseph Benigno
+ * @author <a href="mailto:okashita.matthew@gmail.com">Matthew Okashita</a>
+ * @author <a href="mailto:benigno.joseph.s@gmail.com">Joseph Benigno</a>
  */
 public class Calculatte {
     /**
