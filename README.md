@@ -20,8 +20,8 @@ System.out.println(a);
 ```
 
 ### Documentation and Guides
-Documentation can be found on our website [here](https://derivasians.github.io/Calculatte/). Guides on how to use 
-Calculatte can be found in the [Documentation][documentation] folder.
+Documentation can be found on our website [here][doc]. Guides on how to use Calculatte can be found in this 
+repository's [wiki][wiki].
 
 ### Attribution
 Calculatte was developed by [Matthew Okashita][soupyzinc] and [Joseph Benigno][jojongx] of [Derivasians][derivasians].
@@ -43,7 +43,8 @@ License for the specific language governing permissions and limitations under
 the License.
 ```
 
-[documentation]: https://github.com/Derivasians/Calculatte/tree/main/Documenatation
+[doc]: https://derivasians.github.io/Calculatte/
+[wiki]: https://github.com/Derivasians/Calculatte/wiki
 [soupyzinc]: https://github.com/SoupyzInc
 [jojongx]: https://github.com/jojongx
 [derivasians]: https://github.com/Derivasians
