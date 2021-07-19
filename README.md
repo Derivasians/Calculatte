@@ -1,6 +1,7 @@
 # Calculatte
 ![v0.1.0](https://img.shields.io/badge/version-0.1.0-yellow)
 ![Build Badge](https://img.shields.io/github/workflow/status/derivasians/calculatte/JUnit%20Tests)
+![License | Apache-2.0](https://img.shields.io/github/license/derivasians/calculatte)
 
 A simple to use Java calculus library.
 
