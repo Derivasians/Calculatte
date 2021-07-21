@@ -291,7 +291,7 @@ public class Calculatte {
      * @see io.github.derivasians.calculatte.CalculatteEnvironment#SEMICIRCLE
      */
     public static double crossSection(double a, double b, Function functionTop, Function functionBottom, int type) {
-        Function cross = switch (type) {
+        Function integrand = switch (type) {
             case 0 -> // Square
                     x -> Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
             case 1 -> // Equilateral triangle
@@ -306,22 +306,22 @@ public class Calculatte {
                     throw new IllegalArgumentException("Please enter a valid cross-section type (0 - 4).");
         };
 
-        return round(integrate(a, b, cross), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
+        return round(integrate(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
      * Finds the volume of a known cross-section for a custom made cross-section
      * formula.
      *
-     * @param a     The lower limit of integration.
-     * @param b     The upper limit of integration.
-     * @param cross The integrand of the integral when taking the volume of a
-     *              known cross-section.
+     * @param a         The lower limit of integration.
+     * @param b         The upper limit of integration.
+     * @param integrand The integrand of the integral when taking the volume of a
+     *                  known cross-section.
      * @return The volume of the known cross-section.
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
      */
-    public static double crossSection(double a, double b, Function cross) {
-        return round(integrate(a, b, cross), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
+    public static double crossSection(double a, double b, Function integrand) {
+        return round(integrate(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
