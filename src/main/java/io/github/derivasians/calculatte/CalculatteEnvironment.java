@@ -6,7 +6,7 @@ package io.github.derivasians.calculatte;
  * controls within calculations.
  *
  * @version 0.1.0
- * @author Matthew Okashita
+ * @author <a href="mailto:okashita.matthew@gmail.com">Matthew Okashita</a>
  */
 public class CalculatteEnvironment {
     /**
