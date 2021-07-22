@@ -357,7 +357,7 @@ public class Calculatte {
      */
     public static double leftLimit(double x, Function function) {
         return round(function.f(x - CalculatteEnvironment.LIMIT_OFFSET),
-                CalculatteEnvironment.LIMIT_ROUNDING_DECIMAL_PLACES);
+                CalculatteEnvironment.LEFT_LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -369,6 +369,6 @@ public class Calculatte {
      */
     public static double rightLimit(double x, Function function) {
         return round(function.f(x + CalculatteEnvironment.LIMIT_OFFSET),
-                CalculatteEnvironment.LIMIT_ROUNDING_DECIMAL_PLACES);
+                CalculatteEnvironment.RIGHT_LIMIT_ROUNDING_DECIMAL_PLACES);
     }
 }
