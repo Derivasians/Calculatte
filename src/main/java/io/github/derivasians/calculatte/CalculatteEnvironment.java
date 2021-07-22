@@ -10,6 +10,11 @@ package io.github.derivasians.calculatte;
  */
 public class CalculatteEnvironment {
     /**
+     * Prevent instantiation of this class.
+     */
+    private CalculatteEnvironment() {}
+
+    /**
      * Represents how many decimal places this variable's respective
      * calculation(s) should be rounded too. Only values returned by a method
      * are rounded. Intermediate values within a method are never rounded,

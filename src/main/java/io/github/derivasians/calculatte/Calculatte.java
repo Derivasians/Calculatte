@@ -12,6 +12,11 @@ import java.math.RoundingMode;
  */
 public class Calculatte {
     /**
+     * Prevent instantiation of this class.
+     */
+    private Calculatte() {}
+
+    /**
      * Rounds doubles according to the IEEE 754 standard of rounding half to even.
      *
      * <p>Note: If <code>decimalPlaces</code> is set to <code>-1</code>, <code>x</code>
