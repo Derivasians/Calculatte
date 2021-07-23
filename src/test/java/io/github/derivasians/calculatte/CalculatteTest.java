@@ -60,7 +60,7 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Derivative DNE of d/dx [|x|] at x = 0")
+    @DisplayName("Derivative DNE of |x| at x = 0")
     public void derivativeDoesNotExistOfAbsoluteValueOfXAtXEquals0() {
         Function function = Math::abs;
         assertEquals(Double.NaN, Calculatte.derivate(0, function));
@@ -82,7 +82,7 @@ public class CalculatteTest {
 
     // Tangent Lines
     @Test
-    @DisplayName("Tangent line of x^2 Intercept")
+    @DisplayName("Tangent line of x^2 intercept")
     public void tangentLineOfXSquaredXIntercept() {
         Function XSquared = x -> Math.pow(x, 2);
         Function TangentLine = Calculatte.tangentLine(2, XSquared);
@@ -90,7 +90,7 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Tangent line of x^2 Slope")
+    @DisplayName("Tangent line of x^2 slope")
     public void tangentLineOfXSquaredSlope() {
         Function XSquared = x -> Math.pow(x, 2);
         Function TangentLine = Calculatte.tangentLine(2, XSquared);
