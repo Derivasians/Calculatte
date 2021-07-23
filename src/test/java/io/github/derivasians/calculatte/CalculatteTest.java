@@ -278,4 +278,14 @@ public class CalculatteTest {
         assertEquals(5.0, Calculatte.rightLimit(Double.MAX_VALUE, function));
         assertEquals(5.0, Calculatte.limit(Double.MAX_VALUE, function));
     }
+
+    // Polar Integration
+    @Test
+    @DisplayName("Integrate sin(x) from 0 to Pi")
+    public void polarIntegrateSineXFrom0ToPi() {
+        Function SinX = x -> Math.sin(x);
+        double area = Calculatte.polarArea(0, Math.PI, SinX);
+        assertEquals(0.785, area);
+    }
+
 }
