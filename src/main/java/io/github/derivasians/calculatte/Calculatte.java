@@ -66,8 +66,8 @@ public class Calculatte {
     /**
      * Integrates the function from a to b using Simpson's rule.
      *
-     * @param a        The lower limit of integration, in degrees.
-     * @param b        The upper limit of integration, in degrees.
+     * @param a        The lower limit of integration.
+     * @param b        The upper limit of integration.
      * @param function The function to integrate.
      * @return The area under the curve from a to b.
      */
@@ -255,8 +255,8 @@ public class Calculatte {
      * the data was rotated 90 degrees and to be rotated horizontally. There should be no
      * mathematical difference between the two problems.</p>
      *
-     * @param a              The lower limit of integration, in degrees.
-     * @param b              The upper limit of integration, in degrees.
+     * @param a              The lower limit of integration.
+     * @param b              The upper limit of integration.
      * @param axis           The y value of the axis of rotation, where 0 is about the x-axis.
      * @param functionTop    The top function defining the bounded region.
      * @param functionBottom The bottom function defining the bounded region.
