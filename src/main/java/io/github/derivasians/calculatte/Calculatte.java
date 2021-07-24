@@ -373,17 +373,19 @@ public class Calculatte {
     }
 
     /**
-     * Finds the area bounded by a polar function(r) of theta between two radian measures.
+     * Finds the area bounded by a polar function, <code>r</code> of theta,
+     * between two radian measures.
+     *
      * @param a The lower limit of integration.
      * @param b The upper limit of integration.
      * @param r The polar function of theta bounding a specified area.
      * @return The area of the bounded region.
      */
-    public static double polarArea(double a, double b, Function r ) {
+    public static double polarArea(double a, double b, Function r) {
         Function squaredR = x -> Math.pow(r.f(x), 2);
         CalculatteEnvironment.INTEGRATION_ROUNDING_DECIMAL_PLACES = -1;
-        double area = round(0.5 * integrate(a, b, squaredR), CalculatteEnvironment.POLAR_INTEGRATION_ROUNDING_DECIMAL_PLACES);
+        double area = 0.5 * integrate(a, b, squaredR);
         CalculatteEnvironment.INTEGRATION_ROUNDING_DECIMAL_PLACES = 3;
-        return area;
+        return round(area, CalculatteEnvironment.POLAR_INTEGRATION_ROUNDING_DECIMAL_PLACES);
     }
 }
