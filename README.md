@@ -5,7 +5,7 @@
 
 A simple to use Java calculus library.
 
-*Note that this project is still in pre-release v0.1.0 and may be unstable.*
+*Note that this project is still in pre-release and may be unstable.*
 
 ### Example Usage
 ```java
