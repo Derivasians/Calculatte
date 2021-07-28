@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200" src="https://github.com/Derivasians/Calculatte/blob/main/imgs/CalculatteLogo.png" alt="Calculatte Logo">
+  <img width="200" height="200" src="https://github.com/Derivasians/Calculatte/blob/main/imgs/CalculatteLogo.png" alt="Calculatte Logo">
 </p>
 <h1 align="center">Calculatte</h1>
 
