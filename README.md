@@ -1,7 +1,13 @@
-# Calculatte
-![Release | v0.1.0](https://img.shields.io/github/v/release/derivasians/calculatte?include_prereleases)
-![Build Badge](https://img.shields.io/github/workflow/status/derivasians/calculatte/JUnit%20Tests)
-![License | Apache-2.0](https://img.shields.io/github/license/derivasians/calculatte)
+<p align="center">
+  <img width="200" src="https://cdn.discordapp.com/attachments/707802516770783263/870006578676371506/CalculatteLogo.png" alt="Calculatte Logo">
+</p>
+<h1 align="center">Calculatte</h1>
+
+<div align="center">
+<img src="https://img.shields.io/github/v/release/derivasians/calculatte?include_prereleases" alt="Release | v0.1.0">
+<img src="https://img.shields.io/github/workflow/status/derivasians/calculatte/JUnit%20Tests" alt="Build Badge">
+<img src="https://img.shields.io/github/license/derivasians/calculatte" alt="License | Apache-2.0">
+</div>
 
 A simple to use Java calculus library.
 
