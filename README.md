@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200" src="https://cdn.discordapp.com/attachments/707802516770783263/870006578676371506/CalculatteLogo.png" alt="Calculatte Logo">
+  <img width="200" src="https://github.com/Derivasians/Calculatte/blob/main/imgs/CalculatteLogo.png" alt="Calculatte Logo">
 </p>
 <h1 align="center">Calculatte</h1>
 
