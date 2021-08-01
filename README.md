@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/github/license/derivasians/calculatte" alt="License | Apache-2.0">
 </div>
 
-A simple to use Java calculus library.
+A simple to use numerical Java calculus library.
 
 *Note that this project is still in pre-release and may be unstable.*
 
