@@ -10,7 +10,7 @@ import java.math.RoundingMode;
  * @author <a href="mailto:benigno.joseph.s@gmail.com">Joseph Benigno</a>
  * @version 0.1.0
  */
-public class Calculatte {
+public final class Calculatte {
     /**
      * Prevent instantiation of this class.
      */
