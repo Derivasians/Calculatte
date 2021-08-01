@@ -29,6 +29,20 @@ System.out.println(a);
 Documentation can be found on our website [here][doc]. Guides on how to use Calculatte can be found in this 
 repository's [wiki][wiki].
 
+### Tag Release Code
+The [`main` branch][main] is used as our development branch, with feature branches to separate larger feature 
+implementations. Because of this, the code in the [`main` branch][main] may not reflect the code at the time of the 
+latest tag release. Fortunately, GitHub automatically creates snapshots of repositories when a tag is released.
+
+To find the source code at the time of a tag's release go to
+`https://github.com/Derivasians/Calculatte/tree/v<SemVer>`. For example, to view the source code at the time of the 
+[v0.1.0 tag release][v0.1.0 release], go to [`https://github.com/Derivasians/Calculatte/tree/v0.1.0`][v0.1.0 code].
+
+[main]: https://github.com/Derivasians/Calculatte/tree/main
+[release]: https://github.com/Derivasians/Calculatte/tree/main
+[v0.1.0 release]: https://github.com/Derivasians/Calculatte/releases/tag/v0.1.0
+[v0.1.0 code]: https://github.com/Derivasians/Calculatte/tree/v0.1.0
+
 ### Attribution
 Calculatte was developed by [Matthew Okashita][soupyzinc] and [Joseph Benigno][jojongx] of [Derivasians][derivasians].
 
