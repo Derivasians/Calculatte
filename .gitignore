@@ -3,3 +3,6 @@
 
 # Build folder
 /out/
+
+# IntelliJ Settings
+/.idea/
