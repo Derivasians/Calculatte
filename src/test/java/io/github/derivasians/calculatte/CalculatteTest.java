@@ -216,10 +216,10 @@ public class CalculatteTest {
         Function functionTop = x -> 1 - (x / 2);
         Function functionBottom = x -> -1 + (x / 2);
 
-        Exception exception = assertThrows(IllegalArgumentException.class,
+        Exception exception = assertThrows(InvalidCrossSectionTypeException.class,
                 () -> Calculatte.crossSection(0, 2, functionTop, functionBottom, 5));
 
-        String expectedMessage = "Please enter a valid cross-section type (0 - 4).";
+        String expectedMessage = "<5> is not a valid cross-section type. Please enter a valid cross-section type (0 - 4).";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));

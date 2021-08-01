@@ -308,7 +308,7 @@ public class Calculatte {
             case 4 -> // Semicircle
                     x -> (Math.PI / 8) * Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
             default -> // Error
-                    throw new IllegalArgumentException("Please enter a valid cross-section type (0 - 4).");
+                    throw new InvalidCrossSectionTypeException(Integer.toString(type));
         };
 
         return round(integrate(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
