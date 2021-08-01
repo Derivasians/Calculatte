@@ -283,7 +283,7 @@ public class CalculatteTest {
     @Test
     @DisplayName("Polar integrate sin(x) from 0 to Pi")
     public void polarIntegrateSineXFrom0ToPi() {
-        Function function = x -> Math.sin(x);
+        Function function = Math::sin;
         double area = Calculatte.polarArea(0, Math.PI, function);
         assertEquals(0.785, area);
     }
@@ -291,15 +291,15 @@ public class CalculatteTest {
     @Test
     @DisplayName("Polar integrate sin(x) from 0 to 2Pi")
     public void polarIntegrateSineXFrom0To2Pi() {
-        Function function = x -> Math.sin(x);
-        double area = Calculatte.polarArea(0, 2*Math.PI, function);
+        Function function = Math::sin;
+        double area = Calculatte.polarArea(0, 2 * Math.PI, function);
         assertEquals(1.571, area);
     }
 
     @Test
     @DisplayName("Polar integrate 2cos(3x) from 0 to Pi")
     public void polarIntegrate2Cosine3XFrom0ToPi() {
-        Function function = x -> 2*Math.cos(3*x);
+        Function function = x -> 2 * Math.cos(3 * x);
         double area = Calculatte.polarArea(0, Math.PI, function);
         assertEquals(3.142, area);
     }
