@@ -45,25 +45,6 @@ public class Calculatte {
     }
 
     /**
-     * Finds the factorial of double <code>n</code> using Stirling's approximation.
-     *
-     * @param n The value to take the factorial of.
-     * @return The factorial of the value.
-     */
-    public static double factorial(double n) {
-        if (n < 0) {
-            return Double.NaN;
-        }
-
-        if (n == 0) {
-            return 1;
-        }
-
-        double stirling = Math.pow(n, n) * Math.pow(Math.E, -n) * Math.sqrt(2 * Math.PI * n) * (1 + (1 / (12 * n)));
-        return round(stirling, CalculatteEnvironment.FACTORIAL_ROUNDING_DECIMAL_PLACES);
-    }
-
-    /**
      * Integrates the function from a to b using Simpson's rule.
      *
      * @param a        The lower limit of integration.

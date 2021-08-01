@@ -29,7 +29,6 @@ public class CalculatteEnvironment {
      * would prefer to use your own rounding method or none at all.</p>
      */
     public static int
-    FACTORIAL_ROUNDING_DECIMAL_PLACES = 0,
     INTEGRATION_ROUNDING_DECIMAL_PLACES = 3,
     DERIVATION_ROUNDING_DECIMAL_PLACES = 3,
     LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES = 3,

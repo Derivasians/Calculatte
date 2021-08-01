@@ -6,25 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatteTest {
-    // Factorials
-    @Test
-    @DisplayName("6!")
-    public void factorialOf6() {
-        assertEquals(720, Calculatte.factorial(6));
-    }
-
-    @Test
-    @DisplayName("0!")
-    public void factorialOf0() {
-        assertEquals(1, Calculatte.factorial(0));
-    }
-
-    @Test
-    @DisplayName("-1!")
-    public void factorialOfNegative1() {
-        assertEquals(Double.NaN, Calculatte.factorial(-1));
-    }
-
     // Integration
     @Test
     @DisplayName("Integrate 2x from 0 to 2")
@@ -303,5 +284,4 @@ public class CalculatteTest {
         double area = Calculatte.polarArea(0, Math.PI, function);
         assertEquals(3.142, area);
     }
-
 }
