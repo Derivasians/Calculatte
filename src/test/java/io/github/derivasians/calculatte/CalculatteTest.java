@@ -10,24 +10,24 @@ public class CalculatteTest {
     @Test
     @DisplayName("Integrate 2x from 0 to 2")
     public void integrateTwoXFrom0To2() {
-        Function TwoX = x -> 2 * x;
-        double area = Calculatte.integrate(0, 2, TwoX);
+        Function twoX = x -> 2 * x;
+        double area = Calculatte.integrate(0, 2, twoX);
         assertEquals(4, area);
     }
 
     @Test
     @DisplayName("Integrate x^3 from -2 to 2")
     public void integrateXCubedFromNegativeTwoToTwo() {
-        Function XCubed = x -> Math.pow(x, 3);
-        double area = Calculatte.integrate(-2, 2, XCubed);
+        Function xCubed = x -> Math.pow(x, 3);
+        double area = Calculatte.integrate(-2, 2, xCubed);
         assertEquals(0, area);
     }
 
     @Test
     @DisplayName("Integrate x = 4 from 0 to 2")
     public void integrateXEquals4From0To2() {
-        Function XEquals4 = x -> 4;
-        double area = Calculatte.integrate(0, 2, XEquals4);
+        Function xEquals4 = x -> 4;
+        double area = Calculatte.integrate(0, 2, xEquals4);
         assertEquals(8, area);
     }
 
@@ -35,8 +35,8 @@ public class CalculatteTest {
     @Test
     @DisplayName("Derivative of x^2 at x = 2")
     public void derivativeOfXSquaredAtXEquals2() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double slope = Calculatte.derivate(2, XSquared);
+        Function xSquared = x -> Math.pow(x, 2);
+        double slope = Calculatte.derivate(2, xSquared);
         assertEquals(4, slope);
     }
 
@@ -65,35 +65,35 @@ public class CalculatteTest {
     @Test
     @DisplayName("Tangent line of x^2 intercept")
     public void tangentLineOfXSquaredXIntercept() {
-        Function XSquared = x -> Math.pow(x, 2);
-        Function TangentLine = Calculatte.tangentLine(2, XSquared);
-        assertEquals(0, TangentLine.f(1));
+        Function xSquared = x -> Math.pow(x, 2);
+        Function tangentLine = Calculatte.tangentLine(2, xSquared);
+        assertEquals(0, tangentLine.f(1));
     }
 
     @Test
     @DisplayName("Tangent line of x^2 slope")
     public void tangentLineOfXSquaredSlope() {
-        Function XSquared = x -> Math.pow(x, 2);
-        Function TangentLine = Calculatte.tangentLine(2, XSquared);
-        assertEquals(4, Calculatte.derivate(2, TangentLine));
+        Function xSquared = x -> Math.pow(x, 2);
+        Function tangentLine = Calculatte.tangentLine(2, xSquared);
+        assertEquals(4, Calculatte.derivate(2, tangentLine));
     }
 
     // Left Riemann Sums
     @Test
     @DisplayName("Left Riemann sum of x^2 from 0 to 16 with n = 4")
     public void leftRiemannSumOfXSquaredFrom0To2WithNOf4() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double approxArea = Calculatte.leftRiemannSum(0, 16, XSquared, 4);
+        Function xSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.leftRiemannSum(0, 16, xSquared, 4);
         assertEquals(896, approxArea);
     }
 
     @Test
     @DisplayName("Left Riemann sum with invalid number of rectangles")
     public void leftRiemannSumWithInvalidNumberOfRectangles() {
-        Function XSquared = x -> x;
+        Function xSquared = x -> x;
 
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.leftRiemannSum(0, 16, XSquared, 0));
+                () -> Calculatte.leftRiemannSum(0, 16, xSquared, 0));
 
         String expectedMessage = "There must be at least one rectangle.";
         String actualMessage = exception.getMessage();
@@ -105,18 +105,18 @@ public class CalculatteTest {
     @Test
     @DisplayName("Right Riemann sum of x^2 from 0 to 16 with n = 4")
     public void rightRiemannSumOfXSquaredFrom0To2WithNOf4() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double approxArea = Calculatte.rightRiemannSum(0, 16, XSquared, 4);
+        Function xSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.rightRiemannSum(0, 16, xSquared, 4);
         assertEquals(1920, approxArea);
     }
 
     @Test
     @DisplayName("Right Riemann sum with invalid number of rectangles")
     public void rightRiemannSumWithInvalidNumberOfRectangles() {
-        Function XSquared = x -> x;
+        Function xSquared = x -> x;
 
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.rightRiemannSum(0, 16, XSquared, 0));
+                () -> Calculatte.rightRiemannSum(0, 16, xSquared, 0));
 
         String expectedMessage = "There must be at least one rectangle.";
         String actualMessage = exception.getMessage();
@@ -128,18 +128,18 @@ public class CalculatteTest {
     @Test
     @DisplayName("Midpoint rule of x^2 from 0 to 16 with n = 4")
     public void midpointRuleOfXSquaredFrom0To2WithNOf4() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double approxArea = Calculatte.midpointRule(0, 16, XSquared, 4);
+        Function xSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.midpointRule(0, 16, xSquared, 4);
         assertEquals(1344, approxArea);
     }
 
     @Test
     @DisplayName("Midpoint rule with invalid number of rectangles")
     public void midpointRuleWithInvalidNumberOfRectangles() {
-        Function XSquared = x -> x;
+        Function xSquared = x -> x;
 
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.midpointRule(0, 16, XSquared, 0));
+                () -> Calculatte.midpointRule(0, 16, xSquared, 0));
 
         String expectedMessage = "There must be at least one rectangle.";
         String actualMessage = exception.getMessage();
@@ -151,18 +151,18 @@ public class CalculatteTest {
     @Test
     @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
     public void trapezoidalSumOfXSquaredFrom0To2WithNOf4() {
-        Function XSquared = x -> Math.pow(x, 2);
-        double approxArea = Calculatte.trapezoidalSum(0, 16, XSquared, 4);
+        Function xSquared = x -> Math.pow(x, 2);
+        double approxArea = Calculatte.trapezoidalSum(0, 16, xSquared, 4);
         assertEquals(1408, approxArea);
     }
 
     @Test
     @DisplayName("Trapezoidal sum with invalid number of rectangles")
     public void trapezoidalSumWithInvalidNumberOfRectangles() {
-        Function XSquared = x -> x;
+        Function xSquared = x -> x;
 
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.trapezoidalSum(0, 16, XSquared, 0));
+                () -> Calculatte.trapezoidalSum(0, 16, xSquared, 0));
 
         String expectedMessage = "There must be at least one trapezoid.";
         String actualMessage = exception.getMessage();
@@ -174,9 +174,9 @@ public class CalculatteTest {
     @Test
     @DisplayName("Revolve x^2 from 0 to 2")
     public void revolveXSquaredFrom0To2() {
-        Function XSquared = x -> Math.pow(x, 2);
-        Function XAxis = x -> 0;
-        double volume = Calculatte.revolve(0, 2, 0, XSquared, XAxis);
+        Function xSquared = x -> Math.pow(x, 2);
+        Function xAxis = x -> 0;
+        double volume = Calculatte.revolve(0, 2, 0, xSquared, xAxis);
         assertEquals(20.106, volume);
     }
 
