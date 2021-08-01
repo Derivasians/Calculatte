@@ -26,7 +26,7 @@ public class CalculatteEnvironment {
      *
      * <p>Note: Setting any of these values to -1 will prevent that group
      * of calculations from being rounded. This can be useful if you
-     * would prefer to use your own rounding method or none at all.</p>
+     * would prefer to use your own rounding method or none at all.
      */
     public static int
     integrationRoundingDecimalPlaces = 3,
@@ -49,7 +49,7 @@ public class CalculatteEnvironment {
      *
      * <p>Note: Setting <code>CalculatteEnvironment.positiveInfinity</code> to
      * <code>Double.MAX_VALUE</code> will prevent rounding values up to
-     * <code>Double.POSITIVE_INFINITY</code>.</p>
+     * <code>Double.POSITIVE_INFINITY</code>.
      * 
      * @see io.github.derivasians.calculatte.Calculatte#round(double, int) 
      */
@@ -62,7 +62,7 @@ public class CalculatteEnvironment {
      *
      * <p>Note: Setting <code>CalculatteEnvironment.negativeInfinity</code> to
      * <code>Double.MIN_VALUE</code> will prevent rounding values down to
-     * <code>Double.NEGATIVE_INFINITY</code>.</p>
+     * <code>Double.NEGATIVE_INFINITY</code>.
      * 
      * @see io.github.derivasians.calculatte.Calculatte#round(double, int)  
      */

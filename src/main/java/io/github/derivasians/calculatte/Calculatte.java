@@ -20,7 +20,7 @@ public class Calculatte {
      * Rounds doubles according to the IEEE 754 standard of rounding half to even.
      *
      * <p>Note: If <code>decimalPlaces</code> is set to <code>-1</code>, <code>x</code>
-     * will not be rounded.</p>
+     * will not be rounded.
      *
      * @param x The value to be rounded.
      * @param decimalPlaces The number of decimal places to round to.
@@ -261,7 +261,7 @@ public class Calculatte {
      *
      * <p>Note: Vertical revolutions can also be made with this function. Input your data as if
      * the data was rotated 90 degrees and to be rotated horizontally. There should be no
-     * mathematical difference between the two problems.</p>
+     * mathematical difference between the two problems.
      *
      * @param a              The lower limit of integration.
      * @param b              The upper limit of integration.
