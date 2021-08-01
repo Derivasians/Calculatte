@@ -91,6 +91,33 @@ public class Calculatte {
     }
 
     /**
+     * Integrates the function from a to b using Simpson's rule, without rounding.
+     *
+     * @param a        The lower limit of integration.
+     * @param b        The upper limit of integration.
+     * @param function The function to integrate.
+     * @return The area under the curve from a to b, not rounded.
+     */
+    private static double integrateRaw(double a, double b, Function function) {
+        double h = (b - a) / (CalculatteEnvironment.N - 1); // Step size.
+
+        // 1/3 terms.
+        double sum = 1.0 / 3.0 * (function.f(a) + function.f(b));
+
+        // 4/3 terms.
+        for (int i = 1; i < CalculatteEnvironment.N - 1; i += 2) {
+            sum += 4.0 / 3.0 * function.f(a + h * i);
+        }
+
+        // 2/3 terms.
+        for (int i = 2; i < CalculatteEnvironment.N - 1; i += 2) {
+            sum += 2.0 / 3.0 * function.f(a + h * i);
+        }
+
+        return sum * h;
+    }
+
+    /**
      * Finds the derivate of the function at point, x.
      *
      * @param x        The point on the function to find the derivative.
@@ -270,7 +297,7 @@ public class Calculatte {
         Function squaredFunctionBottom = x -> Math.pow(axis - functionBottom.f(x), 2);
 
         // Split the volume of revolution formula into two separate integrals.
-        double volume = Math.PI * (integrate(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
+        double volume = Math.PI * (integrateRaw(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
         return round(volume, CalculatteEnvironment.REVOLUTION_ROUNDING_DECIMAL_PLACES);
     }
 
@@ -311,7 +338,7 @@ public class Calculatte {
                     throw new InvalidCrossSectionTypeException(Integer.toString(type));
         };
 
-        return round(integrate(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
+        return round(integrateRaw(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -326,7 +353,7 @@ public class Calculatte {
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
      */
     public static double crossSection(double a, double b, Function integrand) {
-        return round(integrate(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
+        return round(integrateRaw(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
     }
 
     /**
@@ -383,9 +410,7 @@ public class Calculatte {
      */
     public static double polarArea(double a, double b, Function r) {
         Function squaredR = x -> Math.pow(r.f(x), 2);
-        CalculatteEnvironment.INTEGRATION_ROUNDING_DECIMAL_PLACES = -1;
-        double area = 0.5 * integrate(a, b, squaredR);
-        CalculatteEnvironment.INTEGRATION_ROUNDING_DECIMAL_PLACES = 3;
+        double area = 0.5 * integrateRaw(a, b, squaredR);
         return round(area, CalculatteEnvironment.POLAR_INTEGRATION_ROUNDING_DECIMAL_PLACES);
     }
 }
