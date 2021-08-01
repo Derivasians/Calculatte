@@ -31,11 +31,11 @@ public class Calculatte {
             return x;
         }
 
-        if (x > CalculatteEnvironment.POSITIVE_INFINITY) {
+        if (x > CalculatteEnvironment.positiveInfinity) {
             return Double.POSITIVE_INFINITY;
         }
 
-        if (x < CalculatteEnvironment.NEGATIVE_INFINITY) {
+        if (x < CalculatteEnvironment.negativeInfinity) {
             return Double.NEGATIVE_INFINITY;
         }
 
@@ -53,22 +53,22 @@ public class Calculatte {
      * @return The area under the curve from a to b.
      */
     public static double integrate(double a, double b, Function function) {
-        double h = (b - a) / (CalculatteEnvironment.N - 1); // Step size.
+        double h = (b - a) / (CalculatteEnvironment.n - 1); // Step size.
 
         // 1/3 terms.
         double sum = 1.0 / 3.0 * (function.f(a) + function.f(b));
 
         // 4/3 terms.
-        for (int i = 1; i < CalculatteEnvironment.N - 1; i += 2) {
+        for (int i = 1; i < CalculatteEnvironment.n - 1; i += 2) {
             sum += 4.0 / 3.0 * function.f(a + h * i);
         }
 
         // 2/3 terms.
-        for (int i = 2; i < CalculatteEnvironment.N - 1; i += 2) {
+        for (int i = 2; i < CalculatteEnvironment.n - 1; i += 2) {
             sum += 2.0 / 3.0 * function.f(a + h * i);
         }
 
-        return round(sum * h, CalculatteEnvironment.INTEGRATION_ROUNDING_DECIMAL_PLACES);
+        return round(sum * h, CalculatteEnvironment.integrationRoundingDecimalPlaces);
     }
 
     /**
@@ -80,18 +80,18 @@ public class Calculatte {
      * @return The area under the curve from a to b, not rounded.
      */
     private static double integrateRaw(double a, double b, Function function) {
-        double h = (b - a) / (CalculatteEnvironment.N - 1); // Step size.
+        double h = (b - a) / (CalculatteEnvironment.n - 1); // Step size.
 
         // 1/3 terms.
         double sum = 1.0 / 3.0 * (function.f(a) + function.f(b));
 
         // 4/3 terms.
-        for (int i = 1; i < CalculatteEnvironment.N - 1; i += 2) {
+        for (int i = 1; i < CalculatteEnvironment.n - 1; i += 2) {
             sum += 4.0 / 3.0 * function.f(a + h * i);
         }
 
         // 2/3 terms.
-        for (int i = 2; i < CalculatteEnvironment.N - 1; i += 2) {
+        for (int i = 2; i < CalculatteEnvironment.n - 1; i += 2) {
             sum += 2.0 / 3.0 * function.f(a + h * i);
         }
 
@@ -107,14 +107,14 @@ public class Calculatte {
      * if the derivative DNE.
      */
     public static double derivate(double x, Function function) {
-        if ((leftDerivative(x, function) > rightDerivative(x, function) + CalculatteEnvironment.DERIVATIVE_TOLERANCE) ||
-                (leftDerivative(x, function) < rightDerivative(x, function) - CalculatteEnvironment.DERIVATIVE_TOLERANCE)) {
+        if ((leftDerivative(x, function) > rightDerivative(x, function) + CalculatteEnvironment.derivativeTolerance) ||
+                (leftDerivative(x, function) < rightDerivative(x, function) - CalculatteEnvironment.derivativeTolerance)) {
             return Double.NaN;
         }
 
         double slope =
-                (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
-        return round(slope, CalculatteEnvironment.DERIVATION_ROUNDING_DECIMAL_PLACES);
+                (function.f(x + CalculatteEnvironment.h) - function.f(x)) / ((x + CalculatteEnvironment.h) - x);
+        return round(slope, CalculatteEnvironment.derivationRoundingDecimalPlaces);
     }
 
     /**
@@ -125,8 +125,8 @@ public class Calculatte {
      * @return The derivative of the function at point, x.
      */
     public static double leftDerivative(double x, Function function) {
-        x -= CalculatteEnvironment.DERIVATIVE_OFFSET;
-        return (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
+        x -= CalculatteEnvironment.derivativeOffset;
+        return (function.f(x + CalculatteEnvironment.h) - function.f(x)) / ((x + CalculatteEnvironment.h) - x);
     }
 
     /**
@@ -137,8 +137,8 @@ public class Calculatte {
      * @return The derivative of the function at point, x.
      */
     public static double rightDerivative(double x, Function function) {
-        x += CalculatteEnvironment.DERIVATIVE_OFFSET;
-        return (function.f(x + CalculatteEnvironment.H) - function.f(x)) / ((x + CalculatteEnvironment.H) - x);
+        x += CalculatteEnvironment.derivativeOffset;
+        return (function.f(x + CalculatteEnvironment.h) - function.f(x)) / ((x + CalculatteEnvironment.h) - x);
     }
 
     /**
@@ -175,7 +175,7 @@ public class Calculatte {
             sum += function.f(x);
         }
 
-        return round(deltaX * sum, CalculatteEnvironment.LEFT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES);
+        return round(deltaX * sum, CalculatteEnvironment.leftRiemannSumRoundingDecimalPlaces);
     }
 
     /**
@@ -199,7 +199,7 @@ public class Calculatte {
             sum += function.f(x);
         }
 
-        return round(deltaX * sum, CalculatteEnvironment.RIGHT_RIEMANN_SUM_ROUNDING_DECIMAL_PLACES);
+        return round(deltaX * sum, CalculatteEnvironment.rightRiemannSumRoundingDecimalPlaces);
     }
 
     /**
@@ -223,7 +223,7 @@ public class Calculatte {
             sum += function.f((x + (x + deltaX)) / 2);
         }
 
-        return round(deltaX * sum, CalculatteEnvironment.MIDPOINT_RULE_ROUNDING_DECIMAL_PLACES);
+        return round(deltaX * sum, CalculatteEnvironment.midpointRuleRoundingDecimalPlaces);
     }
 
     /**
@@ -251,7 +251,7 @@ public class Calculatte {
             }
         }
 
-        return round(((b - a) / (2 * n)) * sum, CalculatteEnvironment.TRAPEZOIDAL_SUM_ROUNDING_DECIMAL_PLACES);
+        return round(((b - a) / (2 * n)) * sum, CalculatteEnvironment.trapezoidalSumRoundingDecimalPlaces);
     }
 
     /**
@@ -279,7 +279,7 @@ public class Calculatte {
 
         // Split the volume of revolution formula into two separate integrals.
         double volume = Math.PI * (integrateRaw(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
-        return round(volume, CalculatteEnvironment.REVOLUTION_ROUNDING_DECIMAL_PLACES);
+        return round(volume, CalculatteEnvironment.revolutionRoundingDecimalPlaces);
     }
 
     /**
@@ -319,7 +319,7 @@ public class Calculatte {
                     throw new InvalidCrossSectionTypeException(Integer.toString(type));
         };
 
-        return round(integrateRaw(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
+        return round(integrateRaw(a, b, integrand), CalculatteEnvironment.crossSectionsRoundingDecimalPlaces);
     }
 
     /**
@@ -334,7 +334,7 @@ public class Calculatte {
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
      */
     public static double crossSection(double a, double b, Function integrand) {
-        return round(integrateRaw(a, b, integrand), CalculatteEnvironment.CROSS_SECTIONS_ROUNDING_DECIMAL_PLACES);
+        return round(integrateRaw(a, b, integrand), CalculatteEnvironment.crossSectionsRoundingDecimalPlaces);
     }
 
     /**
@@ -347,13 +347,13 @@ public class Calculatte {
      * if the limit DNE.
      */
     public static double limit(double x, Function function) {
-        if ((leftLimit(x, function) > rightLimit(x, function) + CalculatteEnvironment.LIMIT_TOLERANCE) ||
-                (leftLimit(x, function) < rightLimit(x, function) - CalculatteEnvironment.LIMIT_TOLERANCE)) {
+        if ((leftLimit(x, function) > rightLimit(x, function) + CalculatteEnvironment.limitTolerance) ||
+                (leftLimit(x, function) < rightLimit(x, function) - CalculatteEnvironment.limitTolerance)) {
             return Double.NaN;
         }
 
-        return round(function.f(x + CalculatteEnvironment.LIMIT_OFFSET),
-                CalculatteEnvironment.LIMIT_ROUNDING_DECIMAL_PLACES);
+        return round(function.f(x + CalculatteEnvironment.limitOffset),
+                CalculatteEnvironment.limitRoundingDecimalPlaces);
     }
 
     /**
@@ -364,8 +364,8 @@ public class Calculatte {
      * @return The value of the left limit.
      */
     public static double leftLimit(double x, Function function) {
-        return round(function.f(x - CalculatteEnvironment.LIMIT_OFFSET),
-                CalculatteEnvironment.LEFT_LIMIT_ROUNDING_DECIMAL_PLACES);
+        return round(function.f(x - CalculatteEnvironment.limitOffset),
+                CalculatteEnvironment.leftLimitRoundingDecimalPlaces);
     }
 
     /**
@@ -376,8 +376,8 @@ public class Calculatte {
      * @return The value of the right limit.
      */
     public static double rightLimit(double x, Function function) {
-        return round(function.f(x + CalculatteEnvironment.LIMIT_OFFSET),
-                CalculatteEnvironment.RIGHT_LIMIT_ROUNDING_DECIMAL_PLACES);
+        return round(function.f(x + CalculatteEnvironment.limitOffset),
+                CalculatteEnvironment.rightLimitRoundingDecimalPlaces);
     }
 
     /**
@@ -392,6 +392,6 @@ public class Calculatte {
     public static double polarArea(double a, double b, Function r) {
         Function squaredR = x -> Math.pow(r.f(x), 2);
         double area = 0.5 * integrateRaw(a, b, squaredR);
-        return round(area, CalculatteEnvironment.POLAR_INTEGRATION_ROUNDING_DECIMAL_PLACES);
+        return round(area, CalculatteEnvironment.polarAreaRoundingDecimalPlaces);
     }
 }
