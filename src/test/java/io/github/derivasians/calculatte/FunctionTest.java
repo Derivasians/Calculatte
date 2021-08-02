@@ -9,15 +9,15 @@ class FunctionTest {
     @Test
     @DisplayName("Take 2x at x = 4")
     public void TwoXAtXEquals4() {
-        Function twoX = x -> 2 * x;
-        double y = twoX.f(4);
+        final Function twoX = x -> 2 * x;
+        final double y = twoX.f(4);
         assertEquals(8, y);
     }
 
     @Test
     @DisplayName("Piecewise function y-values")
     public void PiecewiseFunctionYValues() {
-        Function piecewise = x -> {
+        final Function piecewise = x -> {
             if (x < 0) {                // x < 0
                 return 1;                   // y = 1
             } else if (x < 3) {         // 0 <= x < 3
