@@ -63,7 +63,7 @@ public class CalculatteTest {
 
     // Tangent Lines
     @Test
-    @DisplayName("Tangent line of x^2 intercept")
+    @DisplayName("Tangent line of x^2 x-intercept")
     public void tangentLineOfXSquaredXIntercept() {
         final Function xSquared = x -> Math.pow(x, 2);
         final Function tangentLine = Calculatte.tangentLine(2, xSquared);
@@ -71,7 +71,7 @@ public class CalculatteTest {
     }
 
     @Test
-    @DisplayName("Tangent line of x^2 slope")
+    @DisplayName("Tangent line of x^2 slope at x = 2")
     public void tangentLineOfXSquaredSlope() {
         final Function xSquared = x -> Math.pow(x, 2);
         final Function tangentLine = Calculatte.tangentLine(2, xSquared);
