@@ -5,7 +5,8 @@ package io.github.derivasians.calculatte;
  * {@link Calculatte#crossSection(double, double, Function, Function, int)}.
  * 
  * @author <a href="mailto:okashita.matthew@gmail.com">Matthew Okashita</a>
- * @see Calculatte#crossSection(double, double, Function, Function, int) 
+ * @version 1.0.0
+ * @see Calculatte#crossSection(double, double, Function, Function, int)
  */
 public class InvalidCrossSectionTypeException extends RuntimeException {
     /**
