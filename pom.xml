@@ -9,7 +9,7 @@
     <version>0.1.0</version>
 
     <name>Calculatte</name>
-    <description>A simple Java calculus library</description>
+    <description>A simple to use numerical Java calculus library</description>
 
     <organization>
         <name>Derivasians</name>
