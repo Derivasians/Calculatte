@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * Holds all methods and properties to perform basic calculus operations.
+ * Contains all methods to perform basic calculus operations.
  *
  * @author <a href="mailto:okashita.matthew@gmail.com">Matthew Okashita</a>
  * @author <a href="mailto:benigno.joseph.s@gmail.com">Joseph Benigno</a>

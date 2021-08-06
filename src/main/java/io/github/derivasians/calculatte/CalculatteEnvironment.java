@@ -1,7 +1,7 @@
 package io.github.derivasians.calculatte;
 
 /**
- * Contains all instance variables required for Calculatte to run.
+ * Contains all properties required for Calculatte to run.
  * These mainly consist of values used for rounding and other accuracy
  * controls within calculations.
  *
@@ -44,8 +44,6 @@ public final class CalculatteEnvironment {
     polarAreaRoundingDecimalPlaces = 3;
 
     /**
-     * Represents the rounding cutoff for
-     *
      * <p>All values greater than <code>CalculatteEnvironment.positiveInfinity</code>
      * will be rounded up to <code>Double.POSITIVE_INFINITY</code> by
      * <code>Calculatte.round()</code>.
@@ -59,8 +57,6 @@ public final class CalculatteEnvironment {
     public static double positiveInfinity = Double.MAX_VALUE;
 
     /**
-     *
-     *
      * <p>All values less than to <code>CalculatteEnvironment.negativeInfinity</code>
      * will be rounded down to <code>Double.NEGATIVE_INFINITY</code> by
      * <code>Calculatte.round()</code>.
