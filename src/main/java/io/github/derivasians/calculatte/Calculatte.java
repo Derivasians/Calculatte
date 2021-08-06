@@ -155,7 +155,7 @@ public final class Calculatte {
     }
 
     /**
-     * Returns the approximate area under the curve using the left Riemann sum rule with
+     * Finds the approximate area under the curve using the left Riemann sum rule with
      * <code>n</code> rectangles.
      *
      * @param a        The lower limit of integration.
@@ -179,7 +179,7 @@ public final class Calculatte {
     }
 
     /**
-     * Returns the approximate area under the curve using the right Riemann sum rule with
+     * Finds the approximate area under the curve using the right Riemann sum rule with
      * <code>n</code> rectangles.
      *
      * @param a        The lower limit of integration.
@@ -203,7 +203,7 @@ public final class Calculatte {
     }
 
     /**
-     * Returns the approximate area under the curve using the midpoint rule with
+     * Finds the approximate area under the curve using the midpoint rule with
      * <code>n</code> rectangles.
      *
      * @param a        The lower limit of integration.
@@ -227,7 +227,7 @@ public final class Calculatte {
     }
 
     /**
-     * Returns the approximate area under the curve using the trapezoidal sum rule with
+     * Finds the approximate area under the curve using the trapezoidal sum rule with
      * <code>n</code> trapezoids.
      *
      * @param a        The lower limit of integration.
