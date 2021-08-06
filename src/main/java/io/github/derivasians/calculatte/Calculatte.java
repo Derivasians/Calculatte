@@ -255,7 +255,7 @@ public final class Calculatte {
     }
 
     /**
-     * Calculates the volume of revolution for the region bounded by <code>functionTop</code>,
+     * Finds the volume of revolution for the region bounded by <code>functionTop</code>,
      * <code>functionBottom</code>, x = <code>a</code>, and x = <code>b</code>, about y =
      * <code>axis</code>.
      *
