@@ -44,7 +44,9 @@ public final class CalculatteEnvironment {
     polarAreaRoundingDecimalPlaces = 3;
 
     /**
-     * All values greater than <code>CalculatteEnvironment.positiveInfinity</code>
+     * Represents the rounding cutoff for
+     *
+     * <p>All values greater than <code>CalculatteEnvironment.positiveInfinity</code>
      * will be rounded up to <code>Double.POSITIVE_INFINITY</code> by
      * <code>Calculatte.round()</code>.
      *
@@ -57,7 +59,9 @@ public final class CalculatteEnvironment {
     public static double positiveInfinity = Double.MAX_VALUE;
 
     /**
-     * All values less than to <code>CalculatteEnvironment.negativeInfinity</code>
+     *
+     *
+     * <p>All values less than to <code>CalculatteEnvironment.negativeInfinity</code>
      * will be rounded down to <code>Double.NEGATIVE_INFINITY</code> by
      * <code>Calculatte.round()</code>.
      *
@@ -70,21 +74,21 @@ public final class CalculatteEnvironment {
     public static double negativeInfinity = -Double.MAX_VALUE;
 
     /**
-     * Accuracy value for integration calculations. The larger the more accurate.
+     * Represents accuracy value for integration calculations. The larger the more accurate.
      * 
      * @see io.github.derivasians.calculatte.Calculatte#integrate(double, double, Function) 
      */
     public static int n = 64000;
 
     /**
-     * Accuracy value for derivation calculations. The smaller the more accurate.
+     * Represents accuracy value for derivation calculations. The smaller the more accurate.
      * 
      * @see io.github.derivasians.calculatte.Calculatte#derivate(double, Function) 
      */
     public static double h = 0.000000001;
 
     /**
-     * Largest difference between the left and right derivative before the derivative
+     * Represents the largest difference between the left and right derivative before the derivative
      * does not exist.
      *
      * @see io.github.derivasians.calculatte.Calculatte#derivate(double, Function) 
@@ -92,7 +96,7 @@ public final class CalculatteEnvironment {
     public static double derivativeTolerance = 0.000000001;
 
     /**
-     * How far the x-value should be offset left and right to find the left and right
+     * Represents how far the x-value should be offset left and right to find the left and right
      * derivatives.
      *
      * @see io.github.derivasians.calculatte.Calculatte#leftDerivative(double, Function) 
@@ -101,7 +105,7 @@ public final class CalculatteEnvironment {
     public static double derivativeOffset = 0.000000001;
     
     /**
-     * Largest difference between the left and right limit before the limit does not
+     * Represents the largest difference between the left and right limit before the limit does not
      * exist.
      * 
      * @see io.github.derivasians.calculatte.Calculatte#limit(double, Function) 
@@ -109,7 +113,7 @@ public final class CalculatteEnvironment {
     public static double limitTolerance = 0.000000001;
 
     /**
-     * How far the x-value should be offset left and right to find the left and right limits.
+     * Represents how far the x-value should be offset left and right to find the left and right limits.
      * 
      * @see io.github.derivasians.calculatte.Calculatte#leftLimit(double, Function) 
      * @see io.github.derivasians.calculatte.Calculatte#rightLimit(double, Function) 
@@ -117,8 +121,7 @@ public final class CalculatteEnvironment {
     public static double limitOffset = 0.000000001;
 
     /**
-     * These static constants define what known cross section
-     * is being used to calculate a volume of cross section.
+     * Represents common known cross-sections types.
      * 
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int)
      */
