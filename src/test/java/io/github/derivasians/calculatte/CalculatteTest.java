@@ -31,7 +31,7 @@ public class CalculatteTest {
         assertEquals(8, area);
     }
 
-    // Derivatives
+    // Derivation
     @Test
     @DisplayName("Derivative of x^2 at x = 2")
     public void derivativeOfXSquaredAtXEquals2() {
@@ -124,7 +124,7 @@ public class CalculatteTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    // Midpoint rule
+    // Midpoint Rule
     @Test
     @DisplayName("Midpoint rule of x^2 from 0 to 16 with n = 4")
     public void midpointRuleOfXSquaredFrom0To2WithNOf4() {
