@@ -213,7 +213,7 @@ public class CalculatteTest {
         final Function functionTop = x -> 1 - (x / 2);
         final Function functionBottom = x -> -1 + (x / 2);
 
-        final Exception exception = assertThrows(InvalidCrossSectionTypeException.class,
+        final Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> Calculatte.crossSection(0, 2, functionTop, functionBottom, 5));
 
         final String expectedMessage = "<5> is not a valid cross-section type. Please enter a valid cross-section type (0 - 4).";
