@@ -16,10 +16,9 @@
 
 package io.github.derivasians.calculatte;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FunctionTest {
     @Test
@@ -27,7 +26,7 @@ class FunctionTest {
     public void TwoXAtXEquals4() {
         final Function twoX = x -> 2 * x;
         final double y = twoX.f(4);
-        assertEquals(8, y);
+        Assertions.assertEquals(8, y);
     }
 
     @Test
@@ -43,10 +42,10 @@ class FunctionTest {
             }
         };
 
-        assertEquals(1, piecewise.f(-1));   // x < 0
-        assertEquals(0, piecewise.f(0));    // x = 0
-        assertEquals(1, piecewise.f(1));    // 0 < x < 3
-        assertEquals(9, piecewise.f(3));    // x = 3
-        assertEquals(16, piecewise.f(4));   // x > 3
+        Assertions.assertEquals(1, piecewise.f(-1));   // x < 0
+        Assertions.assertEquals(0, piecewise.f(0));    // x = 0
+        Assertions.assertEquals(1, piecewise.f(1));    // 0 < x < 3
+        Assertions.assertEquals(9, piecewise.f(3));    // x = 3
+        Assertions.assertEquals(16, piecewise.f(4));   // x > 3
     }
 }
