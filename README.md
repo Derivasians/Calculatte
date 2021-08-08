@@ -11,8 +11,6 @@
 
 A simple to use numerical Java calculus library.
 
-*Note that this project is still in pre-release and may be unstable.*
-
 ### Example Usage
 ```java
 // Integrate f(x) = 2x from 0 to 2.
@@ -26,25 +24,31 @@ System.out.println(a);
 ```
 
 ### Documentation and Guides
-Documentation can be found on our website [here][doc]. Guides on how to use Calculatte can be found in this 
-repository's [wiki][wiki].
+Documentation can be found on our website [https://derivasians.github.io/Calculatte][doc] and guides on how to use 
+Calculatte can be found in this repository's [wiki][wiki].
+
+[doc]: https://derivasians.github.io/Calculatte/
+[wiki]: https://github.com/Derivasians/Calculatte/wiki
 
 ### Tag Release Code
 The [`main` branch][main] is used as our development branch, with feature branches to separate larger feature 
 implementations. Because of this, the code in the [`main` branch][main] may not reflect the code at the time of the 
-latest tag release. Fortunately, GitHub automatically creates snapshots of repositories when a tag is released.
+latest tag release. Fortunately, GitHub automatically creates snapshots of the repository when a new release is made.
 
-To find the source code at the time of a tag's release go to
-`https://github.com/Derivasians/Calculatte/tree/v<SemVer>`. For example, to view the source code at the time of the 
-[v0.1.0 tag release][v0.1.0 release], go to [`https://github.com/Derivasians/Calculatte/tree/v0.1.0`][v0.1.0 code].
+To find the source code at the time of a release go to `https://github.com/Derivasians/Calculatte/tree/v<SemVer>`. 
+For example, to view the source code at the time of the [v0.1.0 release][v0.1.0 release], go to 
+[`https://github.com/Derivasians/Calculatte/tree/v0.1.0`][v0.1.0 code].
 
 [main]: https://github.com/Derivasians/Calculatte/tree/main
-[release]: https://github.com/Derivasians/Calculatte/tree/main
 [v0.1.0 release]: https://github.com/Derivasians/Calculatte/releases/tag/v0.1.0
 [v0.1.0 code]: https://github.com/Derivasians/Calculatte/tree/v0.1.0
 
 ### Attribution
 Calculatte was developed by [Matthew Okashita][soupyzinc] and [Joseph Benigno][jojongx] of [Derivasians][derivasians].
+
+[soupyzinc]: https://github.com/SoupyzInc
+[jojongx]: https://github.com/jojongx
+[derivasians]: https://github.com/Derivasians
 
 ### License
 ```
@@ -62,10 +66,3 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
 ```
-
-[doc]: https://derivasians.github.io/Calculatte/
-[wiki]: https://github.com/Derivasians/Calculatte/wiki
-[soupyzinc]: https://github.com/SoupyzInc
-[jojongx]: https://github.com/jojongx
-[derivasians]: https://github.com/Derivasians
-[license]: https://github.com/Derivasians/Calculatte/blob/main/LICENSE
