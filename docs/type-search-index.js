@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"io.github.derivasians.calculatte","l":"Calculatte"},{"p":"io.github.derivasians.calculatte","l":"Function"}];updateSearchResults();
