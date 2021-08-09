@@ -17,9 +17,10 @@ A simple to use numerical Java calculus library.
 
 import io.github.derivasians.calculatte.*;
 
+Calculatte c = new Calculatte();
 Function TwoX = x -> 2 * x;
 
-double a = Calculatte.integrate(0, 2, TwoX);
+double a = c.integrate(0, 2, TwoX);
 System.out.println(a);
 ```
 
