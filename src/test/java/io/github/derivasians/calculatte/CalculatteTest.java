@@ -21,12 +21,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CalculatteTest {
+    Calculatte c = new Calculatte();
+
     // Integration
     @Test
     @DisplayName("Integrate 2x from 0 to 2")
     public void integrateTwoXFrom0To2() {
         final Function twoX = x -> 2 * x;
-        final double area = Calculatte.integrate(0, 2, twoX);
+        final double area = c.integrate(0, 2, twoX);
         Assertions.assertEquals(4, area);
     }
 
@@ -34,7 +36,7 @@ public class CalculatteTest {
     @DisplayName("Integrate x^3 from -2 to 2")
     public void integrateXCubedFromNegativeTwoToTwo() {
         final Function xCubed = x -> Math.pow(x, 3);
-        final double area = Calculatte.integrate(-2, 2, xCubed);
+        final double area = c.integrate(-2, 2, xCubed);
         Assertions.assertEquals(0, area);
     }
 
@@ -42,7 +44,7 @@ public class CalculatteTest {
     @DisplayName("Integrate x = 4 from 0 to 2")
     public void integrateXEquals4From0To2() {
         final Function xEquals4 = x -> 4;
-        final double area = Calculatte.integrate(0, 2, xEquals4);
+        final double area = c.integrate(0, 2, xEquals4);
         Assertions.assertEquals(8, area);
     }
 
@@ -51,7 +53,7 @@ public class CalculatteTest {
     @DisplayName("Derivative of x^2 at x = 2")
     public void derivativeOfXSquaredAtXEquals2() {
         final Function xSquared = x -> Math.pow(x, 2);
-        final double slope = Calculatte.derivate(2, xSquared);
+        final double slope = c.derivate(2, xSquared);
         Assertions.assertEquals(4, slope);
     }
 
@@ -59,21 +61,21 @@ public class CalculatteTest {
     @DisplayName("Derivative DNE of |x| at x = 0")
     public void derivativeDoesNotExistOfAbsoluteValueOfXAtXEquals0() {
         final Function function = Math::abs;
-        Assertions.assertEquals(Double.NaN, Calculatte.derivate(0, function));
+        Assertions.assertEquals(Double.NaN, c.derivate(0, function));
     }
 
     @Test
     @DisplayName("Left derivative of |x| at x = 0")
     public void leftDerivativeOfAbsoluteValueOfXAtXEquals0() {
         final Function function = Math::abs;
-        Assertions.assertEquals(-1, Calculatte.leftDerivative(0, function));
+        Assertions.assertEquals(-1, c.leftDerivative(0, function));
     }
 
     @Test
     @DisplayName("Right derivative of |x| at x = 0")
     public void rightDerivativeOfAbsoluteValueOfXAtXEquals0() {
         final Function function = Math::abs;
-        Assertions.assertEquals(1, Calculatte.rightDerivative(0, function));
+        Assertions.assertEquals(1, c.rightDerivative(0, function));
     }
 
     // Tangent Lines
@@ -81,7 +83,7 @@ public class CalculatteTest {
     @DisplayName("Tangent line of x^2 x-intercept")
     public void tangentLineOfXSquaredXIntercept() {
         final Function xSquared = x -> Math.pow(x, 2);
-        final Function tangentLine = Calculatte.tangentLine(2, xSquared);
+        final Function tangentLine = c.tangentLine(2, xSquared);
         Assertions.assertEquals(0, tangentLine.f(1));
     }
 
@@ -89,8 +91,8 @@ public class CalculatteTest {
     @DisplayName("Tangent line of x^2 slope at x = 2")
     public void tangentLineOfXSquaredSlope() {
         final Function xSquared = x -> Math.pow(x, 2);
-        final Function tangentLine = Calculatte.tangentLine(2, xSquared);
-        Assertions.assertEquals(4, Calculatte.derivate(2, tangentLine));
+        final Function tangentLine = c.tangentLine(2, xSquared);
+        Assertions.assertEquals(4, c.derivate(2, tangentLine));
     }
 
     // Left Riemann Sums
@@ -98,7 +100,7 @@ public class CalculatteTest {
     @DisplayName("Left Riemann sum of x^2 from 0 to 16 with n = 4")
     public void leftRiemannSumOfXSquaredFrom0To2WithNOf4() {
         final Function xSquared = x -> Math.pow(x, 2);
-        final double approxArea = Calculatte.leftRiemannSum(0, 16, xSquared, 4);
+        final double approxArea = c.leftRiemannSum(0, 16, xSquared, 4);
         Assertions.assertEquals(896, approxArea);
     }
 
@@ -108,7 +110,7 @@ public class CalculatteTest {
         final Function xSquared = x -> x;
 
         final Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.leftRiemannSum(0, 16, xSquared, 0));
+                () -> c.leftRiemannSum(0, 16, xSquared, 0));
 
         final String expectedMessage = "There must be at least one rectangle.";
         final String actualMessage = exception.getMessage();
@@ -121,7 +123,7 @@ public class CalculatteTest {
     @DisplayName("Right Riemann sum of x^2 from 0 to 16 with n = 4")
     public void rightRiemannSumOfXSquaredFrom0To2WithNOf4() {
         final Function xSquared = x -> Math.pow(x, 2);
-        final double approxArea = Calculatte.rightRiemannSum(0, 16, xSquared, 4);
+        final double approxArea = c.rightRiemannSum(0, 16, xSquared, 4);
         Assertions.assertEquals(1920, approxArea);
     }
 
@@ -131,7 +133,7 @@ public class CalculatteTest {
         final Function xSquared = x -> x;
 
         final Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.rightRiemannSum(0, 16, xSquared, 0));
+                () -> c.rightRiemannSum(0, 16, xSquared, 0));
 
         final String expectedMessage = "There must be at least one rectangle.";
         final String actualMessage = exception.getMessage();
@@ -144,7 +146,7 @@ public class CalculatteTest {
     @DisplayName("Midpoint rule of x^2 from 0 to 16 with n = 4")
     public void midpointRuleOfXSquaredFrom0To2WithNOf4() {
         final Function xSquared = x -> Math.pow(x, 2);
-        final double approxArea = Calculatte.midpointRule(0, 16, xSquared, 4);
+        final double approxArea = c.midpointRule(0, 16, xSquared, 4);
         Assertions.assertEquals(1344, approxArea);
     }
 
@@ -154,7 +156,7 @@ public class CalculatteTest {
         final Function xSquared = x -> x;
 
         final Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.midpointRule(0, 16, xSquared, 0));
+                () -> c.midpointRule(0, 16, xSquared, 0));
 
         final String expectedMessage = "There must be at least one rectangle.";
         final String actualMessage = exception.getMessage();
@@ -167,7 +169,7 @@ public class CalculatteTest {
     @DisplayName("Trapezoidal sum of x^2 from 0 to 16 with n = 4")
     public void trapezoidalSumOfXSquaredFrom0To2WithNOf4() {
         final Function xSquared = x -> Math.pow(x, 2);
-        final double approxArea = Calculatte.trapezoidalSum(0, 16, xSquared, 4);
+        final double approxArea = c.trapezoidalSum(0, 16, xSquared, 4);
         Assertions.assertEquals(1408, approxArea);
     }
 
@@ -177,7 +179,7 @@ public class CalculatteTest {
         final Function xSquared = x -> x;
 
         final Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.trapezoidalSum(0, 16, xSquared, 0));
+                () -> c.trapezoidalSum(0, 16, xSquared, 0));
 
         final String expectedMessage = "There must be at least one trapezoid.";
         final String actualMessage = exception.getMessage();
@@ -191,7 +193,7 @@ public class CalculatteTest {
     public void revolveXSquaredFrom0To2() {
         final Function xSquared = x -> Math.pow(x, 2);
         final Function xAxis = x -> 0;
-        final double volume = Calculatte.revolve(0, 2, 0, xSquared, xAxis);
+        final double volume = c.revolve(0, 2, 0, xSquared, xAxis);
         Assertions.assertEquals(20.106, volume);
     }
 
@@ -201,8 +203,8 @@ public class CalculatteTest {
     public void crossSectionOfAnEquilateralTriangle() {
         final Function functionTop = x -> 1 - (x / 2);
         final Function functionBottom = x -> -1 + (x / 2);
-        final double volume = Calculatte.crossSection(0, 2, functionTop, functionBottom,
-                CalculatteEnvironment.EQUILATERAL_TRIANGLE);
+        final double volume = c.crossSection(0, 2, functionTop, functionBottom,
+                Calculatte.EQUILATERAL_TRIANGLE);
         Assertions.assertEquals(1.155, volume);
     }
 
@@ -213,7 +215,7 @@ public class CalculatteTest {
         final Function functionBottom = x -> -1 + (x / 2);
 
         final Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> Calculatte.crossSection(0, 2, functionTop, functionBottom, 5));
+                () -> c.crossSection(0, 2, functionTop, functionBottom, 5));
 
         final String expectedMessage = "<5> is not a valid cross-section type. Please enter a valid cross-section type (0 - 4).";
         final String actualMessage = exception.getMessage();
@@ -226,53 +228,53 @@ public class CalculatteTest {
     @DisplayName("Limit of 1 over x^2 at x = 0")
     public void limitOf1OverXSquaredAtXEquals0() {
         final Function function = x -> 1 / Math.pow(x, 2);
-        Assertions.assertEquals(9.9999999999999987E17, Calculatte.limit(0, function));
+        Assertions.assertEquals(9.9999999999999987E17, c.limit(0, function));
     }
 
     @Test
     @DisplayName("Limit of x^2 at x = 2")
     public void limitOfXSquaredAtXEquals2() {
         final Function function = x -> Math.pow(x, 2);
-        Assertions.assertEquals(4, Calculatte.limit(2, function));
+        Assertions.assertEquals(4, c.limit(2, function));
     }
 
     @Test
     @DisplayName("Limit at a removable discontinuity")
     public void limitAtARemovableDiscontinuity() {
         final Function function = x -> (Math.pow(x, 2) - (2 * x) - 8) / (x - 4);
-        Assertions.assertEquals(6, Calculatte.limit(4, function));
+        Assertions.assertEquals(6, c.limit(4, function));
     }
 
     @Test
     @DisplayName("Limit at a violent oscillation")
     public void limitAtAViolentOscillation() {
         final Function function = x -> Math.sin(1 / x);
-        Assertions.assertEquals(Double.NaN, Calculatte.limit(0, function));
+        Assertions.assertEquals(Double.NaN, c.limit(0, function));
     }
 
     @Test
     @DisplayName("Limit at an asymptote")
     public void limitAtAnAsymptote() {
         final Function function = x -> (x + 2) / x;
-        Assertions.assertEquals(Double.NaN, Calculatte.limit(0, function));
+        Assertions.assertEquals(Double.NaN, c.limit(0, function));
     }
 
     @Test
     @DisplayName("Limits at positive infinity")
     public void limitsAtPositiveInfinity() {
         final Function function = x -> 5 + (3 / Math.pow(x, 2));
-        Assertions.assertEquals(5.0, Calculatte.leftLimit(Double.POSITIVE_INFINITY, function));
-        Assertions.assertEquals(5.0, Calculatte.rightLimit(Double.POSITIVE_INFINITY, function));
-        Assertions.assertEquals(5.0, Calculatte.limit(Double.POSITIVE_INFINITY, function));
+        Assertions.assertEquals(5.0, c.leftLimit(Double.POSITIVE_INFINITY, function));
+        Assertions.assertEquals(5.0, c.rightLimit(Double.POSITIVE_INFINITY, function));
+        Assertions.assertEquals(5.0, c.limit(Double.POSITIVE_INFINITY, function));
     }
 
     @Test
     @DisplayName("Limits at max value")
     public void limitsAtMaxValue() {
         final Function function = x -> 5 + (3 / Math.pow(x, 2));
-        Assertions.assertEquals(5.0, Calculatte.leftLimit(Double.MAX_VALUE, function));
-        Assertions.assertEquals(5.0, Calculatte.rightLimit(Double.MAX_VALUE, function));
-        Assertions.assertEquals(5.0, Calculatte.limit(Double.MAX_VALUE, function));
+        Assertions.assertEquals(5.0, c.leftLimit(Double.MAX_VALUE, function));
+        Assertions.assertEquals(5.0, c.rightLimit(Double.MAX_VALUE, function));
+        Assertions.assertEquals(5.0, c.limit(Double.MAX_VALUE, function));
     }
 
     // Polar Integration
@@ -280,7 +282,7 @@ public class CalculatteTest {
     @DisplayName("Polar integrate sin(x) from 0 to Pi")
     public void polarIntegrateSineXFrom0ToPi() {
         final Function function = Math::sin;
-        final double area = Calculatte.polarArea(0, Math.PI, function);
+        final double area = c.polarArea(0, Math.PI, function);
         Assertions.assertEquals(0.785, area);
     }
 
@@ -288,7 +290,7 @@ public class CalculatteTest {
     @DisplayName("Polar integrate sin(x) from 0 to 2Pi")
     public void polarIntegrateSineXFrom0To2Pi() {
         final Function function = Math::sin;
-        final double area = Calculatte.polarArea(0, 2 * Math.PI, function);
+        final double area = c.polarArea(0, 2 * Math.PI, function);
         Assertions.assertEquals(1.571, area);
     }
 
@@ -296,7 +298,7 @@ public class CalculatteTest {
     @DisplayName("Polar integrate 2cos(3x) from 0 to Pi")
     public void polarIntegrate2Cosine3XFrom0ToPi() {
         final Function function = x -> 2 * Math.cos(3 * x);
-        final double area = Calculatte.polarArea(0, Math.PI, function);
+        final double area = c.polarArea(0, Math.PI, function);
         Assertions.assertEquals(3.142, area);
     }
 }

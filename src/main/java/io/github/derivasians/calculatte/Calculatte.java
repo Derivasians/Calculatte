@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * Contains all methods to perform basic calculus operations.
+ * Contains all methods and properties to perform basic calculus operations.
  *
  * @author <a href="mailto:okashita.matthew@gmail.com">Matthew Okashita</a>
  * @author <a href="mailto:benigno.joseph.s@gmail.com">Joseph Benigno</a>
@@ -28,9 +28,116 @@ import java.math.RoundingMode;
  */
 public final class Calculatte {
     /**
-     * Prevent instantiation of this class.
+     * Represents how many decimal places this variable's respective
+     * calculation(s) should be rounded too. Only values returned by a method
+     * are rounded. Intermediate values within a method are never rounded,
+     * unless by another method; e.g., the <code>revolve()</code> method's
+     * calculations get rounded when the integral is taken with
+     * <code>integrate()</code> and once more when the final value is
+     * returned.
+     *
+     * <p>Note: Setting any of these values to -1 will prevent that group
+     * of calculations from being rounded. This can be useful if you
+     * would prefer to use your own rounding method or none at all.
      */
-    private Calculatte() {}
+    public static int
+    integrationRoundingDecimalPlaces = 3,
+    derivationRoundingDecimalPlaces = 3,
+    leftRiemannSumRoundingDecimalPlaces = 3,
+    rightRiemannSumRoundingDecimalPlaces = 3,
+    midpointRuleRoundingDecimalPlaces = 3,
+    trapezoidalSumRoundingDecimalPlaces = 3,
+    revolutionRoundingDecimalPlaces = 3,
+    crossSectionsRoundingDecimalPlaces = 3,
+    limitRoundingDecimalPlaces = 3,
+    leftLimitRoundingDecimalPlaces = 3,
+    rightLimitRoundingDecimalPlaces = 3,
+    polarAreaRoundingDecimalPlaces = 3;
+
+    /**
+     * <p>All values greater than <code>positiveInfinity</code>
+     * will be rounded up to <code>Double.POSITIVE_INFINITY</code> by
+     * <code>Calculatte.round()</code>.
+     *
+     * <p>Note: Setting <code>positiveInfinity</code> to
+     * <code>Double.MAX_VALUE</code> will prevent rounding values up to
+     * <code>Double.POSITIVE_INFINITY</code>.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#round(double, int)
+     */
+    public static double positiveInfinity = Double.MAX_VALUE;
+
+    /**
+     * <p>All values less than to <code>negativeInfinity</code>
+     * will be rounded down to <code>Double.NEGATIVE_INFINITY</code> by
+     * <code>Calculatte.round()</code>.
+     *
+     * <p>Note: Setting <code>negativeInfinity</code> to
+     * <code>Double.MIN_VALUE</code> will prevent rounding values down to
+     * <code>Double.NEGATIVE_INFINITY</code>.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#round(double, int)
+     */
+    public static double negativeInfinity = -Double.MAX_VALUE;
+
+    /**
+     * Represents accuracy value for integration calculations. The larger the more accurate.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#integrate(double, double, Function)
+     */
+    public static int n = 64000;
+
+    /**
+     * Represents accuracy value for derivation calculations. The smaller the more accurate.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#derivate(double, Function)
+     */
+    public static double h = 0.000000001;
+
+    /**
+     * Represents the largest difference between the left and right derivative before the derivative
+     * does not exist.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#derivate(double, Function)
+     */
+    public static double derivativeTolerance = 0.000000001;
+
+    /**
+     * Represents how far the x-value should be offset left and right to find the left and right
+     * derivatives.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#leftDerivative(double, Function)
+     * @see io.github.derivasians.calculatte.Calculatte#rightDerivative(double, Function)
+     */
+    public static double derivativeOffset = 0.000000001;
+
+    /**
+     * Represents the largest difference between the left and right limit before the limit does not
+     * exist.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#limit(double, Function)
+     */
+    public static double limitTolerance = 0.000000001;
+
+    /**
+     * Represents how far the x-value should be offset left and right to find the left and right limits.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#leftLimit(double, Function)
+     * @see io.github.derivasians.calculatte.Calculatte#rightLimit(double, Function)
+     */
+    public static double limitOffset = 0.000000001;
+
+    /**
+     * Represents common known cross-sections types.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int)
+     */
+    public static final int
+    SQUARE = 0,
+    EQUILATERAL_TRIANGLE = 1,
+    ISOSCELES_TRIANGLE = 2,
+    RIGHT_TRIANGLE = 3,
+    SEMICIRCLE = 4;
 
     /**
      * Rounds doubles according to the IEEE 754 standard of rounding half to even.
@@ -42,16 +149,16 @@ public final class Calculatte {
      * @param decimalPlaces The number of decimal places to round to.
      * @return The rounded value.
      */
-    public static double round(double x, int decimalPlaces) {
+    public double round(double x, int decimalPlaces) {
         if (decimalPlaces < 0) {
             return x;
         }
 
-        if (x > CalculatteEnvironment.positiveInfinity) {
+        if (x > positiveInfinity) {
             return Double.POSITIVE_INFINITY;
         }
 
-        if (x < CalculatteEnvironment.negativeInfinity) {
+        if (x < negativeInfinity) {
             return Double.NEGATIVE_INFINITY;
         }
 
@@ -68,23 +175,23 @@ public final class Calculatte {
      * @param function The function to integrate.
      * @return The area under the curve from a to b.
      */
-    public static double integrate(double a, double b, Function function) {
-        double h = (b - a) / (CalculatteEnvironment.n - 1); // Step size.
+    public double integrate(double a, double b, Function function) {
+        double h = (b - a) / (n - 1); // Step size.
 
         // 1/3 terms.
         double sum = 1.0 / 3.0 * (function.f(a) + function.f(b));
 
         // 4/3 terms.
-        for (int i = 1; i < CalculatteEnvironment.n - 1; i += 2) {
+        for (int i = 1; i < n - 1; i += 2) {
             sum += 4.0 / 3.0 * function.f(a + h * i);
         }
 
         // 2/3 terms.
-        for (int i = 2; i < CalculatteEnvironment.n - 1; i += 2) {
+        for (int i = 2; i < n - 1; i += 2) {
             sum += 2.0 / 3.0 * function.f(a + h * i);
         }
 
-        return round(sum * h, CalculatteEnvironment.integrationRoundingDecimalPlaces);
+        return round(sum * h, integrationRoundingDecimalPlaces);
     }
 
     /**
@@ -95,19 +202,19 @@ public final class Calculatte {
      * @param function The function to integrate.
      * @return The area under the curve from a to b, not rounded.
      */
-    private static double integrateRaw(double a, double b, Function function) {
-        double h = (b - a) / (CalculatteEnvironment.n - 1); // Step size.
+    private double integrateRaw(double a, double b, Function function) {
+        double h = (b - a) / (n - 1); // Step size.
 
         // 1/3 terms.
         double sum = 1.0 / 3.0 * (function.f(a) + function.f(b));
 
         // 4/3 terms.
-        for (int i = 1; i < CalculatteEnvironment.n - 1; i += 2) {
+        for (int i = 1; i < n - 1; i += 2) {
             sum += 4.0 / 3.0 * function.f(a + h * i);
         }
 
         // 2/3 terms.
-        for (int i = 2; i < CalculatteEnvironment.n - 1; i += 2) {
+        for (int i = 2; i < n - 1; i += 2) {
             sum += 2.0 / 3.0 * function.f(a + h * i);
         }
 
@@ -122,15 +229,15 @@ public final class Calculatte {
      * @return The derivative of the function at point, x or <code>Double.Nan</code>
      * if the derivative DNE.
      */
-    public static double derivate(double x, Function function) {
-        if ((leftDerivative(x, function) > rightDerivative(x, function) + CalculatteEnvironment.derivativeTolerance) ||
-                (leftDerivative(x, function) < rightDerivative(x, function) - CalculatteEnvironment.derivativeTolerance)) {
+    public double derivate(double x, Function function) {
+        if ((leftDerivative(x, function) > rightDerivative(x, function) + derivativeTolerance) ||
+                (leftDerivative(x, function) < rightDerivative(x, function) - derivativeTolerance)) {
             return Double.NaN;
         }
 
         double slope =
-                (function.f(x + CalculatteEnvironment.h) - function.f(x)) / ((x + CalculatteEnvironment.h) - x);
-        return round(slope, CalculatteEnvironment.derivationRoundingDecimalPlaces);
+                (function.f(x + h) - function.f(x)) / ((x + h) - x);
+        return round(slope, derivationRoundingDecimalPlaces);
     }
 
     /**
@@ -140,9 +247,9 @@ public final class Calculatte {
      * @param function The function to find the derivative of.
      * @return The derivative of the function at point, x.
      */
-    public static double leftDerivative(double x, Function function) {
-        x -= CalculatteEnvironment.derivativeOffset;
-        return (function.f(x + CalculatteEnvironment.h) - function.f(x)) / ((x + CalculatteEnvironment.h) - x);
+    public double leftDerivative(double x, Function function) {
+        x -= derivativeOffset;
+        return (function.f(x + h) - function.f(x)) / ((x + h) - x);
     }
 
     /**
@@ -152,9 +259,9 @@ public final class Calculatte {
      * @param function The function to find the derivative of.
      * @return The derivative of the function at point, x.
      */
-    public static double rightDerivative(double x, Function function) {
-        x += CalculatteEnvironment.derivativeOffset;
-        return (function.f(x + CalculatteEnvironment.h) - function.f(x)) / ((x + CalculatteEnvironment.h) - x);
+    public double rightDerivative(double x, Function function) {
+        x += derivativeOffset;
+        return (function.f(x + h) - function.f(x)) / ((x + h) - x);
     }
 
     /**
@@ -164,7 +271,7 @@ public final class Calculatte {
      * @param function The function to find the tangent line of.
      * @return The tangent line.
      */
-    public static Function tangentLine(double x, Function function) {
+    public Function tangentLine(double x, Function function) {
         double m = derivate(x, function);
         double b = function.f(x) - (m * x); // b = y - mx
         return x1 -> (m * x1) + b; // y = mx + b
@@ -180,7 +287,7 @@ public final class Calculatte {
      * @param n        The number of rectangles being used to estimate the area under the curve.
      * @return The approximate area under the curve by the left Riemann sum rule.
      */
-    public static double leftRiemannSum(double a, double b, Function function, int n) {
+    public double leftRiemannSum(double a, double b, Function function, int n) {
         if (n < 1) {
             throw new IllegalArgumentException("There must be at least one rectangle.");
         }
@@ -191,7 +298,7 @@ public final class Calculatte {
             sum += function.f(x);
         }
 
-        return round(deltaX * sum, CalculatteEnvironment.leftRiemannSumRoundingDecimalPlaces);
+        return round(deltaX * sum, leftRiemannSumRoundingDecimalPlaces);
     }
 
     /**
@@ -204,7 +311,7 @@ public final class Calculatte {
      * @param n        The number of rectangles being used to estimate the area under the curve.
      * @return The approximate area under the curve by the right Riemann sum rule.
      */
-    public static double rightRiemannSum(double a, double b, Function function, int n) {
+    public double rightRiemannSum(double a, double b, Function function, int n) {
         if (n < 1) {
             throw new IllegalArgumentException("There must be at least one rectangle.");
         }
@@ -215,7 +322,7 @@ public final class Calculatte {
             sum += function.f(x);
         }
 
-        return round(deltaX * sum, CalculatteEnvironment.rightRiemannSumRoundingDecimalPlaces);
+        return round(deltaX * sum, rightRiemannSumRoundingDecimalPlaces);
     }
 
     /**
@@ -228,7 +335,7 @@ public final class Calculatte {
      * @param n        The number of rectangles being used to estimate the area under the curve.
      * @return The approximate area under the curve by the midpoint rule.
      */
-    public static double midpointRule(double a, double b, Function function, int n) {
+    public double midpointRule(double a, double b, Function function, int n) {
         if (n < 1) {
             throw new IllegalArgumentException("There must be at least one rectangle.");
         }
@@ -239,7 +346,7 @@ public final class Calculatte {
             sum += function.f((x + (x + deltaX)) / 2);
         }
 
-        return round(deltaX * sum, CalculatteEnvironment.midpointRuleRoundingDecimalPlaces);
+        return round(deltaX * sum, midpointRuleRoundingDecimalPlaces);
     }
 
     /**
@@ -252,7 +359,7 @@ public final class Calculatte {
      * @param n        The number of trapezoids being used to estimate the area under the curve.
      * @return The approximate area under the curve by the trapezoidal sum rule.
      */
-    public static double trapezoidalSum(double a, double b, Function function, int n) {
+    public double trapezoidalSum(double a, double b, Function function, int n) {
         if (n < 1) {
             throw new IllegalArgumentException("There must be at least one trapezoid.");
         }
@@ -267,7 +374,7 @@ public final class Calculatte {
             }
         }
 
-        return round(((b - a) / (2 * n)) * sum, CalculatteEnvironment.trapezoidalSumRoundingDecimalPlaces);
+        return round(((b - a) / (2 * n)) * sum, trapezoidalSumRoundingDecimalPlaces);
     }
 
     /**
@@ -286,7 +393,7 @@ public final class Calculatte {
      * @param functionBottom The bottom function defining the bounded region.
      * @return The volume of revolution.
      */
-    public static double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {
+    public double revolve(double a, double b, double axis, Function functionTop, Function functionBottom) {
         // The top function with the axis offset, squared.
         Function squaredFunctionTop = x -> Math.pow(axis - functionTop.f(x), 2);
 
@@ -295,7 +402,7 @@ public final class Calculatte {
 
         // Split the volume of revolution formula into two separate integrals.
         double volume = Math.PI * (integrateRaw(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
-        return round(volume, CalculatteEnvironment.revolutionRoundingDecimalPlaces);
+        return round(volume, revolutionRoundingDecimalPlaces);
     }
 
     /**
@@ -303,9 +410,9 @@ public final class Calculatte {
      * cross-sections: square, equilateral triangle, isosceles triangle, right,
      * triangle, and semicircle.
      *
-     * <p>Note: Constants have been defined in <code>CalculatteEnvironment</code>
-     * for your ease of use when defining what <code>type</code> of cross-section
-     * you are solving for.
+     * <p>Note: Constants have been defined in <code>Calculatte</code> for your
+     * ease of use when defining what <code>type</code> of cross-section you are
+     * solving for.
      *
      * @param a              The lower limit of integration.
      * @param b              The upper limit of integration.
@@ -313,13 +420,13 @@ public final class Calculatte {
      * @param functionBottom The bottom function defining the bounded region.
      * @param type           The type of cross-section.
      * @return The volume of the known cross-section.
-     * @see io.github.derivasians.calculatte.CalculatteEnvironment#SQUARE
-     * @see io.github.derivasians.calculatte.CalculatteEnvironment#EQUILATERAL_TRIANGLE
-     * @see io.github.derivasians.calculatte.CalculatteEnvironment#ISOSCELES_TRIANGLE
-     * @see io.github.derivasians.calculatte.CalculatteEnvironment#RIGHT_TRIANGLE
-     * @see io.github.derivasians.calculatte.CalculatteEnvironment#SEMICIRCLE
+     * @see io.github.derivasians.calculatte.Calculatte#SQUARE
+     * @see io.github.derivasians.calculatte.Calculatte#EQUILATERAL_TRIANGLE
+     * @see io.github.derivasians.calculatte.Calculatte#ISOSCELES_TRIANGLE
+     * @see io.github.derivasians.calculatte.Calculatte#RIGHT_TRIANGLE
+     * @see io.github.derivasians.calculatte.Calculatte#SEMICIRCLE
      */
-    public static double crossSection(double a, double b, Function functionTop, Function functionBottom, int type) {
+    public double crossSection(double a, double b, Function functionTop, Function functionBottom, int type) {
         Function integrand = switch (type) {
             case 0 -> // Square
                     x -> Math.pow(functionTop.f(x) - functionBottom.f(x), 2);
@@ -341,7 +448,7 @@ public final class Calculatte {
             }
         };
 
-        return round(integrateRaw(a, b, integrand), CalculatteEnvironment.crossSectionsRoundingDecimalPlaces);
+        return round(integrateRaw(a, b, integrand), crossSectionsRoundingDecimalPlaces);
     }
 
     /**
@@ -355,8 +462,8 @@ public final class Calculatte {
      * @return The volume of the known cross-section.
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
      */
-    public static double crossSection(double a, double b, Function integrand) {
-        return round(integrateRaw(a, b, integrand), CalculatteEnvironment.crossSectionsRoundingDecimalPlaces);
+    public double crossSection(double a, double b, Function integrand) {
+        return round(integrateRaw(a, b, integrand), crossSectionsRoundingDecimalPlaces);
     }
 
     /**
@@ -368,14 +475,14 @@ public final class Calculatte {
      * @return The value of the limit or <code>Double.Nan</code>
      * if the limit DNE.
      */
-    public static double limit(double x, Function function) {
-        if ((leftLimit(x, function) > rightLimit(x, function) + CalculatteEnvironment.limitTolerance) ||
-                (leftLimit(x, function) < rightLimit(x, function) - CalculatteEnvironment.limitTolerance)) {
+    public double limit(double x, Function function) {
+        if ((leftLimit(x, function) > rightLimit(x, function) + limitTolerance) ||
+                (leftLimit(x, function) < rightLimit(x, function) - limitTolerance)) {
             return Double.NaN;
         }
 
-        return round(function.f(x + CalculatteEnvironment.limitOffset),
-                CalculatteEnvironment.limitRoundingDecimalPlaces);
+        return round(function.f(x + limitOffset),
+                limitRoundingDecimalPlaces);
     }
 
     /**
@@ -385,9 +492,9 @@ public final class Calculatte {
      * @param function The function to find the limit of.
      * @return The value of the left limit.
      */
-    public static double leftLimit(double x, Function function) {
-        return round(function.f(x - CalculatteEnvironment.limitOffset),
-                CalculatteEnvironment.leftLimitRoundingDecimalPlaces);
+    public double leftLimit(double x, Function function) {
+        return round(function.f(x - limitOffset),
+                leftLimitRoundingDecimalPlaces);
     }
 
     /**
@@ -397,9 +504,9 @@ public final class Calculatte {
      * @param function The function to find the limit of.
      * @return The value of the right limit.
      */
-    public static double rightLimit(double x, Function function) {
-        return round(function.f(x + CalculatteEnvironment.limitOffset),
-                CalculatteEnvironment.rightLimitRoundingDecimalPlaces);
+    public double rightLimit(double x, Function function) {
+        return round(function.f(x + limitOffset),
+                rightLimitRoundingDecimalPlaces);
     }
 
     /**
@@ -411,9 +518,9 @@ public final class Calculatte {
      * @param r The polar function of theta bounding a specified area.
      * @return The area of the bounded region.
      */
-    public static double polarArea(double a, double b, Function r) {
+    public double polarArea(double a, double b, Function r) {
         Function squaredR = x -> Math.pow(r.f(x), 2);
         double area = 0.5 * integrateRaw(a, b, squaredR);
-        return round(area, CalculatteEnvironment.polarAreaRoundingDecimalPlaces);
+        return round(area, polarAreaRoundingDecimalPlaces);
     }
 }
