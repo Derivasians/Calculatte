@@ -442,7 +442,7 @@ public final class Calculatte {
                 final String errorMessage =
                         String.format(
                                 "<%s> is not a valid cross-section type. Please enter a valid cross-section type (0 - 4).",
-                                Integer.toString(type)
+                                type
                         );
                 throw new IllegalArgumentException(errorMessage);
             }
