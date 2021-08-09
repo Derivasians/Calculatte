@@ -170,8 +170,8 @@ public final class Calculatte {
     /**
      * Integrates the function from a to b using Simpson's rule.
      *
-     * @param a        The lower limit of integration.
-     * @param b        The upper limit of integration.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
      * @param function The function to integrate.
      * @return The area under the curve from a to b.
      */
@@ -197,8 +197,8 @@ public final class Calculatte {
     /**
      * Integrates the function from a to b using Simpson's rule, without rounding.
      *
-     * @param a        The lower limit of integration.
-     * @param b        The upper limit of integration.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
      * @param function The function to integrate.
      * @return The area under the curve from a to b, not rounded.
      */
@@ -224,7 +224,7 @@ public final class Calculatte {
     /**
      * Finds the derivate of the function at point, x.
      *
-     * @param x        The point on the function to find the derivative.
+     * @param x The point on the function to find the derivative.
      * @param function The function to find the derivative of.
      * @return The derivative of the function at point, x or <code>Double.Nan</code>
      * if the derivative DNE.
@@ -243,7 +243,7 @@ public final class Calculatte {
     /**
      * Finds the left derivate of the function at point, x.
      *
-     * @param x        The point on the function to find the derivative.
+     * @param x The point on the function to find the derivative.
      * @param function The function to find the derivative of.
      * @return The derivative of the function at point, x.
      */
@@ -255,7 +255,7 @@ public final class Calculatte {
     /**
      * Finds the right derivate of the function at point, x.
      *
-     * @param x        The point on the function to find the derivative.
+     * @param x The point on the function to find the derivative.
      * @param function The function to find the derivative of.
      * @return The derivative of the function at point, x.
      */
@@ -267,7 +267,7 @@ public final class Calculatte {
     /**
      * Finds the tangent line of <code>function</code> at point, <code>x</code>.
      *
-     * @param x        The x-value at which to find the tangent line of.
+     * @param x The x-value at which to find the tangent line of.
      * @param function The function to find the tangent line of.
      * @return The tangent line.
      */
@@ -281,10 +281,10 @@ public final class Calculatte {
      * Finds the approximate area under the curve using the left Riemann sum rule with
      * <code>n</code> rectangles.
      *
-     * @param a        The lower limit of integration.
-     * @param b        The upper limit of integration.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
      * @param function The function being used to calculate the left Riemann sum.
-     * @param n        The number of rectangles being used to estimate the area under the curve.
+     * @param n The number of rectangles being used to estimate the area under the curve.
      * @return The approximate area under the curve by the left Riemann sum rule.
      */
     public double leftRiemannSum(double a, double b, Function function, int n) {
@@ -305,10 +305,10 @@ public final class Calculatte {
      * Finds the approximate area under the curve using the right Riemann sum rule with
      * <code>n</code> rectangles.
      *
-     * @param a        The lower limit of integration.
-     * @param b        The upper limit of integration.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
      * @param function The function being used to calculate the right Riemann sum.
-     * @param n        The number of rectangles being used to estimate the area under the curve.
+     * @param n The number of rectangles being used to estimate the area under the curve.
      * @return The approximate area under the curve by the right Riemann sum rule.
      */
     public double rightRiemannSum(double a, double b, Function function, int n) {
@@ -329,10 +329,10 @@ public final class Calculatte {
      * Finds the approximate area under the curve using the midpoint rule with
      * <code>n</code> rectangles.
      *
-     * @param a        The lower limit of integration.
-     * @param b        The upper limit of integration.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
      * @param function The function being used to calculate the midpoint rule.
-     * @param n        The number of rectangles being used to estimate the area under the curve.
+     * @param n The number of rectangles being used to estimate the area under the curve.
      * @return The approximate area under the curve by the midpoint rule.
      */
     public double midpointRule(double a, double b, Function function, int n) {
@@ -353,10 +353,10 @@ public final class Calculatte {
      * Finds the approximate area under the curve using the trapezoidal sum rule with
      * <code>n</code> trapezoids.
      *
-     * @param a        The lower limit of integration.
-     * @param b        The upper limit of integration.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
      * @param function The function being used to calculate the trapezoidal sum.
-     * @param n        The number of trapezoids being used to estimate the area under the curve.
+     * @param n The number of trapezoids being used to estimate the area under the curve.
      * @return The approximate area under the curve by the trapezoidal sum rule.
      */
     public double trapezoidalSum(double a, double b, Function function, int n) {
@@ -386,10 +386,10 @@ public final class Calculatte {
      * the data was rotated 90 degrees and to be rotated horizontally. There should be no
      * mathematical difference between the two problems.
      *
-     * @param a              The lower limit of integration.
-     * @param b              The upper limit of integration.
-     * @param axis           The y value of the axis of rotation, where 0 is about the x-axis.
-     * @param functionTop    The top function defining the bounded region.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
+     * @param axis The y value of the axis of rotation, where 0 is about the x-axis.
+     * @param functionTop The top function defining the bounded region.
      * @param functionBottom The bottom function defining the bounded region.
      * @return The volume of revolution.
      */
@@ -414,11 +414,11 @@ public final class Calculatte {
      * ease of use when defining what <code>type</code> of cross-section you are
      * solving for.
      *
-     * @param a              The lower limit of integration.
-     * @param b              The upper limit of integration.
-     * @param functionTop    The top function defining the bounded region.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
+     * @param functionTop The top function defining the bounded region.
      * @param functionBottom The bottom function defining the bounded region.
-     * @param type           The type of cross-section.
+     * @param type The type of cross-section.
      * @return The volume of the known cross-section.
      * @see io.github.derivasians.calculatte.Calculatte#SQUARE
      * @see io.github.derivasians.calculatte.Calculatte#EQUILATERAL_TRIANGLE
@@ -455,8 +455,8 @@ public final class Calculatte {
      * Finds the volume of a known cross-section for a custom made cross-section
      * formula.
      *
-     * @param a         The lower limit of integration.
-     * @param b         The upper limit of integration.
+     * @param a The lower limit of integration.
+     * @param b The upper limit of integration.
      * @param integrand The integrand of the integral when taking the volume of a
      *                  known cross-section.
      * @return The volume of the known cross-section.
@@ -470,7 +470,7 @@ public final class Calculatte {
      * Finds the limit of <code>function</code> at point <code>x</code>. Returns <code>Double.NaN</code>
      * if the limit does not exist.
      *
-     * @param x        The x-value to find the limit at.
+     * @param x The x-value to find the limit at.
      * @param function The function to find the limit of.
      * @return The value of the limit or <code>Double.Nan</code>
      * if the limit DNE.
@@ -488,7 +488,7 @@ public final class Calculatte {
     /**
      * Finds the left limit of <code>function</code> at point <code>x</code>.
      *
-     * @param x        The x-value to find the limit at.
+     * @param x The x-value to find the limit at.
      * @param function The function to find the limit of.
      * @return The value of the left limit.
      */
@@ -500,7 +500,7 @@ public final class Calculatte {
     /**
      * Finds the right limit of <code>function</code> at point <code>x</code>.
      *
-     * @param x        The x-value to find the limit at.
+     * @param x The x-value to find the limit at.
      * @param function The function to find the limit of.
      * @return The value of the right limit.
      */
