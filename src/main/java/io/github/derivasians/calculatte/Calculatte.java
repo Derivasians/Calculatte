@@ -24,7 +24,7 @@ import java.math.RoundingMode;
  *
  * @author <a href="mailto:okashita.matthew@gmail.com">Matthew Okashita</a>
  * @author <a href="mailto:benigno.joseph.s@gmail.com">Joseph Benigno</a>
- * @version 1.0.0
+ * @version 0.2.0
  */
 public final class Calculatte {
     /**

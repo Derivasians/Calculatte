@@ -6,7 +6,7 @@
 
     <groupId>io.github.derivasians</groupId>
     <artifactId>Calculatte</artifactId>
-    <version>1.0.0</version>
+    <version>0.2.0</version>
 
     <name>Calculatte</name>
     <description>A simple to use numerical Java calculus library</description>
