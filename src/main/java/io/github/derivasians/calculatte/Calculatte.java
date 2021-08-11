@@ -235,8 +235,7 @@ public final class Calculatte {
             return Double.NaN;
         }
 
-        double slope =
-                (function.f(x + h) - function.f(x)) / ((x + h) - x);
+        double slope = (function.f(x + h) - function.f(x)) / ((x + h) - x);
         return round(slope, derivationRoundingDecimalPlaces);
     }
 
@@ -481,8 +480,7 @@ public final class Calculatte {
             return Double.NaN;
         }
 
-        return round(function.f(x + limitOffset),
-                limitRoundingDecimalPlaces);
+        return round(function.f(x + limitOffset), limitRoundingDecimalPlaces);
     }
 
     /**
@@ -493,8 +491,7 @@ public final class Calculatte {
      * @return The value of the left limit.
      */
     public double leftLimit(double x, Function function) {
-        return round(function.f(x - limitOffset),
-                leftLimitRoundingDecimalPlaces);
+        return round(function.f(x - limitOffset), leftLimitRoundingDecimalPlaces);
     }
 
     /**
@@ -505,8 +502,7 @@ public final class Calculatte {
      * @return The value of the right limit.
      */
     public double rightLimit(double x, Function function) {
-        return round(function.f(x + limitOffset),
-                rightLimitRoundingDecimalPlaces);
+        return round(function.f(x + limitOffset), rightLimitRoundingDecimalPlaces);
     }
 
     /**
