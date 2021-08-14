@@ -28,33 +28,6 @@ import java.math.RoundingMode;
  */
 public final class Calculatte {
     /**
-     * Represents how many decimal places this variable's respective
-     * calculation(s) should be rounded too. Only values returned by a method
-     * are rounded. Intermediate values within a method are never rounded,
-     * unless by another method; e.g., the <code>revolve()</code> method's
-     * calculations get rounded when the integral is taken with
-     * <code>integrate()</code> and once more when the final value is
-     * returned.
-     *
-     * <p>Note: Setting any of these values to -1 will prevent that group
-     * of calculations from being rounded. This can be useful if you
-     * would prefer to use your own rounding method or none at all.
-     */
-    public static int
-    integrationRoundingDecimalPlaces = 3,
-    derivationRoundingDecimalPlaces = 3,
-    leftRiemannSumRoundingDecimalPlaces = 3,
-    rightRiemannSumRoundingDecimalPlaces = 3,
-    midpointRuleRoundingDecimalPlaces = 3,
-    trapezoidalSumRoundingDecimalPlaces = 3,
-    revolutionRoundingDecimalPlaces = 3,
-    crossSectionsRoundingDecimalPlaces = 3,
-    limitRoundingDecimalPlaces = 3,
-    leftLimitRoundingDecimalPlaces = 3,
-    rightLimitRoundingDecimalPlaces = 3,
-    polarAreaRoundingDecimalPlaces = 3;
-
-    /**
      * <p>All values greater than <code>positiveInfinity</code>
      * will be rounded up to <code>Double.POSITIVE_INFINITY</code> by
      * <code>Calculatte.round()</code>.
@@ -191,7 +164,7 @@ public final class Calculatte {
             sum += 2.0 / 3.0 * function.f(a + h * i);
         }
 
-        return round(sum * h, integrationRoundingDecimalPlaces);
+        return sum * h;
     }
 
     /**
@@ -235,8 +208,7 @@ public final class Calculatte {
             return Double.NaN;
         }
 
-        double slope = (function.f(x + h) - function.f(x)) / ((x + h) - x);
-        return round(slope, derivationRoundingDecimalPlaces);
+        return (function.f(x + h) - function.f(x)) / ((x + h) - x);
     }
 
     /**
@@ -297,7 +269,7 @@ public final class Calculatte {
             sum += function.f(x);
         }
 
-        return round(deltaX * sum, leftRiemannSumRoundingDecimalPlaces);
+        return deltaX * sum;
     }
 
     /**
@@ -321,7 +293,7 @@ public final class Calculatte {
             sum += function.f(x);
         }
 
-        return round(deltaX * sum, rightRiemannSumRoundingDecimalPlaces);
+        return deltaX * sum;
     }
 
     /**
@@ -345,7 +317,7 @@ public final class Calculatte {
             sum += function.f((x + (x + deltaX)) / 2);
         }
 
-        return round(deltaX * sum, midpointRuleRoundingDecimalPlaces);
+        return deltaX * sum;
     }
 
     /**
@@ -373,7 +345,7 @@ public final class Calculatte {
             }
         }
 
-        return round(((b - a) / (2 * n)) * sum, trapezoidalSumRoundingDecimalPlaces);
+        return ((b - a) / (2 * n)) * sum;
     }
 
     /**
@@ -400,8 +372,7 @@ public final class Calculatte {
         Function squaredFunctionBottom = x -> Math.pow(axis - functionBottom.f(x), 2);
 
         // Split the volume of revolution formula into two separate integrals.
-        double volume = Math.PI * (integrateRaw(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
-        return round(volume, revolutionRoundingDecimalPlaces);
+        return Math.PI * (integrateRaw(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
     }
 
     /**
@@ -447,7 +418,7 @@ public final class Calculatte {
             }
         };
 
-        return round(integrateRaw(a, b, integrand), crossSectionsRoundingDecimalPlaces);
+        return integrateRaw(a, b, integrand);
     }
 
     /**
@@ -462,7 +433,7 @@ public final class Calculatte {
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
      */
     public double crossSection(double a, double b, Function integrand) {
-        return round(integrateRaw(a, b, integrand), crossSectionsRoundingDecimalPlaces);
+        return integrateRaw(a, b, integrand);
     }
 
     /**
@@ -480,7 +451,7 @@ public final class Calculatte {
             return Double.NaN;
         }
 
-        return round(function.f(x + limitOffset), limitRoundingDecimalPlaces);
+        return function.f(x + limitOffset);
     }
 
     /**
@@ -491,7 +462,7 @@ public final class Calculatte {
      * @return The value of the left limit.
      */
     public double leftLimit(double x, Function function) {
-        return round(function.f(x - limitOffset), leftLimitRoundingDecimalPlaces);
+        return function.f(x - limitOffset);
     }
 
     /**
@@ -502,7 +473,7 @@ public final class Calculatte {
      * @return The value of the right limit.
      */
     public double rightLimit(double x, Function function) {
-        return round(function.f(x + limitOffset), rightLimitRoundingDecimalPlaces);
+        return function.f(x + limitOffset);
     }
 
     /**
@@ -516,7 +487,6 @@ public final class Calculatte {
      */
     public double polarArea(double a, double b, Function r) {
         Function squaredR = x -> Math.pow(r.f(x), 2);
-        double area = 0.5 * integrateRaw(a, b, squaredR);
-        return round(area, polarAreaRoundingDecimalPlaces);
+        return 0.5 * integrateRaw(a, b, squaredR);
     }
 }
