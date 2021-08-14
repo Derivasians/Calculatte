@@ -168,33 +168,6 @@ public final class Calculatte {
     }
 
     /**
-     * Integrates the function from a to b using Simpson's rule, without rounding.
-     *
-     * @param a The lower limit of integration.
-     * @param b The upper limit of integration.
-     * @param function The function to integrate.
-     * @return The area under the curve from a to b, not rounded.
-     */
-    private double integrateRaw(double a, double b, Function function) {
-        double h = (b - a) / (n - 1); // Step size.
-
-        // 1/3 terms.
-        double sum = 1.0 / 3.0 * (function.f(a) + function.f(b));
-
-        // 4/3 terms.
-        for (int i = 1; i < n - 1; i += 2) {
-            sum += 4.0 / 3.0 * function.f(a + h * i);
-        }
-
-        // 2/3 terms.
-        for (int i = 2; i < n - 1; i += 2) {
-            sum += 2.0 / 3.0 * function.f(a + h * i);
-        }
-
-        return sum * h;
-    }
-
-    /**
      * Finds the derivate of the function at point, x.
      *
      * @param x The point on the function to find the derivative.
@@ -372,7 +345,7 @@ public final class Calculatte {
         Function squaredFunctionBottom = x -> Math.pow(axis - functionBottom.f(x), 2);
 
         // Split the volume of revolution formula into two separate integrals.
-        return Math.PI * (integrateRaw(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
+        return Math.PI * (integrate(a, b, squaredFunctionTop) - integrate(a, b, squaredFunctionBottom));
     }
 
     /**
@@ -418,7 +391,7 @@ public final class Calculatte {
             }
         };
 
-        return integrateRaw(a, b, integrand);
+        return integrate(a, b, integrand);
     }
 
     /**
@@ -433,7 +406,7 @@ public final class Calculatte {
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int) 
      */
     public double crossSection(double a, double b, Function integrand) {
-        return integrateRaw(a, b, integrand);
+        return integrate(a, b, integrand);
     }
 
     /**
@@ -487,6 +460,6 @@ public final class Calculatte {
      */
     public double polarArea(double a, double b, Function r) {
         Function squaredR = x -> Math.pow(r.f(x), 2);
-        return 0.5 * integrateRaw(a, b, squaredR);
+        return 0.5 * integrate(a, b, squaredR);
     }
 }
