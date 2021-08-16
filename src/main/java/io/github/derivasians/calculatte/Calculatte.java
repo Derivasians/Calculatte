@@ -128,16 +128,39 @@ public final class Calculatte {
     public static double limitOffset = 0.000000001;
 
     /**
-     * Represents common known cross-sections types.
+     * Represents the square cross-sections type.
      *
      * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int)
      */
-    public static final int
-    SQUARE = 0,
-    EQUILATERAL_TRIANGLE = 1,
-    ISOSCELES_TRIANGLE = 2,
-    RIGHT_TRIANGLE = 3,
-    SEMICIRCLE = 4;
+    public static final int SQUARE = 0;
+
+    /**
+     * Represents the equilateral triangle cross-sections type.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int)
+     */
+    public static final int EQUILATERAL_TRIANGLE = 1;
+
+    /**
+     * Represents the isosceles triangle cross-sections type.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int)
+     */
+    public static final int ISOSCELES_TRIANGLE = 2;
+
+    /**
+     * Represents the right triangle cross-sections type.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int)
+     */
+    public static final int RIGHT_TRIANGLE = 3;
+
+    /**
+     * Represents the semicircle cross-sections type.
+     *
+     * @see io.github.derivasians.calculatte.Calculatte#crossSection(double, double, Function, Function, int)
+     */
+    public static final int SEMICIRCLE = 4;
 
     /**
      * Rounds doubles according to the IEEE 754 standard of rounding half to even.
