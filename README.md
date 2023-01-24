@@ -5,7 +5,7 @@
 
 <div align="center">
   <img src="https://img.shields.io/github/v/release/derivasians/calculatte?include_prereleases" alt="Release | v0.1.0">
-  <img src="https://img.shields.io/github/workflow/status/derivasians/calculatte/JUnit%20Tests" alt="Build Badge">
+  <img src="https://img.shields.io/github/actions/workflow/status/derivasians/calculatte/UnitTest.yml?branch=main" alt="Build Badge">
   <img src="https://img.shields.io/github/license/derivasians/calculatte" alt="License | Apache-2.0">
 </div>
 
